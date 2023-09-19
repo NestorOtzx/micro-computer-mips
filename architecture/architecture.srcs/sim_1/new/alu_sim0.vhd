@@ -9,16 +9,14 @@ architecture tb of tb_alu is
     component alu
         port (alu_in_a   : in std_logic_vector (31 downto 0);
               alu_in_b   : in std_logic_vector (31 downto 0);
-              operation  : in std_logic_vector (2 downto 0);
-              func       : in std_logic_vector (5 downto 0);
+              operation  : in std_logic_vector (3 downto 0);
               alu_output : out std_logic_vector (31 downto 0);
               zero       : out std_logic);
     end component;
 
     signal alu_in_a   : std_logic_vector (31 downto 0);
     signal alu_in_b   : std_logic_vector (31 downto 0);
-    signal operation  : std_logic_vector (2 downto 0);
-    signal func       : std_logic_vector (5 downto 0);
+    signal operation  : std_logic_vector (3 downto 0);
     signal alu_output : std_logic_vector (31 downto 0);
     signal zero       : std_logic;
 
@@ -28,104 +26,73 @@ begin
     port map (alu_in_a   => alu_in_a,
               alu_in_b   => alu_in_b,
               operation  => operation,
-              func       => func,
               alu_output => alu_output,
               zero       => zero);
 
     stimuli : process
     begin
-    --PRUEBA DE INMEDIATOS---
-    
-        -- PRUEBA DE LA SUMA --
-        alu_in_a <= "00000000000000000000000000000010";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "000";
-        func <= "000000";
-        wait for 10 ns;
-        
-        -- PRUEBA DE LA RESTA --
-        alu_in_a <= "00000000000000000000000000000010";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "001";
-        func <= "000000";
-        wait for 10 ns;
-        
-        -- PRUEBA DE OR --
-        alu_in_a <= "00000000000000000000000000010101";
-        alu_in_b <= "00000000000000000000000000011010";
-        operation <= "011";
-        func <= "000000";
-        wait for 10 ns;
-        
-        -- PRUEBA DE AND --
-        alu_in_a <= "00000000000000000000000000010101";
-        alu_in_b <= "00000000000000000000000000011010";
-        operation <= "100";
-        func <= "000000";
-        wait for 10 ns;
-        
-        -- PRUEBA DE SET LESS THAN --
-        alu_in_a <= "00000000000000000000000000010101";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "101";
-        func <= "000000";
-        wait for 10 ns;
-        alu_in_a <= "00000000000000000000000000010101";
-        alu_in_b <= "00000000000000000000000000100010";
-        operation <= "101";
-        func <= "000000";
-        wait for 10 ns;
-        
---PRUEBA DE TIPOS R---
-        
-        -- PRUEBA DE LA SUMA --
-        alu_in_a <= "00000000000000000000000000000010";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "010";
-        func <= "100000";
-        wait for 10 ns;
-        -- PRUEBA DE LA RESTA --
-        alu_in_a <= "00000000000000000000000000000010";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "010";
-        func <= "100010";
-        wait for 10 ns;
-        -- PRUEBA DE LA AND --
-        alu_in_a <= "00000000000000000000000000000111";
-        alu_in_b <= "00000000000000000000000000000010";
-        operation <= "010";
-        func <= "100100";
-        wait for 10 ns;
-        -- PRUEBA DE LA OR --
-        alu_in_a <= "00000000000000000000000000000010";
-        alu_in_b <= "00000000000000000000000000000111";
-        operation <= "010";
-        func <= "100101";
-        wait for 10 ns;
-        -- PRUEBA DE LA NOR --
+        -- PRUEBA DE AND
         alu_in_a <= "00000000000000000000000000001100";
         alu_in_b <= "00000000000000000000000000001010";
-        operation <= "010";
-        func <= "100111";
+        operation <= "0000";
+
         wait for 10 ns;
-        -- PRUEBA DE SLT --
-        alu_in_a <= "00000000000000000000000000000110";
+        
+        -- PRUEBA DE OR
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000001010";
+        operation <= "0001";
+
+        wait for 10 ns;
+        
+        -- PRUEBA DE +
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000001010";
+        operation <= "0010";
+
+        wait for 10 ns;
+        
+        -- PRUEBA DE NOR
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000001010";
+        operation <= "0011";
+
+        wait for 10 ns;
+        
+        -- PRUEBA DE SLL
+        alu_in_a <= "00000000000000000000000000001100";
         alu_in_b <= "00000000000000000000000000000010";
-        operation <= "010";
-        func <= "101010";
+        operation <= "0100";
+
         wait for 10 ns;
-        -- PRUEBA DE SLL --
-        alu_in_a <= "00000000000000000000000000000111";
-        alu_in_b <= "00000000000000000000000000000010"; --11100
-        operation <= "010";
-        func <= "000000";
-        wait for 10 ns;
-        -- PRUEBA DE SRL --
-        alu_in_a <= "00000000000000000000000000000111";
+        
+        -- PRUEBA DE SRL
+        alu_in_a <= "00000000000000000000000000001100";
         alu_in_b <= "00000000000000000000000000000010";
-        operation <= "010";
-        func <= "000010";
+        operation <= "0101";
+
         wait for 10 ns;
+        
+        -- PRUEBA DE -
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000001010";
+        operation <= "0110";
+
+        wait for 10 ns;
+        
+        -- PRUEBA DE SLT
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000001010";
+        operation <= "0111";
+
+        wait for 10 ns;
+        
+        alu_in_a <= "00000000000000000000000000001100";
+        alu_in_b <= "00000000000000000000000000011010";
+        operation <= "0111";
+
+        wait for 10 ns;
+        
         wait;
     end process;
 

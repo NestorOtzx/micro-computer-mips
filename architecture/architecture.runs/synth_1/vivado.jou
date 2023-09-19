@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Sep 18 18:35:11 2023
+# Process ID: 16256
+# Current directory: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/synth_1
+# Command line: vivado.exe -log alu.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source alu.tcl
+# Log file: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/synth_1/alu.vds
+# Journal file: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source alu.tcl -notrace

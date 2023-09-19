@@ -24,7 +24,7 @@ begin
     
     with alu_op select
         control_out <= "0010" when "000",
-                       "0010" when "001",
+                       "0110" when "001",
                        (r_signal) when "010",
                        "0001" when "011",
                        "0000" when "100",

@@ -1,7 +1,3 @@
--- Testbench automatically generated online
--- at https://vhdl.lapinoo.net
--- Generation date : 19.9.2023 02:26:04 UTC
-
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -11,140 +7,122 @@ end tb_main_arquitecture;
 architecture tb of tb_main_arquitecture is
 
     component main_arquitecture
-        port (registerA  : in std_logic_vector (31 downto 0);
-              registerB  : in std_logic_vector (31 downto 0);
-              main_func  : in std_logic_vector (5 downto 0);
-              main_aluop : in std_logic_vector (2 downto 0);
-              main_out   : out std_logic_vector (31 downto 0);
-              main_zero  : out std_logic);
+        port (main_instruction : in std_logic_vector (31 downto 0);
+              main_alusrca     : in std_logic;
+              main_alusrcb     : in std_logic_vector (1 downto 0);
+              main_ir_write    : in std_logic;
+              main_write_data  : in std_logic_vector (31 downto 0);
+              main_reg_write   : in std_logic;
+              main_reg_dst     : in std_logic_vector (1 downto 0);
+              main_memtoreg    : in std_logic_vector (1 downto 0);
+              main_func        : in std_logic_vector (5 downto 0);
+              main_aluop       : in std_logic_vector (2 downto 0);
+              main_out         : out std_logic_vector (31 downto 0);
+              main_zero        : out std_logic;
+              main_clk         : in std_logic;
+              main_reset       : in std_logic);
     end component;
 
-    signal registerA  : std_logic_vector (31 downto 0);
-    signal registerB  : std_logic_vector (31 downto 0);
-    signal main_func  : std_logic_vector (5 downto 0);
-    signal main_aluop : std_logic_vector (2 downto 0);
-    signal main_out   : std_logic_vector (31 downto 0);
-    signal main_zero  : std_logic;
+    signal main_instruction : std_logic_vector (31 downto 0);
+    signal main_alusrca     : std_logic;
+    signal main_alusrcb     : std_logic_vector (1 downto 0);
+    signal main_ir_write    : std_logic;
+    signal main_write_data  : std_logic_vector (31 downto 0);
+    signal main_reg_write   : std_logic;
+    signal main_reg_dst     : std_logic_vector (1 downto 0);
+    signal main_memtoreg    : std_logic_vector (1 downto 0);
+    signal main_func        : std_logic_vector (5 downto 0);
+    signal main_aluop       : std_logic_vector (2 downto 0);
+    signal main_out         : std_logic_vector (31 downto 0);
+    signal main_zero        : std_logic;
+    signal main_clk         : std_logic;
+    signal main_reset       : std_logic;
+
+    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
+    signal TbClock : std_logic := '0';
+    signal TbSimEnded : std_logic := '0';
 
 begin
 
     dut : main_arquitecture
-    port map (registerA  => registerA,
-              registerB  => registerB,
-              main_func  => main_func,
-              main_aluop => main_aluop,
-              main_out   => main_out,
-              main_zero  => main_zero);
+    port map (main_instruction => main_instruction,
+              main_alusrca     => main_alusrca,
+              main_alusrcb     => main_alusrcb,
+              main_ir_write    => main_ir_write,
+              main_write_data  => main_write_data,
+              main_reg_write   => main_reg_write,
+              main_reg_dst     => main_reg_dst,
+              main_memtoreg    => main_memtoreg,
+              main_func        => main_func,
+              main_aluop       => main_aluop,
+              main_out         => main_out,
+              main_zero        => main_zero,
+              main_clk         => main_clk,
+              main_reset       => main_reset);
+
+    -- Clock generation
+    TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
+
+    -- EDIT: Check that main_clk is really your main clock signal
+    main_clk <= TbClock;
 
     stimuli : process
     begin
-    -- PRUEBA DE INMEDIATOS --
-        -- SUMA --
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
+        -- EDIT Adapt initialization as needed
+        main_instruction <= (others => '0');
+        main_alusrca <= '0';
+        main_alusrcb <= (others => '0');
+        main_ir_write <= '0';
+        main_write_data <= (others => '0');
+        main_reg_write <= '0';
+        main_reg_dst <= (others => '0');
+        main_memtoreg <= (others => '0');
+        main_func <= (others => '0');
+        main_aluop <= (others => '0');
+
+        -- Reset generation
+        -- EDIT: Check that main_reset is really your reset signal
+        main_reset <= '1';
+        wait for 100 ns;
+        main_reset <= '0';
+        wait for 100 ns;
+
+        -- EDIT Add stimuli here
+        --                  -opcod| rs | rt | rd |
+        main_instruction <= "00000000000000100000000000000101";
+        main_alusrca <= '0';
+        main_alusrcb <= "00";
+        main_ir_write <= '1';
+        main_write_data <= "00000000000000000000000000000000";
+        main_reg_write <= '0';
+        main_reg_dst <= "00";
+        main_memtoreg <= "00";
         main_func <= "000000";
         main_aluop <= "000";
         
-        wait for 10 ns;
+        wait for 100 ns;
         
-        -- RESTA --
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010";
-        main_func <= "000000";
-        main_aluop <= "001";
+        main_ir_write <= '0';
+        main_alusrca <= '0';
+        main_alusrcb <= "00";
+        main_aluop <= "000";
+                
+        wait for 100 ns;
         
-        wait for 10 ns;
+        main_alusrca <= '1';
+        main_alusrcb <= "10";       
+        main_aluop <= "000";
         
-        -- ORI --
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010";
-        main_func <= "000000";
-        main_aluop <= "011";
+        wait for 100 ns;
         
-        wait for 10 ns;
-        
-        -- ANDI --
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010";
-        main_func <= "000000";
-        main_aluop <= "100";
-        
-        wait for 10 ns;
-        
-        -- SLTI --
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010";
-        main_func <= "000000";
-        main_aluop <= "101";
-        
-        wait for 10 ns;
-    
-    -- PRUEBA DE TIPO R --
-    
-        --SUMA--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "100000";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --RESTA--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "100010";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --AND--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "100100";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --OR--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "100101";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --NOR--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "100111";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --SLT--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "101010";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --SLL--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "000000";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-        
-        --SLT--
-        registerA <= "00000000000000000000000000001100";
-        registerB <= "00000000000000000000000000001010"; --00010110
-        main_func <= "000010";
-        main_aluop <= "010";
-        
-        wait for 10 ns;
-               
+        main_reg_write <= '1';
+        main_reg_dst <= "00";
+        main_memtoreg <= "00";
+        wait for 1000 ns;
+
+
+        -- Stop the clock and hence terminate the simulation
+        TbSimEnded <= '1';
         wait;
     end process;
 

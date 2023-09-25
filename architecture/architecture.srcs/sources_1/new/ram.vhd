@@ -17,15 +17,15 @@ end ram;
 architecture Behavioral of ram is
 
 type tipo_ram is array (63 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
-signal memoria: tipo_ram;
+signal memoria: tipo_ram := ( 8 => "00000000000000100000000000000101", others => (others=>'0'));
 
 begin
-    process(clk)
+    process(clk, reset)
     begin
          if(rising_edge(clk)) then
             if(reset ='1') then
-                memoria <= (OTHERS => (OTHERS => '0'));
-                memoria(10) <= "00000000000000100000000000000101";
+                memoria <= ( 8 => "00000000000000100000000000000101", others => (others=>'0'));
+                mem_data <= memoria(8);
             else
                 if(mem_write = '1') then
                     memoria(to_integer(unsigned(dir))) <= data;

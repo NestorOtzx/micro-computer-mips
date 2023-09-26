@@ -17,7 +17,8 @@ end ram;
 architecture Behavioral of ram is
 
 type tipo_ram is array (63 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
-signal memoria: tipo_ram := ( 8 => "00000000000000100000000000000101", others => (others=>'0'));
+                                  --OPCOD| rs | rt | inmediato              --OPCOD| rs | rt | inmediato  
+signal memoria: tipo_ram := ( 8 => "00000000000000100000000000000101",  9 => "00000000010000100000000000000101", others => (others=>'0'));
 
 begin
     process(clk, reset)

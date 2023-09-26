@@ -2,11 +2,11 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Sep 25 14:42:57 2023
-# Process ID: 19988
+# Start of session at: Mon Sep 25 20:03:48 2023
+# Process ID: 19072
 # Current directory: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
-# Command line: wbtcv.exe -mode batch -source E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_main_arquitecture_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv.exe -mode batch -source E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_program_counter_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
-source E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_main_arquitecture_behav/webtalk/xsim_webtalk.tcl -notrace
+source E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_program_counter_behav/webtalk/xsim_webtalk.tcl -notrace

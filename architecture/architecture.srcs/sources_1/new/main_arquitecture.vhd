@@ -5,24 +5,19 @@ use ieee.numeric_std.all;
 entity main_arquitecture is
     Port ( 
            --CONTROL--
+           main_pc_write: in STD_LOGIC;
+           main_branch: in STD_LOGIC;
            main_iord: in STD_LOGIC;
            main_mem_read: in STD_LOGIC;
            main_mem_write: in STD_LOGIC;
-           main_alusrca: in STD_LOGIC;
-           main_alusrcb: in STD_LOGIC_VECTOR (1 downto 0);
            main_ir_write: in STD_LOGIC;
-           main_reg_write: in STD_LOGIC;
            main_reg_dst: in STD_LOGIC_VECTOR(1 downto 0);
            main_memtoreg: in STD_LOGIC_VECTOR(1 downto 0);
-           
-           --Debug--
-           memOut: out STD_LOGIC_VECTOR (31 downto 0);
-           insReg: out STD_LOGIC_VECTOR (31 downto 0);
-           sigExtS: out STD_LOGIC_VECTOR (31 downto 0);
-           shifleft2: out STD_LOGIC_VECTOR (31 downto 0);
-           
-           main_func: in STD_LOGIC_VECTOR (5 downto 0);
+           main_reg_write: in STD_LOGIC;
+           main_alusrca: in STD_LOGIC;
+           main_alusrcb: in STD_LOGIC_VECTOR (1 downto 0);
            main_aluop: in STD_LOGIC_VECTOR (2 downto 0);
+           main_pcsrc: in STD_LOGIC_VECTOR (1 downto 0);
            
            --salidas--
            main_out : out STD_LOGIC_VECTOR (31 downto 0);
@@ -115,12 +110,18 @@ component sign_extend
         );
 end component;
 
-
+component program_counter
+     Port ( pc_in : in STD_LOGIC_VECTOR (31 downto 0);
+           pc_write: in STD_LOGIC;
+           clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           pc_out : out STD_LOGIC_VECTOR (31 downto 0));
+end component;
 
 --Signals auxiliares--
 
 --Multiplexores
-signal tmpWriteData, tmpIorD: STD_LOGIC_VECTOR (31 downto 0);
+signal tmpWriteData, tmpIorD, tmpPcSrc: STD_LOGIC_VECTOR (31 downto 0);
 signal tmpWriteRegister: STD_LOGIC_VECTOR (4 downto 0);
 signal tmpAluSrcA, tmpAluSrcB: STD_LOGIC_VECTOR (31 downto 0);
 
@@ -136,12 +137,23 @@ signal inmediate: STD_LOGIC_VECTOR (15 downto 0);
 signal signExtendInmediate: STD_LOGIC_VECTOR (31 downto 0);
 signal shiftLeft2Inmediate: STD_LOGIC_VECTOR (31 downto 0);
 signal tmpMemorySignal: STD_LOGIC_VECTOR (31 downto 0);
-
+signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
+
+pcEnable <= main_pc_write or (main_branch and tmpAluZero);
+
+U_PC: program_counter
+    port map(
+        pc_in  => tmpPcSrc,
+        pc_write => pcEnable,
+        clk => main_clk,
+        reset => main_reset,
+        pc_out => tmpPCout
+    );
 
 
 U_MUX_IORD: mux2to1_32b
-    port map ( mux_in0 => "00000000000000000000000000001000", --PC
+    port map ( mux_in0 => tmpPCout, --PC
                mux_in1 => tmpAluoutOut,
                mux_sel => main_iord,
                mux_out => tmpIorD
@@ -156,106 +168,6 @@ port map (    dir => tmpIorD, --direccion de la instruccion
               clk => main_clk,
               reset => main_reset
          );
-
-U_REGISTER_A: register_32b
-port map(
-    reg_input => tmpRegAin,
-    write_enable => '1',
-    clk => main_clk,
-    reset => main_reset,
-    reg_output => tmpRegAout
-);
-
-U_REGISTER_B: register_32b
-port map(
-    reg_input => tmpRegBin,
-    write_enable => '1',
-    clk => main_clk,
-    reset => main_reset,
-    reg_output => tmpRegBout
-);
-
-U_MUX_ALUSRCA: mux2to1_32b
-    port map ( mux_in0 => "00000000000000000000000000001000", --PC
-               mux_in1 => tmpRegAout,
-               mux_sel => main_alusrca,
-               mux_out => tmpAluSrcA
-               );
-
---SIGN EXTEND
-U_SIGN_EXTEND: sign_extend
-    port map(
-        input => tmpInstruction(15 downto 0), 
-        output=> signExtendInmediate
-    );
-
---SHIFT LEFT 2
-shiftLeft2Inmediate <= STD_LOGIC_VECTOR(shift_left(signed(signExtendInmediate), 2));
-
-U_MUX_ALUSRCB: mux4to1_32b
-    port map ( mux_in0 => tmpRegBout,
-               mux_in1 => "00000000000000000000000000000100", --4
-               mux_in2 => signExtendInmediate, -- sign extend inmediate
-               mux_in3 => shiftLeft2Inmediate, -- sign extend inmediate shift left 2
-               mux_sel => main_alusrcb,
-               mux_out => tmpAluSrcB
-               );
-
-U_ALUCONTROL : alu_control
-port map(
-    func => main_func,
-    alu_op=>main_aluop,
-    control_out => tmpAluOperation
-);
-
-U_ALU : alu
-port map(
-    alu_in_a => tmpAluSrcA,
-    alu_in_b => tmpAluSrcB,
-    operation => tmpAluOperation,
-    alu_output => tmpAluoutIn,
-    zero => main_zero
-);
-
-U_ALUOUT: register_32b
-port map(
-    reg_input => tmpAluoutIn,
-    write_enable => '1',
-    clk => main_clk,
-    reset => main_reset,
-    reg_output => tmpAluoutOut
-);
-
-U_REGISTERS: registers
-    port map( 
-           rs => tmpInstruction(25 downto 21),
-           rt => tmpInstruction(20 downto 16),
-           write_register => tmpWriteRegister,
-           write_data => tmpWriteData,
-           reg_write => main_reg_write,
-           clk => main_clk,
-           reset => main_reset,
-           read_data1 => tmpRegAin,
-           read_data2 => tmpRegBin
-    );
-
-U_MUX_RGDST: mux4to1_5b
-    port map ( mux_in0 => tmpInstruction(20 downto 16),
-               mux_in1 => tmpInstruction(15 downto 11),
-               mux_in2 => "11111",
-               mux_in3 => "00000",
-               mux_sel => main_reg_dst,
-               mux_out => tmpWriteRegister
-               );
-
-U_MUX_MEMTOREG: mux4to1_32b
-    port map ( mux_in0 => tmpAluoutOut,
-               mux_in1 => tmpMemoryDataReg,
-               mux_in2 => "00000000000000000000000000001000", --PC
-               mux_in3 => "00000000000000000000000000000000", --NADA
-               mux_sel => main_memtoreg,
-               mux_out => tmpWriteData
-               );
 
 U_INSTRUCTION_REGISTER: register_32b
 port map(
@@ -275,10 +187,116 @@ port map(
     reg_output => tmpMemoryDataReg
 );
 
-main_out<=tmpAluoutOut;
+U_MUX_RGDST: mux4to1_5b
+    port map ( mux_in0 => tmpInstruction(20 downto 16),
+               mux_in1 => tmpInstruction(15 downto 11),
+               mux_in2 => "11111",
+               mux_in3 => "00000",
+               mux_sel => main_reg_dst,
+               mux_out => tmpWriteRegister
+               );
 
-memOut <= tmpMemorySignal;
-insReg <= tmpInstruction;
-sigExtS <= signExtendInmediate;
-shifleft2 <=  shiftLeft2Inmediate;
+U_MUX_MEMTOREG: mux4to1_32b
+    port map ( mux_in0 => tmpAluoutOut,
+               mux_in1 => tmpMemoryDataReg,
+               mux_in2 => tmpPCout, --PC
+               mux_in3 => "00000000000000000000000000000000", --NADA
+               mux_sel => main_memtoreg,
+               mux_out => tmpWriteData
+               );
+
+U_REGISTERS: registers
+    port map( 
+           rs => tmpInstruction(25 downto 21),
+           rt => tmpInstruction(20 downto 16),
+           write_register => tmpWriteRegister,
+           write_data => tmpWriteData,
+           reg_write => main_reg_write,
+           clk => main_clk,
+           reset => main_reset,
+           read_data1 => tmpRegAin,
+           read_data2 => tmpRegBin
+    );
+
+U_REGISTER_A: register_32b
+port map(
+    reg_input => tmpRegAin,
+    write_enable => '1',
+    clk => main_clk,
+    reset => main_reset,
+    reg_output => tmpRegAout
+);
+
+U_REGISTER_B: register_32b
+port map(
+    reg_input => tmpRegBin,
+    write_enable => '1',
+    clk => main_clk,
+    reset => main_reset,
+    reg_output => tmpRegBout
+);
+
+--SIGN EXTEND
+U_SIGN_EXTEND: sign_extend
+    port map(
+        input => tmpInstruction(15 downto 0), 
+        output=> signExtendInmediate
+    );
+
+--SHIFT LEFT 2
+shiftLeft2Inmediate <= STD_LOGIC_VECTOR(shift_left(signed(signExtendInmediate), 2));
+
+U_MUX_ALUSRCA: mux2to1_32b
+    port map ( mux_in0 => tmpPCout, --PC
+               mux_in1 => tmpRegAout,
+               mux_sel => main_alusrca,
+               mux_out => tmpAluSrcA
+               );
+
+U_MUX_ALUSRCB: mux4to1_32b
+    port map ( mux_in0 => tmpRegBout,
+               mux_in1 => "00000000000000000000000000000001", --cambiar a 4
+               mux_in2 => signExtendInmediate, -- sign extend inmediate
+               mux_in3 => shiftLeft2Inmediate, -- sign extend inmediate shift left 2
+               mux_sel => main_alusrcb,
+               mux_out => tmpAluSrcB
+               );
+
+U_ALUCONTROL : alu_control
+port map(
+    func => tmpInstruction(5 downto 0),
+    alu_op=>main_aluop,
+    control_out => tmpAluOperation
+);
+
+U_ALU : alu
+port map(
+    alu_in_a => tmpAluSrcA,
+    alu_in_b => tmpAluSrcB,
+    operation => tmpAluOperation,
+    alu_output => tmpAluoutIn,
+    zero => tmpAluZero
+);
+
+U_ALUOUT: register_32b
+port map(
+    reg_input => tmpAluoutIn,
+    write_enable => '1',
+    clk => main_clk,
+    reset => main_reset,
+    reg_output => tmpAluoutOut
+);
+
+U_MUX_PC_SRC: mux4to1_32b
+    port map ( mux_in0 => tmpAluoutIn,
+               mux_in1 => tmpAluoutOut,
+               mux_in2 => "00000000000000000000000000001001", --J
+               mux_in3 => "00000000000000000000000000001000", --NADA
+               mux_sel => main_pcsrc,
+               mux_out => tmpPcSrc
+               );
+
+
+main_out<=tmpAluoutOut;
+main_zero<= tmpAluZero;
 end MAIN;

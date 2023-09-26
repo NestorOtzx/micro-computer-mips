@@ -13,16 +13,17 @@ Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux2to1_32b [mux2to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.ram [ram_default]
 Compiling architecture behavioral of entity xil_defaultlib.register_32b [register_32b_default]
-Compiling architecture behavioral of entity xil_defaultlib.sign_extend [sign_extend_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux4to1_5b [mux4to1_5b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_32b [mux4to1_32b_default]
-Compiling architecture alu_ctrl of entity xil_defaultlib.alu_control [alu_control_default]
-Compiling architecture alu_behaviour of entity xil_defaultlib.alu [alu_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux32to1_32b [mux32to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.registers [registers_default]
-Compiling architecture behavioral of entity xil_defaultlib.mux4to1_5b [mux4to1_5b_default]
+Compiling architecture behavioral of entity xil_defaultlib.sign_extend [sign_extend_default]
+Compiling architecture alu_ctrl of entity xil_defaultlib.alu_control [alu_control_default]
+Compiling architecture alu_behaviour of entity xil_defaultlib.alu [alu_default]
 Compiling architecture main of entity xil_defaultlib.main_arquitecture [main_arquitecture_default]
 Compiling architecture tb of entity xil_defaultlib.tb_main_arquitecture [tb_main_arquitecture]
 Built simulation snapshot cfg_tb_main_arquitecture_behav

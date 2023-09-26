@@ -134,9 +134,7 @@ signal tmpInstruction, tmpMemoryDataReg: STD_LOGIC_VECTOR (31 downto 0);
 --Otros--
 signal tmpAluOperation: STD_LOGIC_VECTOR (3 downto 0);
 signal inmediate: STD_LOGIC_VECTOR (15 downto 0);
-signal signExtendInmediate: STD_LOGIC_VECTOR (31 downto 0);
-signal shiftLeft2Inmediate: STD_LOGIC_VECTOR (31 downto 0);
-signal tmpMemorySignal: STD_LOGIC_VECTOR (31 downto 0);
+signal signExtendInmediate, shiftLeft2Inmediate, tmpMemorySignal, jumpSignal: STD_LOGIC_VECTOR (31 downto 0);
 signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
 
@@ -287,10 +285,12 @@ port map(
     reg_output => tmpAluoutOut
 );
 
+jumpSignal <= (tmpPCout(31 downto 28))&STD_LOGIC_VECTOR(shift_left(signed("00"&tmpInstruction(25 downto 0)), 2));
+
 U_MUX_PC_SRC: mux4to1_32b
     port map ( mux_in0 => tmpAluoutIn,
                mux_in1 => tmpAluoutOut,
-               mux_in2 => "00000000000000000000000000001001", --J
+               mux_in2 => jumpSignal, --J
                mux_in3 => "00000000000000000000000000001000", --NADA
                mux_sel => main_pcsrc,
                mux_out => tmpPcSrc

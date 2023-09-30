@@ -21,7 +21,7 @@ architecture tb of tb_main_arquitecture is
               main_aluop     : in std_logic_vector (2 downto 0);
               main_pcsrc     : in std_logic_vector (1 downto 0);
               main_out       : out std_logic_vector (31 downto 0);
-              main_zero      : out std_logic;
+              main_opcode    : out std_logic_vector (5 downto 0);
               main_clk       : in std_logic;
               main_reset     : in std_logic);
     end component;
@@ -40,7 +40,7 @@ architecture tb of tb_main_arquitecture is
     signal main_aluop     : std_logic_vector (2 downto 0);
     signal main_pcsrc     : std_logic_vector (1 downto 0);
     signal main_out       : std_logic_vector (31 downto 0);
-    signal main_zero      : std_logic;
+    signal main_opcode    : std_logic_vector (5 downto 0);
     signal main_clk       : std_logic;
     signal main_reset     : std_logic;
 
@@ -65,7 +65,7 @@ begin
               main_aluop     => main_aluop,
               main_pcsrc     => main_pcsrc,
               main_out       => main_out,
-              main_zero      => main_zero,
+              main_opcode    => main_opcode,
               main_clk       => main_clk,
               main_reset     => main_reset);
 
@@ -226,7 +226,9 @@ begin
         main_alusrcb <= "00";
         main_aluop <= "000";
         main_pcsrc <= "00";
-        wait for 100 ns;
+        
+        
+        wait for 10000 ns;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

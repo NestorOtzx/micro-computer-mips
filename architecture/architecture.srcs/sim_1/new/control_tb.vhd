@@ -103,8 +103,6 @@ begin
 
 end tb;
 
--- Configuration block below is required by some simulators. Usually no need to edit.
-
 configuration cfg_tb_control of tb_control is
     for tb
     end for;

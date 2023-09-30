@@ -21,7 +21,7 @@ entity main_arquitecture is
            
            --salidas--
            main_out : out STD_LOGIC_VECTOR (31 downto 0);
-           main_zero: out STD_LOGIC;
+           main_opcode: out STD_LOGIC_VECTOR (5 downto 0);
            
            --otros--
            main_clk: in STD_LOGIC;
@@ -298,5 +298,6 @@ U_MUX_PC_SRC: mux4to1_32b
 
 
 main_out<=tmpAluoutOut;
-main_zero<= tmpAluZero;
+main_opcode <= tmpInstruction (31 downto 26);
+
 end MAIN;

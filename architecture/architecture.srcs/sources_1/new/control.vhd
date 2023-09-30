@@ -39,6 +39,20 @@ process(clk) is
 begin
     if(rising_edge(clk)) then
         if (reset = '1') then
+            pc_write <= '1';
+            branch <= '0';
+            iord <= '0';
+            mem_read <= '1';
+            mem_write <= '0';
+            ir_write <= '1';
+            reg_dst <= "00";
+            memtoreg <= "00";
+            reg_write <= '0';
+            alusrca <= '0';
+            alusrcb <= "01";
+            aluop <= "000";
+            pcsrc <= "00";
+            state <= decode;
             state <= fetch;
         else
             case state is

@@ -25,7 +25,15 @@ entity main_arquitecture is
            
            --otros--
            main_clk: in STD_LOGIC;
-           main_reset: in STD_LOGIC
+           main_reset: in STD_LOGIC;
+           
+           
+           pcOut: out std_logic_vector(31 downto 0 );
+           testMemOut: out std_logic_vector(31 downto 0);
+           testInstruction: out std_logic_vector(31 downto 0);
+           testALUUP: out std_logic_vector(31 downto 0);
+           testALUDOWN: out std_logic_vector(31 downto 0);
+           testSignExtend: out std_logic_vector(31 downto 0)                  
            );
 end main_arquitecture;
 
@@ -139,7 +147,6 @@ signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
 
 pcEnable <= main_pc_write or (main_branch and tmpAluZero);
-
 U_PC: program_counter
     port map(
         pc_in  => tmpPcSrc,
@@ -149,6 +156,7 @@ U_PC: program_counter
         pc_out => tmpPCout
     );
 
+pcOut <= tmpIorD;
 
 U_MUX_IORD: mux2to1_32b
     port map ( mux_in0 => tmpPCout, --PC
@@ -156,6 +164,8 @@ U_MUX_IORD: mux2to1_32b
                mux_sel => main_iord,
                mux_out => tmpIorD
                );
+
+testMemOut <= tmpMemorySignal;
 
 U_MEMORY: ram
 port map (    dir => tmpIorD, --direccion de la instruccion
@@ -166,6 +176,7 @@ port map (    dir => tmpIorD, --direccion de la instruccion
               clk => main_clk,
               reset => main_reset
          );
+testInstruction <= tmpInstruction;
 
 U_INSTRUCTION_REGISTER: register_32b
 port map(
@@ -233,7 +244,7 @@ port map(
     reset => main_reset,
     reg_output => tmpRegBout
 );
-
+testSignExtend <= signExtendInmediate;
 --SIGN EXTEND
 U_SIGN_EXTEND: sign_extend
     port map(
@@ -266,7 +277,8 @@ port map(
     alu_op=>main_aluop,
     control_out => tmpAluOperation
 );
-
+testALUUP <= tmpAluSrcA;
+testALUDOWN <= tmpAluSrcB;
 U_ALU : alu
 port map(
     alu_in_a => tmpAluSrcA,

@@ -5,7 +5,16 @@ entity micro_computer is
   Port ( 
         clk: in STD_LOGIC;
         reset: in STD_LOGIC;
-        aluout: out STD_LOGIC_VECTOR (31 downto 0)
+        aluout: out STD_LOGIC_VECTOR (31 downto 0);
+        pcOut: out std_logic_vector(31 downto 0);
+        testMemOut: out std_logic_vector(31 downto 0);
+        testInstruction: out std_logic_vector(31 downto 0);
+        testALUUP: out std_logic_vector(31 downto 0);
+        testALUDOWN: out std_logic_vector(31 downto 0);
+        testSignExtend: out std_logic_vector(31 downto 0);
+        testIRWRITE: out std_logic
+
+
   );
 end micro_computer;
 
@@ -33,29 +42,36 @@ component main_arquitecture
            main_opcode: out STD_LOGIC_VECTOR (5 downto 0);
            --otros--
            main_clk: in STD_LOGIC;
-           main_reset: in STD_LOGIC
+           main_reset: in STD_LOGIC;
+           pcOut: out std_logic_vector(31 downto 0);
+           
+           testMemOut: out std_logic_vector(31 downto 0);
+           testInstruction: out std_logic_vector(31 downto 0);
+           testALUUP: out std_logic_vector(31 downto 0);
+           testALUDOWN: out std_logic_vector(31 downto 0);
+           testSignExtend: out std_logic_vector(31 downto 0)
+
            );
 end component;
 
 component control
     Port ( 
-        clk : in STD_LOGIC;
         reset : in STD_LOGIC;
-        opcode: in STD_LOGIC_VECTOR (5 downto 0);
-        
-        pc_write: out STD_LOGIC;
-        branch: out STD_LOGIC;
-        iord: out STD_LOGIC;
-        mem_read: out STD_LOGIC;
-        mem_write: out STD_LOGIC;
-        ir_write: out STD_LOGIC;
-        reg_dst: out STD_LOGIC_VECTOR(1 downto 0);
-        memtoreg: out STD_LOGIC_VECTOR(1 downto 0);
-        reg_write: out STD_LOGIC;
-        alusrca: out STD_LOGIC;
-        alusrcb: out STD_LOGIC_VECTOR (1 downto 0);
-        aluop: out STD_LOGIC_VECTOR (2 downto 0);
-        pcsrc: out STD_LOGIC_VECTOR (1 downto 0)
+        clock : in STD_LOGIC;
+        opcode : in STD_LOGIC_VECTOR (5 downto 0);
+        irWrite : out STD_LOGIC;
+        memToReg : out std_logic_vector(1 downto 0);
+        memWrite : out STD_LOGIC;
+        memRead : out STD_LOGIC;
+        IorD : out STD_LOGIC;
+        pcWrite : out STD_LOGIC;
+        branch : out STD_LOGIC;
+        pcSrc : out STD_LOGIC_VECTOR (1 downto 0);
+        aluOP : out STD_LOGIC_VECTOR (2 downto 0);
+        aluSrcB : out STD_LOGIC_VECTOR (1 downto 0);
+        aluSrcA : out STD_LOGIC;
+        regWrite : out STD_LOGIC;
+        regDst : out STD_LOGIC_vector(1 downto 0)
    );
 end component;
 
@@ -76,44 +92,54 @@ signal signal_opcode: STD_LOGIC_VECTOR (5 downto 0);
 
 begin
 
+
+testIRWRITE <= signal_ir_write;
 control_unit: control
     port map(
-        pc_write    => signal_pc_write,
+        pcWrite     => signal_pc_write,
         branch      => signal_branch,
-        iord        => signal_iord,
-        mem_read    => signal_mem_read,
-        mem_write   => signal_mem_write,
-        ir_write    => signal_ir_write,
-        reg_dst     => signal_reg_dst,
-        memtoreg    => signal_memtoreg,
-        reg_write   => signal_reg_write,
-        alusrca     => signal_alusrca,
-        alusrcb     => signal_alusrcb,
-        aluop       => signal_aluop,
-        pcsrc       => signal_pcsrc,
-        clk         => clk,
+        IorD        => signal_iord,
+        memRead     => signal_mem_read,
+        memWrite    => signal_mem_write,
+        irWrite     => signal_ir_write,
+        regDst      => signal_reg_dst,
+        memToReg    => signal_memtoreg,
+        regWrite    => signal_reg_write,
+        aluSrcA     => signal_alusrca,
+        aluSrcB     => signal_alusrcb,
+        aluOP       => signal_aluop,
+        pcSrc       => signal_pcsrc,
+        clock       => clk,
         reset       => reset,
         opcode      => signal_opcode
+        
    );
 
 arquitecture: main_arquitecture
     port map(
-        main_pc_write => signal_pc_write,
-        main_branch   => signal_branch,
-        main_iord     => signal_iord,
-        main_mem_read => signal_mem_read,
-        main_mem_write=> signal_mem_write,
-        main_ir_write => signal_ir_write,
-        main_reg_dst  => signal_reg_dst,
-        main_memtoreg => signal_memtoreg,
-        main_reg_write=> signal_reg_write,
-        main_alusrca  => signal_alusrca, 
-        main_alusrcb  => signal_alusrcb, 
-        main_aluop    => signal_aluop,
-        main_pcsrc    => signal_pcsrc,
-        main_out      => aluout,
-        main_opcode   => signal_opcode,
-        main_clk      => clk,
-        main_reset    => reset
+        main_pc_write   => signal_pc_write,
+        main_branch     => signal_branch,
+        main_iord       => signal_iord,
+        main_mem_read   => signal_mem_read,
+        main_mem_write  => signal_mem_write,
+        main_ir_write   => signal_ir_write,
+        main_reg_dst    => signal_reg_dst,
+        main_memtoreg   => signal_memtoreg,
+        main_reg_write  => signal_reg_write,
+        main_alusrca    => signal_alusrca, 
+        main_alusrcb    => signal_alusrcb, 
+        main_aluop      => signal_aluop,
+        main_pcsrc      => signal_pcsrc,
+        main_out        => aluout,
+        main_opcode     => signal_opcode,
+        main_clk        => clk,
+        main_reset      => reset,
+        pcOut           => pcOut,
+        testMemOut      => testMemOut,
+        testInstruction => testInstruction,
+        testALUUP       => testALUUP,
+        testALUDOWN     => testALUDOWN,
+        testSignExtend  => testSignExtend
+
     );
 end Behavioral;

@@ -1,7 +1,30 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: E:/Software/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_micro_computer_behav xil_defaultlib.cfg_tb_micro_computer -log elaborate.log 
+Running: C:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_micro_computer_behav xil_defaultlib.cfg_tb_micro_computer -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity xil_defaultlib.control [control_default]
+Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux2to1_32b [mux2to1_32b_default]
+Compiling architecture behavioral of entity xil_defaultlib.ram [ram_default]
+Compiling architecture behavioral of entity xil_defaultlib.register_32b [register_32b_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux4to1_5b [mux4to1_5b_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux4to1_32b [mux4to1_32b_default]
+Compiling architecture behavioral of entity xil_defaultlib.registers [registers_default]
+Compiling architecture behavioral of entity xil_defaultlib.sign_extend [sign_extend_default]
+Compiling architecture alu_ctrl of entity xil_defaultlib.alu_control [alu_control_default]
+Compiling architecture alu_behaviour of entity xil_defaultlib.alu [alu_default]
+Compiling architecture main of entity xil_defaultlib.main_arquitecture [main_arquitecture_default]
+Compiling architecture behavioral of entity xil_defaultlib.micro_computer [micro_computer_default]
+Compiling architecture tb of entity xil_defaultlib.tb_micro_computer [tb_micro_computer]
+Built simulation snapshot cfg_tb_micro_computer_behav

@@ -127,6 +127,9 @@ component program_counter
 end component;
 
 --Signals auxiliares--
+signal nclock: STD_LOGIC;
+
+
 
 --Multiplexores
 signal tmpWriteData, tmpIorD, tmpPcSrc: STD_LOGIC_VECTOR (31 downto 0);
@@ -145,6 +148,8 @@ signal inmediate: STD_LOGIC_VECTOR (15 downto 0);
 signal signExtendInmediate, shiftLeft2Inmediate, tmpMemorySignal, jumpSignal: STD_LOGIC_VECTOR (31 downto 0);
 signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
+
+nclock <= not main_clk;
 
 pcEnable <= main_pc_write or (main_branch and tmpAluZero);
 U_PC: program_counter
@@ -182,7 +187,7 @@ U_INSTRUCTION_REGISTER: register_32b
 port map(
     reg_input => tmpMemorySignal,
     write_enable => main_ir_write,
-    clk => main_clk,
+    clk => nclock,
     reset => main_reset,
     reg_output => tmpInstruction
 );
@@ -253,7 +258,6 @@ U_SIGN_EXTEND: sign_extend
     );
 
 --SHIFT LEFT 2
-shiftLeft2Inmediate <= STD_LOGIC_VECTOR(shift_left(signed(signExtendInmediate), 2));
 
 U_MUX_ALUSRCA: mux2to1_32b
     port map ( mux_in0 => tmpPCout, --PC
@@ -266,7 +270,7 @@ U_MUX_ALUSRCB: mux4to1_32b
     port map ( mux_in0 => tmpRegBout,
                mux_in1 => "00000000000000000000000000000001", --cambiar a 4
                mux_in2 => signExtendInmediate, -- sign extend inmediate
-               mux_in3 => shiftLeft2Inmediate, -- sign extend inmediate shift left 2
+               mux_in3 => signExtendInmediate, -- sign extend inmediate shift left 2
                mux_sel => main_alusrcb,
                mux_out => tmpAluSrcB
                );
@@ -297,7 +301,7 @@ port map(
     reg_output => tmpAluoutOut
 );
 
-jumpSignal <= (tmpPCout(31 downto 28))&STD_LOGIC_VECTOR(shift_left(signed("00"&tmpInstruction(25 downto 0)), 2));
+jumpSignal <= (tmpPCout(31 downto 26))&tmpInstruction(25 downto 0);
 
 U_MUX_PC_SRC: mux4to1_32b
     port map ( mux_in0 => tmpAluoutIn,

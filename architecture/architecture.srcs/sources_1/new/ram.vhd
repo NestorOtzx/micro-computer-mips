@@ -23,24 +23,13 @@ signal memoria: tipo_ram := ( 8  => "00000010000100011000000000100000",
                               others => (others=>'0'));
 
 begin
-    process(clk, reset)
+    process(clk, mem_write)
     begin
-         if(rising_edge(clk)) then
-            if(reset ='1') then   --OPCOD| rs | rt | inmediato
-                memoria <= ( 8  => "00000010000100011000000000100000",  
-                             9  => "00000010000100011000000000100010",
-                             others => (others=>'0'));
-                mem_data <= memoria(8);
-            else
-                if(mem_write = '1') then
-                    memoria(to_integer(unsigned(dir))) <= data;
-                end if;
-                if (mem_read = '1') then
-                    mem_data <= memoria(to_integer(unsigned(dir)));
-                end if;
-            end if;
+         if((clk'event and clk = '1') and mem_write = '1') then
+            memoria(to_integer(unsigned(dir))) <= data;    
          end if;
      end process;
      
+     mem_data <= memoria(to_integer(unsigned(dir)));
     
 end Behavioral;

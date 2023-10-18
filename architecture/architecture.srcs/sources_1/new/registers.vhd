@@ -24,22 +24,14 @@ type tipo_ram is array (31 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
 signal registros: tipo_ram := (others => (others=>'0'));
 
 begin
-    process(clk, reset)
-    begin
-         if(rising_edge(clk)) then
-            if(reset ='1') then   --OPCOD| rs | rt | inmediato
-                registros <= (others => (others=>'0'));
-                read_data1 <= registros(0);
-                read_data2 <= registros(0);
-            else
-                if(reg_write = '1' and not (write_register = "00000")) then
-                    registros(to_integer(unsigned(write_register))) <= write_data;
-                end if;
-                read_data1 <= registros(to_integer(unsigned(rs)));
-                read_data2 <= registros(to_integer(unsigned(rt)));
-            end if;
+    process(clk)
+    begin        
+         if ((clk'event and clk = '1') and reg_write = '1') then
+            registros(to_integer(unsigned(write_register))) <= write_data;
          end if;
      end process;
      
+     read_data1 <= registros(to_integer(unsigned(rs)));
+     read_data2 <= registros(to_integer(unsigned(rt)));     
     
 end Behavioral;

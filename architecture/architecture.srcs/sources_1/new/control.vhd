@@ -43,7 +43,6 @@ begin
     nextStateFunction: process(opcode, estadoActual)
     begin
          case (estadoActual) is
-         
               when addiST =>
                  estadoSiguiente<= writeRegistersST;
               when fetch =>

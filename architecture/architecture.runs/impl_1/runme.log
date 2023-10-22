@@ -1,0 +1,347 @@
+
+*** Running vivado
+    with args -log micro_computer.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source micro_computer.tcl -notrace
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source micro_computer.tcl -notrace
+Command: link_design -top micro_computer -part xc7a35tcpg236-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 988.074 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc]
+WARNING: [Vivado 12-584] No ports matched 'output[0]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:31]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:31]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[1]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:32]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:32]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[2]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:33]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:33]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[3]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:34]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:34]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[4]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:35]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:35]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[5]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:36]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:36]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[6]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:37]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:37]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[7]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:38]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:38]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[8]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:39]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:39]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[9]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[10]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[11]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[12]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[13]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:44]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:44]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[14]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:45]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:45]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'output[15]'. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:46]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc:46]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 988.074 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 44 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 12 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+7 Infos, 16 Warnings, 16 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 988.074 ; gain = 0.000
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 988.074 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1d9c06735
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1248.031 ; gain = 259.957
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 32 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 214e27b6f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.524 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 1 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 214e27b6f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.561 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 22c83a61d
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.751 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 101 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 22c83a61d
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.806 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: 22c83a61d
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.809 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 1c7759752
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.825 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               1  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |             101  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1459.566 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 26e2a0e49
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.876 . Memory (MB): peak = 1459.566 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 26e2a0e49
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.139 . Memory (MB): peak = 1459.566 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 26e2a0e49
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1459.566 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1459.566 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 26e2a0e49
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+24 Infos, 16 Warnings, 16 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1459.566 ; gain = 471.492
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.235 . Memory (MB): peak = 1459.566 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/impl_1/micro_computer_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file micro_computer_drc_opted.rpt -pb micro_computer_drc_opted.pb -rpx micro_computer_drc_opted.rpx
+Command: report_drc -file micro_computer_drc_opted.rpt -pb micro_computer_drc_opted.pb -rpx micro_computer_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Software/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/impl_1/micro_computer_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.828 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 18ab445b9
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.167 . Memory (MB): peak = 1506.828 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.828 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+ERROR: [Place 30-415] IO Placement failed due to overutilization. This design contains 241 I/O ports
+ while the target  device: 7a35t package: cpg236, contains only 104 available user I/O. The target device has 106 usable I/O pins of which 2 are already occupied by user-locked I/Os.
+ To rectify this issue:
+ 1. Ensure you are targeting the correct device and package.  Select a larger device or different package if necessary.
+ 2. Check the top-level ports of the design to ensure the correct number of ports are specified.
+ 3. Consider design changes to reduce the number of I/Os necessary.
+ERROR: [Place 30-68] Instance aluout_OBUF[0]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[10]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[11]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[12]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[13]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[14]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[15]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[16]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[17]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[18]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[19]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[1]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[20]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[21]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[22]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[23]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[24]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[25]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[26]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[27]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[28]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[29]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[2]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[30]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[31]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[3]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[4]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[5]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[6]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[7]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[8]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance aluout_OBUF[9]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance clk_IBUF_BUFG_inst (BUFG) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[0]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[10]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[11]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[12]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[13]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[14]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[15]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[1]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[2]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[3]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[4]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[5]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[6]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[7]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[8]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance displayAluout_OBUF[9]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance divisor_counter_BUFG[1]_inst (BUFG) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[0]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[10]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[11]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[12]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[13]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[14]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[15]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[16]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[17]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[18]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[19]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[1]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[20]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[21]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[22]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[23]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[24]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[25]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[26]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[27]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[28]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[29]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[2]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[30]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[31]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[3]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[4]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[5]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[6]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[7]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[8]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance pcOut_OBUF[9]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[0]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[10]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[11]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[12]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[13]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[14]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[15]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[16]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[17]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[18]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[19]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[1]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[20]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[21]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[22]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[23]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[24]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance testALUDOWN_OBUF[25]_inst (OBUF) is not placed
+INFO: [Common 17-14] Message 'Place 30-68' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 13adc2b00
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:01 . Memory (MB): peak = 1506.828 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 13adc2b00
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:01 . Memory (MB): peak = 1506.828 ; gain = 0.000
+ERROR: [Place 30-99] Placer failed with error: 'IO Clock Placer failed'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+Ending Placer Task | Checksum: 13adc2b00
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:01 . Memory (MB): peak = 1506.828 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+43 Infos, 16 Warnings, 16 Critical Warnings and 103 Errors encountered.
+place_design failed
+ERROR: [Common 17-69] Command failed: Placer could not place all instances
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 21 21:49:25 2023...

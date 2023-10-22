@@ -12,13 +12,20 @@ entity micro_computer is
         testALUUP: out std_logic_vector(31 downto 0);
         testALUDOWN: out std_logic_vector(31 downto 0);
         testSignExtend: out std_logic_vector(31 downto 0);
-        testIRWRITE: out std_logic
-
-
+        testIRWRITE: out std_logic;
+        displayAluout: out std_logic_vector(15 downto 0)
   );
 end micro_computer;
 
 architecture Behavioral of micro_computer is
+
+component count_32bit
+    Port ( 
+        clk: in STD_LOGIC;
+        reset: in STD_LOGIC;
+        count: out STD_LOGIC_VECTOR (31 downto 0)
+    );
+end component;
 
 component main_arquitecture
     Port ( 
@@ -74,7 +81,7 @@ component control
         regDst : out STD_LOGIC_vector(1 downto 0)
    );
 end component;
-
+    
 signal signal_pc_write: STD_LOGIC;
 signal signal_branch: STD_LOGIC;
 signal signal_iord: STD_LOGIC;
@@ -89,8 +96,17 @@ signal signal_alusrcb: STD_LOGIC_VECTOR (1 downto 0);
 signal signal_aluop: STD_LOGIC_VECTOR (2 downto 0);
 signal signal_pcsrc: STD_LOGIC_VECTOR (1 downto 0);
 signal signal_opcode: STD_LOGIC_VECTOR (5 downto 0);
+signal divisor_counter: STD_LOGIC_VECTOR (31 downto 0); 
+signal signal_aluout: STD_LOGIC_VECTOR (31 downto 0);
 
 begin
+
+divisor: count_32bit
+    port map(
+        clk => clk,
+        reset => reset,
+        count => divisor_counter
+    );
 
 
 testIRWRITE <= signal_ir_write;
@@ -109,7 +125,7 @@ control_unit: control
         aluSrcB     => signal_alusrcb,
         aluOP       => signal_aluop,
         pcSrc       => signal_pcsrc,
-        clock       => clk,
+        clock       => divisor_counter(1),
         reset       => reset,
         opcode      => signal_opcode
         
@@ -130,9 +146,9 @@ arquitecture: main_arquitecture
         main_alusrcb    => signal_alusrcb, 
         main_aluop      => signal_aluop,
         main_pcsrc      => signal_pcsrc,
-        main_out        => aluout,
+        main_out        => signal_aluout,
         main_opcode     => signal_opcode,
-        main_clk        => clk,
+        main_clk        => divisor_counter(1),
         main_reset      => reset,
         pcOut           => pcOut,
         testMemOut      => testMemOut,
@@ -140,6 +156,8 @@ arquitecture: main_arquitecture
         testALUUP       => testALUUP,
         testALUDOWN     => testALUDOWN,
         testSignExtend  => testSignExtend
-
     );
+    
+displayAluout <= signal_aluout(15 downto 0);
+aluout<= signal_aluout;
 end Behavioral;

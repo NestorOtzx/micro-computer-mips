@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Oct 24 20:19:38 2023
-# Process ID: 2620
+# Start of session at: Tue Oct 24 20:31:00 2023
+# Process ID: 11012
 # Current directory: C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1
 # Command line: vivado.exe -log micro_computer.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source micro_computer.tcl
 # Log file: C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.vds

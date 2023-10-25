@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Oct 24 20:20:54 2023
+| Date         : Tue Oct 24 20:32:16 2023
 | Host         : Simulacion18 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file micro_computer_control_sets_placed.rpt
 | Design       : micro_computer
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     6 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |     6 |
+| Unused register locations in slices containing registers |     5 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |             178 |           45 |
+| No           | No                    | Yes                    |             179 |           49 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              64 |           32 |
+| Yes          | No                    | Yes                    |              64 |           28 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -70,15 +70,15 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+
-|     Clock Signal    |                   Enable Signal                  | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+---------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG      |                                                  | reset_IBUF       |                7 |             27 |         3.86 |
-|  leds_OBUF_BUFG[15] | control_unit/E[0]                                | reset_IBUF       |               19 |             32 |         1.68 |
-|  leds_OBUF_BUFG[15] | control_unit/FSM_onehot_estadoActual_reg[9]_0[4] |                  |                8 |             32 |         4.00 |
-| ~leds_OBUF_BUFG[15] | control_unit/FSM_onehot_estadoActual_reg[9]_0[0] | reset_IBUF       |               13 |             32 |         2.46 |
-|  leds_OBUF_BUFG[15] | control_unit/signal_reg_write                    |                  |               12 |             96 |         8.00 |
-|  leds_OBUF_BUFG[15] |                                                  | reset_IBUF       |               38 |            151 |         3.97 |
-+---------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
+|     Clock Signal    |         Enable Signal         | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG      |                               | reset_IBUF       |                7 |             27 |         3.86 |
+|  leds_OBUF_BUFG[15] | control_unit/E[0]             | reset_IBUF       |               18 |             32 |         1.78 |
+|  leds_OBUF_BUFG[15] | control_unit/Q[4]             |                  |                8 |             32 |         4.00 |
+| ~leds_OBUF_BUFG[15] | control_unit/Q[0]             | reset_IBUF       |               10 |             32 |         3.20 |
+|  leds_OBUF_BUFG[15] | control_unit/signal_reg_write |                  |               12 |             96 |         8.00 |
+|  leds_OBUF_BUFG[15] |                               | reset_IBUF       |               42 |            152 |         3.62 |
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
 
 

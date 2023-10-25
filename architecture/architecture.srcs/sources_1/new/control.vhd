@@ -22,7 +22,7 @@ entity control is
 end control;
 
 architecture Behavioral of control is
-    type stateType is (fetch, decode, memAddr, memReadST, memWB,memWriteST,
+    type stateType is (reset_st, fetch, decode, memAddr, memReadST, memWB,memWriteST,
                         execute, aluWB, branchST, jumpST, addiST, writeRegistersST);
 signal currentState, nextState : std_logic_vector (3 downto 0);
 signal estadoActual, estadoSiguiente : stateType;
@@ -32,7 +32,7 @@ begin
     stateRegister: process (clock, reset)
     begin 
         if (reset = '1') then
-            estadoActual <= fetch;
+            estadoActual <= reset_st;
         else
             if (clock'event and clock ='1') then
                 estadoActual <= estadoSiguiente;
@@ -43,6 +43,8 @@ begin
     nextStateFunction: process(opcode, estadoActual)
     begin
          case (estadoActual) is
+              when reset_st => 
+                 estadoSiguiente <= fetch;
               when addiST =>
                  estadoSiguiente<= writeRegistersST;
               when fetch =>

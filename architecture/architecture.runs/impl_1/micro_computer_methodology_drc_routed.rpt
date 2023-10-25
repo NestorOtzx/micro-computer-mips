@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Oct 24 20:21:12 2023
+| Date         : Tue Oct 24 20:32:35 2023
 | Host         : Simulacion18 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file micro_computer_methodology_drc_routed.rpt -pb micro_computer_methodology_drc_routed.pb -rpx micro_computer_methodology_drc_routed.rpx
 | Design       : micro_computer
@@ -23,11 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 360
+             Violations found: 361
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 343        |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 344        |
 | TIMING-18 | Warning          | Missing input or output delay | 17         |
 +-----------+------------------+-------------------------------+------------+
 
@@ -1705,45 +1705,50 @@ Related violations: <none>
 
 TIMING-17#335 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[1]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#336 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[2]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#337 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[3]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#338 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[4]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#339 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[5]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#340 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[6]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#341 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[7]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#342 Critical Warning
 Non-clocked sequential cell  
-The clock pin control_unit/FSM_onehot_estadoActual_reg[8]/C is not reached by a timing clock
+The clock pin control_unit/FSM_onehot_estadoActual_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#343 Critical Warning
+Non-clocked sequential cell  
+The clock pin control_unit/FSM_onehot_estadoActual_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#344 Critical Warning
 Non-clocked sequential cell  
 The clock pin control_unit/FSM_onehot_estadoActual_reg[9]/C is not reached by a timing clock
 Related violations: <none>

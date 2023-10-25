@@ -4,25 +4,9 @@ use ieee.numeric_std.all;
 
 entity main_arquitecture is
     Port ( 
-           --CONTROL--
-           main_pc_write: in STD_LOGIC;
-           main_branch: in STD_LOGIC;
-           main_iord: in STD_LOGIC;
-           main_mem_read: in STD_LOGIC;
-           main_mem_write: in STD_LOGIC;
-           main_ir_write: in STD_LOGIC;
-           main_reg_dst: in STD_LOGIC_VECTOR(1 downto 0);
-           main_memtoreg: in STD_LOGIC_VECTOR(1 downto 0);
-           main_reg_write: in STD_LOGIC;
-           main_alusrca: in STD_LOGIC;
-           main_alusrcb: in STD_LOGIC_VECTOR (1 downto 0);
-           main_aluop: in STD_LOGIC_VECTOR (2 downto 0);
-           main_pcsrc: in STD_LOGIC_VECTOR (1 downto 0);
-           
            --salidas--
            main_out : out STD_LOGIC_VECTOR (31 downto 0);
-           main_opcode: out STD_LOGIC_VECTOR (5 downto 0);
-           
+
            --otros--
            main_clk: in STD_LOGIC;
            main_reset: in STD_LOGIC;
@@ -38,6 +22,28 @@ entity main_arquitecture is
 end main_arquitecture;
 
 architecture MAIN of main_arquitecture is
+
+component control
+    Port ( 
+        reset : in STD_LOGIC;
+        clock : in STD_LOGIC;
+        opcode : in STD_LOGIC_VECTOR (5 downto 0);
+        irWrite : out STD_LOGIC;
+        memToReg : out std_logic_vector(1 downto 0);
+        memWrite : out STD_LOGIC;
+        memRead : out STD_LOGIC;
+        IorD : out STD_LOGIC;
+        pcWrite : out STD_LOGIC;
+        branch : out STD_LOGIC;
+        pcSrc : out STD_LOGIC_VECTOR (1 downto 0);
+        aluOP : out STD_LOGIC_VECTOR (2 downto 0);
+        aluSrcB : out STD_LOGIC_VECTOR (1 downto 0);
+        aluSrcA : out STD_LOGIC;
+        regWrite : out STD_LOGIC;
+        regDst : out STD_LOGIC_vector(1 downto 0)
+   );
+end component;
+
 
 component ram
     port (    dir       : in std_logic_vector (31 downto 0);
@@ -126,6 +132,21 @@ component program_counter
            pc_out : out STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
+           --CONTROL--
+signal main_pc_write: STD_LOGIC;
+signal main_branch: STD_LOGIC;
+signal main_iord: STD_LOGIC;
+signal main_mem_read: STD_LOGIC;
+signal main_mem_write: STD_LOGIC;
+signal main_ir_write: STD_LOGIC;
+signal main_reg_dst: STD_LOGIC_VECTOR(1 downto 0);
+signal main_memtoreg: STD_LOGIC_VECTOR(1 downto 0);
+signal main_reg_write: STD_LOGIC;
+signal main_alusrca: STD_LOGIC;
+signal main_alusrcb: STD_LOGIC_VECTOR (1 downto 0);
+signal main_aluop: STD_LOGIC_VECTOR (2 downto 0);
+signal main_pcsrc: STD_LOGIC_VECTOR (1 downto 0);
+
 --Signals auxiliares--
 signal nclock: STD_LOGIC;
 
@@ -152,6 +173,29 @@ begin
 nclock <= not main_clk;
 
 pcEnable <= main_pc_write or (main_branch and tmpAluZero);
+
+
+control_unit: control
+    port map(
+        pcWrite     =>  main_pc_write,
+        branch      =>  main_branch,
+        IorD        =>  main_iord,
+        memRead     =>  main_mem_read,
+        memWrite    =>  main_mem_write,
+        irWrite     =>  main_ir_write,
+        regDst      =>  main_reg_dst,
+        memToReg    =>  main_memtoreg,
+        regWrite    =>  main_reg_write,
+        aluSrcA     =>  main_alusrca,
+        aluSrcB     =>  main_alusrcb,
+        aluOP       =>  main_aluop,
+        pcSrc       =>  main_pcsrc,
+        clock       => main_clk,
+        reset       => main_reset,
+        opcode      => tmpInstruction (31 downto 26)
+        
+   );
+
 U_PC: program_counter
     port map(
         pc_in  => tmpPcSrc,
@@ -314,6 +358,6 @@ U_MUX_PC_SRC: mux4to1_32b
 
 
 main_out<=tmpAluoutOut;
-main_opcode <= tmpInstruction (31 downto 26);
+
 
 end MAIN;

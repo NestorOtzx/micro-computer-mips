@@ -20,7 +20,7 @@ architecture tb of tb_micro_computer is
     signal reset : std_logic;
     signal leds  : std_logic_vector (15 downto 0);
 
-    constant TbPeriod : time := 1000 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -46,10 +46,9 @@ begin
         reset <= '1';
         wait for 100 ns;
         reset <= '0';
-        wait for 100 ns;
 
         -- EDIT Add stimuli here
-        wait for 100 * TbPeriod;
+        wait for 10000 ns;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

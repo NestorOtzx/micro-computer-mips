@@ -164,8 +164,9 @@ arquitecture: main_arquitecture
     );
 
 --testIRWRITE <= signal_ir_write;
-leds (15 downto 12) <= signal_pcTest(3 downto 0);
-leds (11 downto 0) <= signal_aluout(11 downto 0);
+leds(15) <= divisor_counter(26);
+leds (14 downto 11) <= signal_pcTest(3 downto 0);
+leds (10 downto 0) <= signal_aluout(10 downto 0);
 --pcOut <= signal_pcTest;
 
 

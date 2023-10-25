@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Oct 24 20:01:23 2023
+| Date         : Tue Oct 24 20:21:12 2023
 | Host         : Simulacion18 running 64-bit major release  (build 9200)
 | Command      : report_drc -file micro_computer_drc_routed.rpt -pb micro_computer_drc_routed.pb -rpx micro_computer_drc_routed.rpx
 | Design       : micro_computer

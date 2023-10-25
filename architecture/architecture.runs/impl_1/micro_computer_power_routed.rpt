@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Tue Oct 24 20:01:24 2023
+| Date             : Tue Oct 24 20:21:13 2023
 | Host             : Simulacion18 running 64-bit major release  (build 9200)
 | Command          : report_power -file micro_computer_power_routed.rpt -pb micro_computer_power_summary_routed.pb -rpx micro_computer_power_routed.rpx
 | Design           : micro_computer
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.129        |
+| Total On-Chip Power (W)  | 0.127        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.057        |
+| Dynamic (W)              | 0.055        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        3 |       --- |             --- |
-| Slice Logic              |     0.006 |      919 |       --- |             --- |
-|   LUT as Logic           |     0.005 |      487 |     20800 |            2.34 |
+| Slice Logic              |     0.006 |      918 |       --- |             --- |
+|   LUT as Logic           |     0.005 |      486 |     20800 |            2.34 |
 |   LUT as Distributed RAM |    <0.001 |       80 |      9600 |            0.83 |
-|   Register               |    <0.001 |      243 |     41600 |            0.58 |
+|   Register               |    <0.001 |      242 |     41600 |            0.58 |
 |   CARRY4                 |    <0.001 |       19 |      8150 |            0.23 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |        9 |       --- |             --- |
-| Signals                  |     0.008 |      757 |       --- |             --- |
-| I/O                      |     0.042 |       18 |       106 |           16.98 |
+| Signals                  |     0.008 |      756 |       --- |             --- |
+| I/O                      |     0.040 |       18 |       106 |           16.98 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.129 |          |           |                 |
+| Total                    |     0.127 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,8 +74,8 @@ Table of Contents
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.025 |       0.015 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.014 |       0.002 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.013 |       0.012 |      0.001 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.012 |       0.011 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -142,11 +142,10 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| micro_computer             |     0.057 |
+| micro_computer             |     0.055 |
 |   arquitecture             |     0.006 |
-|     U_ALUOUT               |     0.001 |
-|     U_INSTRUCTION_REGISTER |     0.001 |
-|   control_unit             |     0.009 |
+|     U_INSTRUCTION_REGISTER |     0.002 |
+|   control_unit             |     0.008 |
 +----------------------------+-----------+
 
 

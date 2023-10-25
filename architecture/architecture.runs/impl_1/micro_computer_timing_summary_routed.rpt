@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Oct 24 20:01:24 2023
+| Date         : Tue Oct 24 20:21:13 2023
 | Host         : Simulacion18 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file micro_computer_timing_summary_routed.rpt -pb micro_computer_timing_summary_routed.pb -rpx micro_computer_timing_summary_routed.rpx -warn_on_violation
 | Design       : micro_computer
@@ -39,10 +39,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (344)
+1. checking no_clock (343)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (1392)
+4. checking unconstrained_internal_endpoints (1390)
 5. checking no_input_delay (1)
 6. checking no_output_delay (16)
 7. checking multiple_clock (0)
@@ -52,9 +52,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (344)
+1. checking no_clock (343)
 --------------------------
- There are 344 register/latch pins with no clock driven by root clock pin: divisor/signal_count_reg[26]/Q (HIGH)
+ There are 343 register/latch pins with no clock driven by root clock pin: divisor/signal_count_reg[26]/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -67,9 +67,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (1392)
+4. checking unconstrained_internal_endpoints (1390)
 ---------------------------------------------------
- There are 1392 pins that are not constrained for maximum delay. (HIGH)
+ There are 1390 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -128,7 +128,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      6.318        0.000                      0                   27        0.308        0.000                      0                   27        4.500        0.000                       0                    28  
+      6.537        0.000                      0                   27        0.252        0.000                      0                   27        4.500        0.000                       0                    28  
 
 
 All user specified timing constraints are met.
@@ -151,7 +151,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin         6.318        0.000                      0                   27        0.308        0.000                      0                   27        4.500        0.000                       0                    28  
+sys_clk_pin         6.537        0.000                      0                   27        0.252        0.000                      0                   27        4.500        0.000                       0                    28  
 
 
 ------------------------------------------------------------------------------------------------
@@ -182,15 +182,15 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :            0  Failing Endpoints,  Worst Slack        6.318ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.308ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        6.537ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.252ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             6.318ns  (required time - arrival time)
+Slack (MET) :             6.537ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[26]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[26]/D
@@ -198,7 +198,7 @@ Slack (MET) :             6.318ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.755ns  (logic 0.988ns (26.310%)  route 2.767ns (73.690%))
+  Data Path Delay:        3.490ns  (logic 0.924ns (26.479%)  route 2.566ns (73.521%))
   Logic Levels:           2  (BUFG=1 CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
@@ -220,16 +220,16 @@ Slack (MET) :             6.318ns  (required time - arrival time)
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          1.569     5.090    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[26]/C
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[26]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y43         FDCE (Prop_fdce_C_Q)         0.518     5.608 r  divisor/signal_count_reg[26]/Q
-                         net (fo=1, routed)           1.040     6.648    divisor_counter[26]
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     6.744 r  divisor_counter_BUFG[26]_inst/O
-                         net (fo=345, routed)         1.727     8.471    divisor/signal_count_reg[26]_0[0]
-    SLICE_X14Y43         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.374     8.845 r  divisor/signal_count_reg[24]_i_1/O[2]
-                         net (fo=1, routed)           0.000     8.845    divisor/signal_count_reg[24]_i_1_n_5
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[26]/D
+    SLICE_X15Y46         FDCE (Prop_fdce_C_Q)         0.456     5.546 r  divisor/signal_count_reg[26]/Q
+                         net (fo=1, routed)           0.850     6.397    leds_OBUF[15]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     6.493 r  leds_OBUF_BUFG[15]_inst/O
+                         net (fo=345, routed)         1.715     8.208    divisor/leds_OBUF_BUFG[15]
+    SLICE_X15Y46         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.372     8.580 r  divisor/signal_count_reg[24]_i_1/O[2]
+                         net (fo=1, routed)           0.000     8.580    divisor/signal_count_reg[24]_i_1_n_5
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[26]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -240,17 +240,17 @@ Slack (MET) :             6.318ns  (required time - arrival time)
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          1.450    14.791    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[26]/C
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[26]/C
                          clock pessimism              0.299    15.090    
                          clock uncertainty           -0.035    15.055    
-    SLICE_X14Y43         FDCE (Setup_fdce_C_D)        0.109    15.164    divisor/signal_count_reg[26]
+    SLICE_X15Y46         FDCE (Setup_fdce_C_D)        0.062    15.117    divisor/signal_count_reg[26]
   -------------------------------------------------------------------
-                         required time                         15.164    
-                         arrival time                          -8.845    
+                         required time                         15.117    
+                         arrival time                          -8.580    
   -------------------------------------------------------------------
-                         slack                                  6.318    
+                         slack                                  6.537    
 
-Slack (MET) :             7.120ns  (required time - arrival time)
+Slack (MET) :             7.489ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[25]/D
@@ -258,11 +258,11 @@ Slack (MET) :             7.120ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.933ns  (logic 2.083ns (71.027%)  route 0.850ns (28.973%))
+  Data Path Delay:        2.514ns  (logic 2.034ns (80.891%)  route 0.480ns (19.109%))
   Logic Levels:           7  (CARRY4=7)
-  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -279,33 +279,33 @@ Slack (MET) :             7.120ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.696 r  divisor/signal_count_reg[20]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.696    divisor/signal_count_reg[20]_i_1_n_0
-    SLICE_X14Y43         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     8.019 r  divisor/signal_count_reg[24]_i_1/O[1]
-                         net (fo=1, routed)           0.000     8.019    divisor/signal_count_reg[24]_i_1_n_6
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[25]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.269 r  divisor/signal_count_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.269    divisor/signal_count_reg[20]_i_1_n_0
+    SLICE_X15Y46         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     7.603 r  divisor/signal_count_reg[24]_i_1/O[1]
+                         net (fo=1, routed)           0.000     7.603    divisor/signal_count_reg[24]_i_1_n_6
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[25]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -316,17 +316,17 @@ Slack (MET) :             7.120ns  (required time - arrival time)
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          1.450    14.791    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[25]/C
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[25]/C
                          clock pessimism              0.274    15.065    
                          clock uncertainty           -0.035    15.030    
-    SLICE_X14Y43         FDCE (Setup_fdce_C_D)        0.109    15.139    divisor/signal_count_reg[25]
+    SLICE_X15Y46         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[25]
   -------------------------------------------------------------------
-                         required time                         15.139    
-                         arrival time                          -8.019    
+                         required time                         15.092    
+                         arrival time                          -7.603    
   -------------------------------------------------------------------
-                         slack                                  7.120    
+                         slack                                  7.489    
 
-Slack (MET) :             7.224ns  (required time - arrival time)
+Slack (MET) :             7.600ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[24]/D
@@ -334,11 +334,11 @@ Slack (MET) :             7.224ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.829ns  (logic 1.979ns (69.962%)  route 0.850ns (30.038%))
+  Data Path Delay:        2.403ns  (logic 1.923ns (80.009%)  route 0.480ns (19.991%))
   Logic Levels:           7  (CARRY4=7)
-  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -355,33 +355,33 @@ Slack (MET) :             7.224ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.696 r  divisor/signal_count_reg[20]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.696    divisor/signal_count_reg[20]_i_1_n_0
-    SLICE_X14Y43         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     7.915 r  divisor/signal_count_reg[24]_i_1/O[0]
-                         net (fo=1, routed)           0.000     7.915    divisor/signal_count_reg[24]_i_1_n_7
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[24]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.269 r  divisor/signal_count_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.269    divisor/signal_count_reg[20]_i_1_n_0
+    SLICE_X15Y46         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.223     7.492 r  divisor/signal_count_reg[24]_i_1/O[0]
+                         net (fo=1, routed)           0.000     7.492    divisor/signal_count_reg[24]_i_1_n_7
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[24]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -392,17 +392,17 @@ Slack (MET) :             7.224ns  (required time - arrival time)
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          1.450    14.791    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[24]/C
+    SLICE_X15Y46         FDCE                                         r  divisor/signal_count_reg[24]/C
                          clock pessimism              0.274    15.065    
                          clock uncertainty           -0.035    15.030    
-    SLICE_X14Y43         FDCE (Setup_fdce_C_D)        0.109    15.139    divisor/signal_count_reg[24]
+    SLICE_X15Y46         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[24]
   -------------------------------------------------------------------
-                         required time                         15.139    
-                         arrival time                          -7.915    
+                         required time                         15.092    
+                         arrival time                          -7.492    
   -------------------------------------------------------------------
-                         slack                                  7.224    
+                         slack                                  7.600    
 
-Slack (MET) :             7.236ns  (required time - arrival time)
+Slack (MET) :             7.603ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[21]/D
@@ -410,11 +410,11 @@ Slack (MET) :             7.236ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.816ns  (logic 1.966ns (69.823%)  route 0.850ns (30.177%))
+  Data Path Delay:        2.400ns  (logic 1.920ns (79.984%)  route 0.480ns (20.016%))
   Logic Levels:           6  (CARRY4=6)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -431,30 +431,30 @@ Slack (MET) :             7.236ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     7.902 r  divisor/signal_count_reg[20]_i_1/O[1]
-                         net (fo=1, routed)           0.000     7.902    divisor/signal_count_reg[20]_i_1_n_6
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[21]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     7.489 r  divisor/signal_count_reg[20]_i_1/O[1]
+                         net (fo=1, routed)           0.000     7.489    divisor/signal_count_reg[20]_i_1_n_6
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[21]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -464,18 +464,18 @@ Slack (MET) :             7.236ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[21]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y42         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[21]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[21]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y45         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[21]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.902    
+                         required time                         15.092    
+                         arrival time                          -7.489    
   -------------------------------------------------------------------
-                         slack                                  7.236    
+                         slack                                  7.603    
 
-Slack (MET) :             7.244ns  (required time - arrival time)
+Slack (MET) :             7.624ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[23]/D
@@ -483,11 +483,11 @@ Slack (MET) :             7.244ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.808ns  (logic 1.958ns (69.737%)  route 0.850ns (30.263%))
+  Data Path Delay:        2.379ns  (logic 1.899ns (79.807%)  route 0.480ns (20.193%))
   Logic Levels:           6  (CARRY4=6)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -504,30 +504,30 @@ Slack (MET) :             7.244ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315     7.894 r  divisor/signal_count_reg[20]_i_1/O[3]
-                         net (fo=1, routed)           0.000     7.894    divisor/signal_count_reg[20]_i_1_n_4
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[23]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     7.468 r  divisor/signal_count_reg[20]_i_1/O[3]
+                         net (fo=1, routed)           0.000     7.468    divisor/signal_count_reg[20]_i_1_n_4
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[23]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -537,18 +537,18 @@ Slack (MET) :             7.244ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[23]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y42         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[23]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[23]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y45         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[23]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.894    
+                         required time                         15.092    
+                         arrival time                          -7.468    
   -------------------------------------------------------------------
-                         slack                                  7.244    
+                         slack                                  7.624    
 
-Slack (MET) :             7.320ns  (required time - arrival time)
+Slack (MET) :             7.698ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[22]/D
@@ -556,11 +556,11 @@ Slack (MET) :             7.320ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.732ns  (logic 1.882ns (68.895%)  route 0.850ns (31.105%))
+  Data Path Delay:        2.305ns  (logic 1.825ns (79.159%)  route 0.480ns (20.841%))
   Logic Levels:           6  (CARRY4=6)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -577,30 +577,30 @@ Slack (MET) :             7.320ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239     7.818 r  divisor/signal_count_reg[20]_i_1/O[2]
-                         net (fo=1, routed)           0.000     7.818    divisor/signal_count_reg[20]_i_1_n_5
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[22]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.394 r  divisor/signal_count_reg[20]_i_1/O[2]
+                         net (fo=1, routed)           0.000     7.394    divisor/signal_count_reg[20]_i_1_n_5
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[22]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -610,18 +610,18 @@ Slack (MET) :             7.320ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[22]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y42         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[22]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[22]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y45         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[22]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.818    
+                         required time                         15.092    
+                         arrival time                          -7.394    
   -------------------------------------------------------------------
-                         slack                                  7.320    
+                         slack                                  7.698    
 
-Slack (MET) :             7.340ns  (required time - arrival time)
+Slack (MET) :             7.714ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[20]/D
@@ -629,11 +629,11 @@ Slack (MET) :             7.340ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.712ns  (logic 1.862ns (68.666%)  route 0.850ns (31.334%))
+  Data Path Delay:        2.289ns  (logic 1.809ns (79.013%)  route 0.480ns (20.987%))
   Logic Levels:           6  (CARRY4=6)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -650,30 +650,30 @@ Slack (MET) :             7.340ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.579 r  divisor/signal_count_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.579    divisor/signal_count_reg[16]_i_1_n_0
-    SLICE_X14Y42         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     7.798 r  divisor/signal_count_reg[20]_i_1/O[0]
-                         net (fo=1, routed)           0.000     7.798    divisor/signal_count_reg[20]_i_1_n_7
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[20]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.155 r  divisor/signal_count_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.155    divisor/signal_count_reg[16]_i_1_n_0
+    SLICE_X15Y45         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.223     7.378 r  divisor/signal_count_reg[20]_i_1/O[0]
+                         net (fo=1, routed)           0.000     7.378    divisor/signal_count_reg[20]_i_1_n_7
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[20]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -683,18 +683,18 @@ Slack (MET) :             7.340ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[20]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y42         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[20]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[20]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y45         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[20]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.798    
+                         required time                         15.092    
+                         arrival time                          -7.378    
   -------------------------------------------------------------------
-                         slack                                  7.340    
+                         slack                                  7.714    
 
-Slack (MET) :             7.353ns  (required time - arrival time)
+Slack (MET) :             7.717ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[17]/D
@@ -702,11 +702,11 @@ Slack (MET) :             7.353ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.699ns  (logic 1.849ns (68.515%)  route 0.850ns (31.485%))
+  Data Path Delay:        2.286ns  (logic 1.806ns (78.986%)  route 0.480ns (21.014%))
   Logic Levels:           5  (CARRY4=5)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -723,27 +723,27 @@ Slack (MET) :             7.353ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     7.785 r  divisor/signal_count_reg[16]_i_1/O[1]
-                         net (fo=1, routed)           0.000     7.785    divisor/signal_count_reg[16]_i_1_n_6
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[17]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     7.375 r  divisor/signal_count_reg[16]_i_1/O[1]
+                         net (fo=1, routed)           0.000     7.375    divisor/signal_count_reg[16]_i_1_n_6
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[17]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -753,18 +753,18 @@ Slack (MET) :             7.353ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[17]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y41         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[17]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[17]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y44         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[17]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.785    
+                         required time                         15.092    
+                         arrival time                          -7.375    
   -------------------------------------------------------------------
-                         slack                                  7.353    
+                         slack                                  7.717    
 
-Slack (MET) :             7.361ns  (required time - arrival time)
+Slack (MET) :             7.738ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[19]/D
@@ -772,11 +772,11 @@ Slack (MET) :             7.361ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.691ns  (logic 1.841ns (68.421%)  route 0.850ns (31.579%))
+  Data Path Delay:        2.265ns  (logic 1.785ns (78.791%)  route 0.480ns (21.209%))
   Logic Levels:           5  (CARRY4=5)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -793,27 +793,27 @@ Slack (MET) :             7.361ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315     7.777 r  divisor/signal_count_reg[16]_i_1/O[3]
-                         net (fo=1, routed)           0.000     7.777    divisor/signal_count_reg[16]_i_1_n_4
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[19]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     7.354 r  divisor/signal_count_reg[16]_i_1/O[3]
+                         net (fo=1, routed)           0.000     7.354    divisor/signal_count_reg[16]_i_1_n_4
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[19]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -823,18 +823,18 @@ Slack (MET) :             7.361ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[19]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y41         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[19]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[19]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y44         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[19]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.777    
+                         required time                         15.092    
+                         arrival time                          -7.354    
   -------------------------------------------------------------------
-                         slack                                  7.361    
+                         slack                                  7.738    
 
-Slack (MET) :             7.437ns  (required time - arrival time)
+Slack (MET) :             7.812ns  (required time - arrival time)
   Source:                 divisor/signal_count_reg[1]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[18]/D
@@ -842,11 +842,11 @@ Slack (MET) :             7.437ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        2.615ns  (logic 1.765ns (67.504%)  route 0.850ns (32.496%))
+  Data Path Delay:        2.191ns  (logic 1.711ns (78.075%)  route 0.480ns (21.925%))
   Logic Levels:           5  (CARRY4=5)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.790ns = ( 14.790 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.086ns
+  Clock Path Skew:        -0.023ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.791ns = ( 14.791 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.088ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -863,27 +863,27 @@ Slack (MET) :             7.437ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.565     5.086    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[1]/C
+                         net (fo=27, routed)          1.567     5.088    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.518     5.604 r  divisor/signal_count_reg[1]/Q
-                         net (fo=1, routed)           0.850     6.454    divisor/signal_count_reg_n_0_[1]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     7.111 r  divisor/signal_count_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.111    divisor/signal_count_reg[0]_i_1_n_0
-    SLICE_X14Y38         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.228 r  divisor/signal_count_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.228    divisor/signal_count_reg[4]_i_1_n_0
-    SLICE_X14Y39         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.345 r  divisor/signal_count_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.345    divisor/signal_count_reg[8]_i_1_n_0
-    SLICE_X14Y40         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     7.462 r  divisor/signal_count_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     7.462    divisor/signal_count_reg[12]_i_1_n_0
-    SLICE_X14Y41         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239     7.701 r  divisor/signal_count_reg[16]_i_1/O[2]
-                         net (fo=1, routed)           0.000     7.701    divisor/signal_count_reg[16]_i_1_n_5
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[18]/D
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.456     5.544 r  divisor/signal_count_reg[1]/Q
+                         net (fo=1, routed)           0.480     6.025    divisor/signal_count_reg_n_0_[1]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.674     6.699 r  divisor/signal_count_reg[0]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.699    divisor/signal_count_reg[0]_i_1_n_0
+    SLICE_X15Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.813 r  divisor/signal_count_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.813    divisor/signal_count_reg[4]_i_1_n_0
+    SLICE_X15Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.927 r  divisor/signal_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     6.927    divisor/signal_count_reg[8]_i_1_n_0
+    SLICE_X15Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.041 r  divisor/signal_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     7.041    divisor/signal_count_reg[12]_i_1_n_0
+    SLICE_X15Y44         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.280 r  divisor/signal_count_reg[16]_i_1/O[2]
+                         net (fo=1, routed)           0.000     7.280    divisor/signal_count_reg[16]_i_1_n_5
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[18]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -893,16 +893,16 @@ Slack (MET) :             7.437ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          1.449    14.790    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[18]/C
-                         clock pessimism              0.274    15.064    
-                         clock uncertainty           -0.035    15.029    
-    SLICE_X14Y41         FDCE (Setup_fdce_C_D)        0.109    15.138    divisor/signal_count_reg[18]
+                         net (fo=27, routed)          1.450    14.791    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[18]/C
+                         clock pessimism              0.274    15.065    
+                         clock uncertainty           -0.035    15.030    
+    SLICE_X15Y44         FDCE (Setup_fdce_C_D)        0.062    15.092    divisor/signal_count_reg[18]
   -------------------------------------------------------------------
-                         required time                         15.138    
-                         arrival time                          -7.701    
+                         required time                         15.092    
+                         arrival time                          -7.280    
   -------------------------------------------------------------------
-                         slack                                  7.437    
+                         slack                                  7.812    
 
 
 
@@ -910,173 +910,15 @@ Slack (MET) :             7.437ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.308ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[0]/C
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[15]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[0]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.442ns  (logic 0.279ns (63.107%)  route 0.163ns (36.893%))
-  Logic Levels:           2  (CARRY4=1 LUT1=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.959ns
-    Source Clock Delay      (SCD):    1.446ns
-    Clock Pessimism Removal (CPR):    0.513ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.563     1.446    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.164     1.610 f  divisor/signal_count_reg[0]/Q
-                         net (fo=1, routed)           0.163     1.773    divisor/signal_count_reg_n_0_[0]
-    SLICE_X14Y37         LUT1 (Prop_lut1_I0_O)        0.045     1.818 r  divisor/signal_count[0]_i_2/O
-                         net (fo=1, routed)           0.000     1.818    divisor/signal_count[0]_i_2_n_0
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.070     1.888 r  divisor/signal_count_reg[0]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.888    divisor/signal_count_reg[0]_i_1_n_7
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.832     1.959    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[0]/C
-                         clock pessimism             -0.513     1.446    
-    SLICE_X14Y37         FDCE (Hold_fdce_C_D)         0.134     1.580    divisor/signal_count_reg[0]
-  -------------------------------------------------------------------
-                         required time                         -1.580    
-                         arrival time                           1.888    
-  -------------------------------------------------------------------
-                         slack                                  0.308    
-
-Slack (MET) :             0.312ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[11]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[11]/D
+  Destination:            divisor/signal_count_reg[15]/D
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.446ns  (logic 0.273ns (61.259%)  route 0.173ns (38.741%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.961ns
-    Source Clock Delay      (SCD):    1.447ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.564     1.447    divisor/clk
-    SLICE_X14Y39         FDCE                                         r  divisor/signal_count_reg[11]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y39         FDCE (Prop_fdce_C_Q)         0.164     1.611 r  divisor/signal_count_reg[11]/Q
-                         net (fo=1, routed)           0.173     1.784    divisor/signal_count_reg_n_0_[11]
-    SLICE_X14Y39         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.109     1.893 r  divisor/signal_count_reg[8]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.893    divisor/signal_count_reg[8]_i_1_n_4
-    SLICE_X14Y39         FDCE                                         r  divisor/signal_count_reg[11]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.834     1.961    divisor/clk
-    SLICE_X14Y39         FDCE                                         r  divisor/signal_count_reg[11]/C
-                         clock pessimism             -0.514     1.447    
-    SLICE_X14Y39         FDCE (Hold_fdce_C_D)         0.134     1.581    divisor/signal_count_reg[11]
-  -------------------------------------------------------------------
-                         required time                         -1.581    
-                         arrival time                           1.893    
-  -------------------------------------------------------------------
-                         slack                                  0.312    
-
-Slack (MET) :             0.312ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[3]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[3]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.446ns  (logic 0.273ns (61.259%)  route 0.173ns (38.741%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.959ns
-    Source Clock Delay      (SCD):    1.446ns
-    Clock Pessimism Removal (CPR):    0.513ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.563     1.446    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[3]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y37         FDCE (Prop_fdce_C_Q)         0.164     1.610 r  divisor/signal_count_reg[3]/Q
-                         net (fo=1, routed)           0.173     1.783    divisor/signal_count_reg_n_0_[3]
-    SLICE_X14Y37         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.109     1.892 r  divisor/signal_count_reg[0]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.892    divisor/signal_count_reg[0]_i_1_n_4
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.832     1.959    divisor/clk
-    SLICE_X14Y37         FDCE                                         r  divisor/signal_count_reg[3]/C
-                         clock pessimism             -0.513     1.446    
-    SLICE_X14Y37         FDCE (Hold_fdce_C_D)         0.134     1.580    divisor/signal_count_reg[3]
-  -------------------------------------------------------------------
-                         required time                         -1.580    
-                         arrival time                           1.892    
-  -------------------------------------------------------------------
-                         slack                                  0.312    
-
-Slack (MET) :             0.315ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[24]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[24]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.449ns  (logic 0.279ns (62.071%)  route 0.170ns (37.929%))
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
   Logic Levels:           1  (CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.963ns
@@ -1093,14 +935,14 @@ Slack (MET) :             0.315ns  (arrival time - required time)
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          0.566     1.449    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[24]/C
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[15]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y43         FDCE (Prop_fdce_C_Q)         0.164     1.613 r  divisor/signal_count_reg[24]/Q
-                         net (fo=1, routed)           0.170     1.784    divisor/signal_count_reg_n_0_[24]
-    SLICE_X14Y43         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.899 r  divisor/signal_count_reg[24]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.899    divisor/signal_count_reg[24]_i_1_n_7
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[24]/D
+    SLICE_X15Y43         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[15]/Q
+                         net (fo=1, routed)           0.108     1.698    divisor/signal_count_reg_n_0_[15]
+    SLICE_X15Y43         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.806 r  divisor/signal_count_reg[12]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.806    divisor/signal_count_reg[12]_i_1_n_4
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[15]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1111,276 +953,16 @@ Slack (MET) :             0.315ns  (arrival time - required time)
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          0.836     1.963    divisor/clk
-    SLICE_X14Y43         FDCE                                         r  divisor/signal_count_reg[24]/C
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[15]/C
                          clock pessimism             -0.514     1.449    
-    SLICE_X14Y43         FDCE (Hold_fdce_C_D)         0.134     1.583    divisor/signal_count_reg[24]
+    SLICE_X15Y43         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[15]
   -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.899    
+                         required time                         -1.554    
+                         arrival time                           1.806    
   -------------------------------------------------------------------
-                         slack                                  0.315    
+                         slack                                  0.252    
 
-Slack (MET) :             0.315ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[4]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[4]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.449ns  (logic 0.279ns (62.071%)  route 0.170ns (37.929%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.961ns
-    Source Clock Delay      (SCD):    1.447ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.564     1.447    divisor/clk
-    SLICE_X14Y38         FDCE                                         r  divisor/signal_count_reg[4]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y38         FDCE (Prop_fdce_C_Q)         0.164     1.611 r  divisor/signal_count_reg[4]/Q
-                         net (fo=1, routed)           0.170     1.782    divisor/signal_count_reg_n_0_[4]
-    SLICE_X14Y38         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.897 r  divisor/signal_count_reg[4]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.897    divisor/signal_count_reg[4]_i_1_n_7
-    SLICE_X14Y38         FDCE                                         r  divisor/signal_count_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.834     1.961    divisor/clk
-    SLICE_X14Y38         FDCE                                         r  divisor/signal_count_reg[4]/C
-                         clock pessimism             -0.514     1.447    
-    SLICE_X14Y38         FDCE (Hold_fdce_C_D)         0.134     1.581    divisor/signal_count_reg[4]
-  -------------------------------------------------------------------
-                         required time                         -1.581    
-                         arrival time                           1.897    
-  -------------------------------------------------------------------
-                         slack                                  0.315    
-
-Slack (MET) :             0.315ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[12]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[12]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.449ns  (logic 0.279ns (62.071%)  route 0.170ns (37.929%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.962ns
-    Source Clock Delay      (SCD):    1.448ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.565     1.448    divisor/clk
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[12]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y40         FDCE (Prop_fdce_C_Q)         0.164     1.612 r  divisor/signal_count_reg[12]/Q
-                         net (fo=1, routed)           0.170     1.783    divisor/signal_count_reg_n_0_[12]
-    SLICE_X14Y40         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.898 r  divisor/signal_count_reg[12]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.898    divisor/signal_count_reg[12]_i_1_n_7
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[12]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.835     1.962    divisor/clk
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[12]/C
-                         clock pessimism             -0.514     1.448    
-    SLICE_X14Y40         FDCE (Hold_fdce_C_D)         0.134     1.582    divisor/signal_count_reg[12]
-  -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.898    
-  -------------------------------------------------------------------
-                         slack                                  0.315    
-
-Slack (MET) :             0.315ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[16]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[16]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.449ns  (logic 0.279ns (62.071%)  route 0.170ns (37.929%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.962ns
-    Source Clock Delay      (SCD):    1.448ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.565     1.448    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[16]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y41         FDCE (Prop_fdce_C_Q)         0.164     1.612 r  divisor/signal_count_reg[16]/Q
-                         net (fo=1, routed)           0.170     1.783    divisor/signal_count_reg_n_0_[16]
-    SLICE_X14Y41         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.898 r  divisor/signal_count_reg[16]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.898    divisor/signal_count_reg[16]_i_1_n_7
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[16]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.835     1.962    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[16]/C
-                         clock pessimism             -0.514     1.448    
-    SLICE_X14Y41         FDCE (Hold_fdce_C_D)         0.134     1.582    divisor/signal_count_reg[16]
-  -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.898    
-  -------------------------------------------------------------------
-                         slack                                  0.315    
-
-Slack (MET) :             0.315ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[20]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[20]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.449ns  (logic 0.279ns (62.071%)  route 0.170ns (37.929%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.962ns
-    Source Clock Delay      (SCD):    1.448ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.565     1.448    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[20]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y42         FDCE (Prop_fdce_C_Q)         0.164     1.612 r  divisor/signal_count_reg[20]/Q
-                         net (fo=1, routed)           0.170     1.783    divisor/signal_count_reg_n_0_[20]
-    SLICE_X14Y42         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.898 r  divisor/signal_count_reg[20]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.898    divisor/signal_count_reg[20]_i_1_n_7
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[20]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.835     1.962    divisor/clk
-    SLICE_X14Y42         FDCE                                         r  divisor/signal_count_reg[20]/C
-                         clock pessimism             -0.514     1.448    
-    SLICE_X14Y42         FDCE (Hold_fdce_C_D)         0.134     1.582    divisor/signal_count_reg[20]
-  -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.898    
-  -------------------------------------------------------------------
-                         slack                                  0.315    
-
-Slack (MET) :             0.333ns  (arrival time - required time)
-  Source:                 divisor/signal_count_reg[15]/C
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            divisor/signal_count_reg[15]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.467ns  (logic 0.273ns (58.435%)  route 0.194ns (41.565%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.962ns
-    Source Clock Delay      (SCD):    1.448ns
-    Clock Pessimism Removal (CPR):    0.514ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.565     1.448    divisor/clk
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[15]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y40         FDCE (Prop_fdce_C_Q)         0.164     1.612 r  divisor/signal_count_reg[15]/Q
-                         net (fo=1, routed)           0.194     1.806    divisor/signal_count_reg_n_0_[15]
-    SLICE_X14Y40         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.109     1.915 r  divisor/signal_count_reg[12]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.915    divisor/signal_count_reg[12]_i_1_n_4
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[15]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=27, routed)          0.835     1.962    divisor/clk
-    SLICE_X14Y40         FDCE                                         r  divisor/signal_count_reg[15]/C
-                         clock pessimism             -0.514     1.448    
-    SLICE_X14Y40         FDCE (Hold_fdce_C_D)         0.134     1.582    divisor/signal_count_reg[15]
-  -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.915    
-  -------------------------------------------------------------------
-                         slack                                  0.333    
-
-Slack (MET) :             0.333ns  (arrival time - required time)
+Slack (MET) :             0.252ns  (arrival time - required time)
   Source:                 divisor/signal_count_reg[19]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            divisor/signal_count_reg[19]/D
@@ -1388,7 +970,111 @@ Slack (MET) :             0.333ns  (arrival time - required time)
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.467ns  (logic 0.273ns (58.435%)  route 0.194ns (41.565%))
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.963ns
+    Source Clock Delay      (SCD):    1.449ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.566     1.449    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[19]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y44         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[19]/Q
+                         net (fo=1, routed)           0.108     1.698    divisor/signal_count_reg_n_0_[19]
+    SLICE_X15Y44         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.806 r  divisor/signal_count_reg[16]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.806    divisor/signal_count_reg[16]_i_1_n_4
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.836     1.963    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[19]/C
+                         clock pessimism             -0.514     1.449    
+    SLICE_X15Y44         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[19]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.806    
+  -------------------------------------------------------------------
+                         slack                                  0.252    
+
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[23]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[23]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.963ns
+    Source Clock Delay      (SCD):    1.449ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.566     1.449    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[23]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y45         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[23]/Q
+                         net (fo=1, routed)           0.108     1.698    divisor/signal_count_reg_n_0_[23]
+    SLICE_X15Y45         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.806 r  divisor/signal_count_reg[20]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.806    divisor/signal_count_reg[20]_i_1_n_4
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.836     1.963    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[23]/C
+                         clock pessimism             -0.514     1.449    
+    SLICE_X15Y45         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[23]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.806    
+  -------------------------------------------------------------------
+                         slack                                  0.252    
+
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[11]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[11]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
   Logic Levels:           1  (CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.962ns
@@ -1405,14 +1091,14 @@ Slack (MET) :             0.333ns  (arrival time - required time)
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          0.565     1.448    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[19]/C
+    SLICE_X15Y42         FDCE                                         r  divisor/signal_count_reg[11]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y41         FDCE (Prop_fdce_C_Q)         0.164     1.612 r  divisor/signal_count_reg[19]/Q
-                         net (fo=1, routed)           0.194     1.806    divisor/signal_count_reg_n_0_[19]
-    SLICE_X14Y41         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.109     1.915 r  divisor/signal_count_reg[16]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.915    divisor/signal_count_reg[16]_i_1_n_4
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[19]/D
+    SLICE_X15Y42         FDCE (Prop_fdce_C_Q)         0.141     1.589 r  divisor/signal_count_reg[11]/Q
+                         net (fo=1, routed)           0.108     1.697    divisor/signal_count_reg_n_0_[11]
+    SLICE_X15Y42         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.805 r  divisor/signal_count_reg[8]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.805    divisor/signal_count_reg[8]_i_1_n_4
+    SLICE_X15Y42         FDCE                                         r  divisor/signal_count_reg[11]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1423,14 +1109,326 @@ Slack (MET) :             0.333ns  (arrival time - required time)
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
                          net (fo=27, routed)          0.835     1.962    divisor/clk
-    SLICE_X14Y41         FDCE                                         r  divisor/signal_count_reg[19]/C
+    SLICE_X15Y42         FDCE                                         r  divisor/signal_count_reg[11]/C
                          clock pessimism             -0.514     1.448    
-    SLICE_X14Y41         FDCE (Hold_fdce_C_D)         0.134     1.582    divisor/signal_count_reg[19]
+    SLICE_X15Y42         FDCE (Hold_fdce_C_D)         0.105     1.553    divisor/signal_count_reg[11]
   -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.915    
+                         required time                         -1.553    
+                         arrival time                           1.805    
   -------------------------------------------------------------------
-                         slack                                  0.333    
+                         slack                                  0.252    
+
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[3]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[3]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.962ns
+    Source Clock Delay      (SCD):    1.448ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.565     1.448    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y40         FDCE (Prop_fdce_C_Q)         0.141     1.589 r  divisor/signal_count_reg[3]/Q
+                         net (fo=1, routed)           0.108     1.697    divisor/signal_count_reg_n_0_[3]
+    SLICE_X15Y40         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.805 r  divisor/signal_count_reg[0]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.805    divisor/signal_count_reg[0]_i_1_n_4
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.835     1.962    divisor/clk
+    SLICE_X15Y40         FDCE                                         r  divisor/signal_count_reg[3]/C
+                         clock pessimism             -0.514     1.448    
+    SLICE_X15Y40         FDCE (Hold_fdce_C_D)         0.105     1.553    divisor/signal_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                         -1.553    
+                         arrival time                           1.805    
+  -------------------------------------------------------------------
+                         slack                                  0.252    
+
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[7]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.357ns  (logic 0.249ns (69.714%)  route 0.108ns (30.286%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.962ns
+    Source Clock Delay      (SCD):    1.448ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.565     1.448    divisor/clk
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y41         FDCE (Prop_fdce_C_Q)         0.141     1.589 r  divisor/signal_count_reg[7]/Q
+                         net (fo=1, routed)           0.108     1.697    divisor/signal_count_reg_n_0_[7]
+    SLICE_X15Y41         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.805 r  divisor/signal_count_reg[4]_i_1/O[3]
+                         net (fo=1, routed)           0.000     1.805    divisor/signal_count_reg[4]_i_1_n_4
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.835     1.962    divisor/clk
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[7]/C
+                         clock pessimism             -0.514     1.448    
+    SLICE_X15Y41         FDCE (Hold_fdce_C_D)         0.105     1.553    divisor/signal_count_reg[7]
+  -------------------------------------------------------------------
+                         required time                         -1.553    
+                         arrival time                           1.805    
+  -------------------------------------------------------------------
+                         slack                                  0.252    
+
+Slack (MET) :             0.256ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[12]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[12]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.361ns  (logic 0.256ns (70.880%)  route 0.105ns (29.120%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.963ns
+    Source Clock Delay      (SCD):    1.449ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.566     1.449    divisor/clk
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y43         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[12]/Q
+                         net (fo=1, routed)           0.105     1.695    divisor/signal_count_reg_n_0_[12]
+    SLICE_X15Y43         CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.115     1.810 r  divisor/signal_count_reg[12]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.810    divisor/signal_count_reg[12]_i_1_n_7
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.836     1.963    divisor/clk
+    SLICE_X15Y43         FDCE                                         r  divisor/signal_count_reg[12]/C
+                         clock pessimism             -0.514     1.449    
+    SLICE_X15Y43         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.810    
+  -------------------------------------------------------------------
+                         slack                                  0.256    
+
+Slack (MET) :             0.256ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[16]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[16]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.361ns  (logic 0.256ns (70.880%)  route 0.105ns (29.120%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.963ns
+    Source Clock Delay      (SCD):    1.449ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.566     1.449    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[16]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y44         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[16]/Q
+                         net (fo=1, routed)           0.105     1.695    divisor/signal_count_reg_n_0_[16]
+    SLICE_X15Y44         CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.115     1.810 r  divisor/signal_count_reg[16]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.810    divisor/signal_count_reg[16]_i_1_n_7
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[16]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.836     1.963    divisor/clk
+    SLICE_X15Y44         FDCE                                         r  divisor/signal_count_reg[16]/C
+                         clock pessimism             -0.514     1.449    
+    SLICE_X15Y44         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[16]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.810    
+  -------------------------------------------------------------------
+                         slack                                  0.256    
+
+Slack (MET) :             0.256ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[20]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[20]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.361ns  (logic 0.256ns (70.880%)  route 0.105ns (29.120%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.963ns
+    Source Clock Delay      (SCD):    1.449ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.566     1.449    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[20]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y45         FDCE (Prop_fdce_C_Q)         0.141     1.590 r  divisor/signal_count_reg[20]/Q
+                         net (fo=1, routed)           0.105     1.695    divisor/signal_count_reg_n_0_[20]
+    SLICE_X15Y45         CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.115     1.810 r  divisor/signal_count_reg[20]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.810    divisor/signal_count_reg[20]_i_1_n_7
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[20]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.836     1.963    divisor/clk
+    SLICE_X15Y45         FDCE                                         r  divisor/signal_count_reg[20]/C
+                         clock pessimism             -0.514     1.449    
+    SLICE_X15Y45         FDCE (Hold_fdce_C_D)         0.105     1.554    divisor/signal_count_reg[20]
+  -------------------------------------------------------------------
+                         required time                         -1.554    
+                         arrival time                           1.810    
+  -------------------------------------------------------------------
+                         slack                                  0.256    
+
+Slack (MET) :             0.256ns  (arrival time - required time)
+  Source:                 divisor/signal_count_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            divisor/signal_count_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.361ns  (logic 0.256ns (70.880%)  route 0.105ns (29.120%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.962ns
+    Source Clock Delay      (SCD):    1.448ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.565     1.448    divisor/clk
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y41         FDCE (Prop_fdce_C_Q)         0.141     1.589 r  divisor/signal_count_reg[4]/Q
+                         net (fo=1, routed)           0.105     1.694    divisor/signal_count_reg_n_0_[4]
+    SLICE_X15Y41         CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.115     1.809 r  divisor/signal_count_reg[4]_i_1/O[0]
+                         net (fo=1, routed)           0.000     1.809    divisor/signal_count_reg[4]_i_1_n_7
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=27, routed)          0.835     1.962    divisor/clk
+    SLICE_X15Y41         FDCE                                         r  divisor/signal_count_reg[4]/C
+                         clock pessimism             -0.514     1.448    
+    SLICE_X15Y41         FDCE (Hold_fdce_C_D)         0.105     1.553    divisor/signal_count_reg[4]
+  -------------------------------------------------------------------
+                         required time                         -1.553    
+                         arrival time                           1.809    
+  -------------------------------------------------------------------
+                         slack                                  0.256    
 
 
 
@@ -1445,35 +1443,35 @@ Sources:            { clk }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
 Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y1  clk_IBUF_BUFG_inst/I
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y41   divisor/signal_count_reg[17]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y41   divisor/signal_count_reg[18]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y41   divisor/signal_count_reg[19]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y37   divisor/signal_count_reg[1]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y42   divisor/signal_count_reg[20]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y42   divisor/signal_count_reg[21]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y42   divisor/signal_count_reg[22]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y42   divisor/signal_count_reg[23]/C
-Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X14Y43   divisor/signal_count_reg[24]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[1]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[2]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[3]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y38   divisor/signal_count_reg[4]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y38   divisor/signal_count_reg[5]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y38   divisor/signal_count_reg[6]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y38   divisor/signal_count_reg[7]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[0]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[1]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y37   divisor/signal_count_reg[2]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y41   divisor/signal_count_reg[17]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y41   divisor/signal_count_reg[18]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y41   divisor/signal_count_reg[19]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y42   divisor/signal_count_reg[20]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y42   divisor/signal_count_reg[21]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y42   divisor/signal_count_reg[22]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y42   divisor/signal_count_reg[23]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y43   divisor/signal_count_reg[24]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y43   divisor/signal_count_reg[25]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X14Y43   divisor/signal_count_reg[26]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y44   divisor/signal_count_reg[17]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y44   divisor/signal_count_reg[18]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y44   divisor/signal_count_reg[19]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y40   divisor/signal_count_reg[1]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y45   divisor/signal_count_reg[20]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y45   divisor/signal_count_reg[21]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y45   divisor/signal_count_reg[22]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y45   divisor/signal_count_reg[23]/C
+Min Period        n/a     FDCE/C   n/a            1.000         10.000      9.000      SLICE_X15Y46   divisor/signal_count_reg[24]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y40   divisor/signal_count_reg[1]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y40   divisor/signal_count_reg[2]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y40   divisor/signal_count_reg[3]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y40   divisor/signal_count_reg[0]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[17]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[18]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[19]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y40   divisor/signal_count_reg[1]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[20]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[21]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[17]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[18]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y44   divisor/signal_count_reg[19]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[20]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[21]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[22]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y45   divisor/signal_count_reg[23]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y46   divisor/signal_count_reg[24]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y46   divisor/signal_count_reg[25]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         5.000       4.500      SLICE_X15Y46   divisor/signal_count_reg[26]/C
 
 
 

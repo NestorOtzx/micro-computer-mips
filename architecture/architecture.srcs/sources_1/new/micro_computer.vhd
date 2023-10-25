@@ -5,15 +5,16 @@ entity micro_computer is
   Port ( 
         clk: in STD_LOGIC;
         reset: in STD_LOGIC;
-        aluout: out STD_LOGIC_VECTOR (31 downto 0);
-        pcOut: out std_logic_vector(31 downto 0);
-        testMemOut: out std_logic_vector(31 downto 0);
-        testInstruction: out std_logic_vector(31 downto 0);
-        testALUUP: out std_logic_vector(31 downto 0);
-        testALUDOWN: out std_logic_vector(31 downto 0);
-        testSignExtend: out std_logic_vector(31 downto 0);
-        testIRWRITE: out std_logic;
-        displayAluout: out std_logic_vector(15 downto 0)
+--        aluout: out STD_LOGIC_VECTOR (31 downto 0);
+--        pcOut: out std_logic_vector(31 downto 0);
+--        testMemOut: out std_logic_vector(31 downto 0);
+--        testInstruction: out std_logic_vector(31 downto 0);
+--        testALUUP: out std_logic_vector(31 downto 0);
+--        testALUDOWN: out std_logic_vector(31 downto 0);
+--        testSignExtend: out std_logic_vector(31 downto 0);
+--        testIRWRITE: out std_logic;
+
+        leds: out std_logic_vector(15 downto 0)
   );
 end micro_computer;
 
@@ -98,7 +99,7 @@ signal signal_pcsrc: STD_LOGIC_VECTOR (1 downto 0);
 signal signal_opcode: STD_LOGIC_VECTOR (5 downto 0);
 signal divisor_counter: STD_LOGIC_VECTOR (31 downto 0); 
 signal signal_aluout: STD_LOGIC_VECTOR (31 downto 0);
-
+signal signal_pcTest: STD_LOGIC_VECTOR (31 downto 0);
 begin
 
 divisor: count_32bit
@@ -109,7 +110,7 @@ divisor: count_32bit
     );
 
 
-testIRWRITE <= signal_ir_write;
+
 control_unit: control
     port map(
         pcWrite     => signal_pc_write,
@@ -125,11 +126,14 @@ control_unit: control
         aluSrcB     => signal_alusrcb,
         aluOP       => signal_aluop,
         pcSrc       => signal_pcsrc,
-        clock       => divisor_counter(1),
+        clock       => divisor_counter(26),
+--        clock       => clk,
         reset       => reset,
         opcode      => signal_opcode
         
    );
+   
+   
 
 arquitecture: main_arquitecture
     port map(
@@ -148,16 +152,22 @@ arquitecture: main_arquitecture
         main_pcsrc      => signal_pcsrc,
         main_out        => signal_aluout,
         main_opcode     => signal_opcode,
-        main_clk        => divisor_counter(1),
+        main_clk        => divisor_counter(26),
+--        main_clk        => clk,
         main_reset      => reset,
-        pcOut           => pcOut,
-        testMemOut      => testMemOut,
-        testInstruction => testInstruction,
-        testALUUP       => testALUUP,
-        testALUDOWN     => testALUDOWN,
-        testSignExtend  => testSignExtend
+        pcOut           => signal_pcTest
+--        testMemOut      => testMemOut,
+--        testInstruction => testInstruction,
+--        testALUUP       => testALUUP,
+--        testALUDOWN     => testALUDOWN,
+--        testSignExtend  => testSignExtend
     );
-    
-displayAluout <= signal_aluout(15 downto 0);
-aluout<= signal_aluout;
+
+--testIRWRITE <= signal_ir_write;
+leds (15 downto 12) <= signal_pcTest(3 downto 0);
+leds (11 downto 0) <= signal_aluout(11 downto 0);
+--pcOut <= signal_pcTest;
+
+
+--aluout<= signal_aluout;
 end Behavioral;

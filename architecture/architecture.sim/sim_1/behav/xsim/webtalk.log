@@ -2,12 +2,12 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Oct 17 18:41:59 2023
-# Process ID: 9000
-# Current directory: C:/muertado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
-# Command line: wbtcv.exe -mode batch -source C:/muertado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
-# Log file: C:/muertado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log
-# Journal file: C:/muertado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim\webtalk.jou
+# Start of session at: Tue Oct 24 19:22:13 2023
+# Process ID: 7044
+# Current directory: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
-source C:/muertado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Tue Oct 17 18:41:59 2023...
+source C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Tue Oct 24 19:22:14 2023...

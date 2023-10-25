@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/impl_1/micro_computer.tcl"
+  variable script "C:/quintus/micro-computer-mips/architecture/architecture.runs/impl_1/micro_computer.tcl"
   variable category "vivado_impl"
 }
 
@@ -124,23 +124,24 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 1
-  set_param synth.incrementalSynthesisCache C:/Users/Nestor/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16368-DESKTOP-FINIBP4/incrSyn
+  set_param chipscope.maxJobs 2
+  set_param synth.incrementalSynthesisCache C:/Users/nmortizm/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9620-Simulacion18/incrSyn
+  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir E:/proyectos/vivado/micro-computer-mips/architecture/architecture.cache/wt [current_project]
-  set_property parent.project_path E:/proyectos/vivado/micro-computer-mips/architecture/architecture.xpr [current_project]
-  set_property ip_output_repo E:/proyectos/vivado/micro-computer-mips/architecture/architecture.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/quintus/micro-computer-mips/architecture/architecture.cache/wt [current_project]
+  set_property parent.project_path C:/quintus/micro-computer-mips/architecture/architecture.xpr [current_project]
+  set_property ip_output_repo C:/quintus/micro-computer-mips/architecture/architecture.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.dcp
+  add_files -quiet C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc
+  read_xdc C:/quintus/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "E:/proyectos/vivado/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.tcl"
+  variable script "C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,8 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
-set_param synth.incrementalSynthesisCache C:/Users/Nestor/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16368-DESKTOP-FINIBP4/incrSyn
+set_param chipscope.maxJobs 2
+set_param synth.incrementalSynthesisCache C:/Users/nmortizm/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-9620-Simulacion18/incrSyn
+set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -80,29 +81,29 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir E:/proyectos/vivado/micro-computer-mips/architecture/architecture.cache/wt [current_project]
-set_property parent.project_path E:/proyectos/vivado/micro-computer-mips/architecture/architecture.xpr [current_project]
+set_property webtalk.parent_dir C:/quintus/micro-computer-mips/architecture/architecture.cache/wt [current_project]
+set_property parent.project_path C:/quintus/micro-computer-mips/architecture/architecture.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo e:/proyectos/vivado/micro-computer-mips/architecture/architecture.cache/ip [current_project]
+set_property ip_output_repo c:/quintus/micro-computer-mips/architecture/architecture.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd
-  E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -113,8 +114,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc
-set_property used_in_implementation false [get_files E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc]
+read_xdc C:/quintus/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc
+set_property used_in_implementation false [get_files C:/quintus/micro-computer-mips/architecture/architecture.srcs/constrs_1/imports/Downloads/controlDisplay.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

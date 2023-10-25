@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1697942847">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1698195585">
   <File Type="PA-TCL" Name="micro_computer.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="micro_computer_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="micro_computer_reports.tcl"/>

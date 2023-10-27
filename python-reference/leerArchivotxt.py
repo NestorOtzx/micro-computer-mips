@@ -1,28 +1,43 @@
 import math, linecache
+from collections import deque
 
-MAXOFFSET = 4
+MAXOFFSET = 8
 MAXINDEX = 8
-MAXTAG = 31
+MAXTAG = 63
 
-arrBloques = None
-content = None
+arrVias = None
+arrColas = None
 
 class Conjunto:
-    validez = "0"
-    tag = None
-    data = None
+    validez = 0
+    dirty = 0
+    tag = 0
+    data = []
 
     def __init__(self):
-        self.validez = "0"
-        self.tag = None
-        self.data = None
+        self.validez = 0
+        self.dirty = 0
+        self.tag = 0
+        self.data = [None for _ in range(8)]
+
+    def __str__(self):
+        return f"|{self.validez}|{self.tag}|{self.data}|"
 
 
-class Bloque:
+class Via:
     conjuntos = None
     
     def __init__(self):
         self.conjuntos = [Conjunto() for _ in range(8)]
+
+    def __str__(self):
+        ans = ""
+        for v in self.conjuntos:
+            ans += str(v) + "\n"
+            # print(v)
+        return ans
+
+
 
 def calcularOffSet(a):
     return a % MAXOFFSET
@@ -35,7 +50,7 @@ def calcularIndex(a):
 def calcularTag(a):
     return a // MAXTAG    
 
-def calcularDireccion(dir):
+def decoDir(dir):
     offSet = calcularOffSet(dir)
     index = calcularIndex(dir)
     tag = calcularTag(dir)
@@ -45,47 +60,76 @@ def calcularDireccion(dir):
 def hit(dir):
     print("Hit en la dir:", dir)
 
-
-def write(dir, data):
-    global arrBloques
-    flag = True
-    tag, index, offSet = calcularDireccion(dir)
+def findDirtys(index):
     i = 0
-    while((flag == True) and (i < 4)):
-        print("Bloque:", i)
-        if(arrBloques[i].conjuntos[index].data == None):
-            arrBloques[i].conjuntos[index].data = data
-            arrBloques[i].conjuntos[index].tag = tag
-            arrBloques[i].conjuntos[index].validez = "1"
-            flag = False
-            for j in range(len(arrBloques[i].conjuntos)):
-                print(arrBloques[i].conjuntos[j].data)
-            print()
-        elif((arrBloques[i].conjuntos[index].validez == "1") and (arrBloques[i].conjuntos[index].tag == tag)):
-            hit(dir)
+    flag = False
+    writeBlock = -1
+    while((i < 4) and (not flag)):
+        if(arrVias[i].conjuntos[index].dirty == 0):
+            flag = True
+            writeBlock = i
+            arrVias[i].conjuntos[index].dirty = 1
+        
         i += 1
 
+    if(flag == False):
+        firstBlock = arrColas[index].popleft()
+        arrVias[firstBlock].conjuntos[index].dirty = 0
+        #ESCRIBIR EN LA MEMORIA
+        tag = arrVias[firstBlock].conjuntos[index].tag
+        # tag = tag * 64
+        direction = (index * 8) + (tag * 64)
+
+        for i in range(8):
+            escribirDisco(direction + i, arrVias[firstBlock].conjuntos[index].data[i])
+
+        writeBlock = findDirtys(index)
+    return writeBlock
+
+
+
+def write(dir):
+    global arrColas
+    tag, index, offSet = decoDir(dir)
+    writeBlock = findDirtys(index)
+    arrVias[writeBlock].conjuntos[index].data[offSet] = leerDisco(dir)
+    arrColas[index].append(writeBlock)
+
 def read(dir):
-    global arrBloques
-    tag, index, offSet = calcularDireccion(dir)
-    return arrBloques[offSet].conjuntos[index].data
+    global arrVias
+    for i in range(4):
+        print(arrVias[i])
 
 def writeMem(dir):
     datoTxt = leerDisco(dir)
     write(dir, datoTxt)
 
 def leerDisco(dir):
-    # print(linecache.getline("mem.txt", dir))
-    return linecache.getline("mem.txt", dir).strip()
+    # print(linecache.getline("mem.txt", dir + 1))    
+    return linecache.getline("mem.txt", dir + 1).strip()
+
+def escribirDisco(dir, dato):
+    lines = open('mem.txt', 'r').readlines()
+    lines[dir] = str(dato) + "\n"
+
+    out = open('mem.txt', 'w')
+    out.writelines(lines)
+    out.close()
 
 def main():
-    global arrBloques
+    global arrVias, arrColas
+    arrVias = [Via() for _ in range(4)]
+    arrColas = [deque() for _ in range(8)]
+    write(0)
+    write(0)
+    write(0)
+    write(0)
+    read(0)
+    write(0)
+    write(0)
+    write(0)
+    write(0)
+    read(0)
+    escribirDisco(1, -1)
 
-    arrBloques = [Bloque() for _ in range(4)]
-    writeMem(1)
-    writeMem(5)
-    writeMem(275)
-    writeMem(2048)
-    print("Leer dato de la posición 271", read(2048))
-    
 main()

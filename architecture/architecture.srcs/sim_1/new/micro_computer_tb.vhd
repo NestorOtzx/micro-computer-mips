@@ -1,6 +1,6 @@
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : 25.10.2023 01:02:39 UTC
+-- Generation date : 30.10.2023 23:38:53 UTC
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -11,14 +11,16 @@ end tb_micro_computer;
 architecture tb of tb_micro_computer is
 
     component micro_computer
-        port (clk   : in std_logic;
-              reset : in std_logic;
-              leds  : out std_logic_vector (15 downto 0));
+        port (clk    : in std_logic;
+              reset  : in std_logic;
+              leds   : out std_logic_vector (15 downto 0);
+              memout : out std_logic_vector (31 downto 0));
     end component;
 
-    signal clk   : std_logic;
-    signal reset : std_logic;
-    signal leds  : std_logic_vector (15 downto 0);
+    signal clk    : std_logic;
+    signal reset  : std_logic;
+    signal leds   : std_logic_vector (15 downto 0);
+    signal memout : std_logic_vector (31 downto 0);
 
     constant TbPeriod : time := 100 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
@@ -27,9 +29,10 @@ architecture tb of tb_micro_computer is
 begin
 
     dut : micro_computer
-    port map (clk   => clk,
-              reset => reset,
-              leds  => leds);
+    port map (clk    => clk,
+              reset  => reset,
+              leds   => leds,
+              memout => memout);
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';

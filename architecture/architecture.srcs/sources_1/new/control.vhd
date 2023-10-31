@@ -172,7 +172,7 @@ begin
                    memToReg <= "00";
                    memWrite <= '0';
                    memRead <= '1';
-                   IorD <= '0';
+                   IorD <= '1';
                    pcWrite <= '0';
                    branch <= '0';
                    pcSrc <= "00";

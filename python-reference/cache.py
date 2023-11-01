@@ -6,7 +6,7 @@ MAXOFFSET, MAXINDEX, MAXTAG= 8, 8, 8
 
 arrVias, arrColas = None, None
 
-contadorHits, contadorMiss, contadorQueues = 0, 0, 0
+contadorHitsW, contadorMissW, contadorHitsR, contadorMissR, contadorQueues = 0, 0, 0, 0, 0
 
 class Conjunto:
     def __init__(self):
@@ -34,14 +34,17 @@ class Via:
     def setDirty(self, index, dirty): self.conjuntos[index].dirty = dirty
     
     def write(self, tag, index, offSet, data):
-        self.setDirty(index, 1)
         self.conjuntos[index].data[offSet] = data
         self.conjuntos[index].tag = tag
         self.conjuntos[index].validez = 1
 
-def hit(): global contadorHits; contadorHits+=1
+def hitW(): global contadorHitsW; contadorHitsW+=1
 
-def miss(): global contadorMiss; contadorMiss += 1
+def missW(): global contadorMissW; contadorMissW += 1
+
+def hitR(): global contadorHitsR; contadorHitsR+=1
+
+def missR(): global contadorMissR; contadorMissR += 1
 
 def queue(): global contadorQueues; contadorQueues += 1
 
@@ -56,10 +59,11 @@ def printCache():
 
 def printEstadisticas():
     print("-.-.             ESTADISTICAS                -.-.")
-    print("| MISS | HIT | QUEUES |")
-    print(f"| {contadorMiss} | {contadorHits} | {contadorQueues} |")
-    print(f"PORCENTAJE DE MISS: {(contadorMiss/contadorQueues):.2f}")
-    print(f"PORCENTAJE DE HIT: {(contadorHits/contadorQueues):.2f}")
+    print("Miss Lectura:", contadorMissR, "                Miss Escritura:", contadorMissW)
+    print("Hit Lectura:", contadorHitsR, "                  Hit Escritura:", contadorHitsW)
+    print("QUEUES:", contadorQueues)
+    print(f"PORCENTAJE DE MISS: {((contadorMissW+contadorMissR)/contadorQueues):.2f}")
+    print(f"PORCENTAJE DE HIT: {((contadorHitsW+contadorHitsR)/contadorQueues):.2f}")
 
 def resetCache():  #deja la cache vacia
     global arrColas, arrVias
@@ -86,7 +90,7 @@ def getWriteRoad(index):
         i += 1
 
     if(flag == False):
-        hit()
+        hitW()
         firstBlock = arrColas[index].popleft()
         arrVias[firstBlock].setDirty(index, 0)
         #ESCRIBIR EN LA MEMORIA
@@ -107,9 +111,11 @@ def write(dir):
     tag, index, offSet = decoDir(dir)
     writeRoad = getWriteRoad(index)
     if (arrVias[writeRoad].getDirty(index) == 0):
-        miss()
-
-    arrVias[writeRoad].write(tag, index, offSet, leerDisco(dir))
+        missW()
+    dirIni = dir-offSet
+    for i in range(8):
+        arrVias[writeRoad].write(tag, index, i, leerDisco(dirIni+i))
+    arrVias[writeRoad].setDirty(index, 1)
     arrColas[index].append(writeRoad)
 
 def read(dir):
@@ -125,10 +131,11 @@ def read(dir):
 
     if arrVias[readRoad].conjuntos[index].tag == tag and arrVias[readRoad].conjuntos[index].validez == 1:
         print(f"Cache | {arrVias[readRoad].conjuntos[index].data[offSet]}")
+        hitR() 
     else: #SI NO ESTA EN CACHE, BUSCARLO EN LA MEMORIA
         print("El dato no esta presente en cache")
         print(f"Memoria | { leerDisco(dir) }")
-        miss()
+        missR()
 
 def writeMem(dir):
     datoTxt = leerDisco(dir)
@@ -157,7 +164,8 @@ def escribirDisco(dir, dato):
 def main():
     global arrVias, arrColas
     resetCache()
-    ejemplo5()
+    resetMemory()
+    ejemplo6()
     printEstadisticas()
 
 """
@@ -217,5 +225,44 @@ def ejemplo4():
 def ejemplo5():
     write(3048)
     read(3048)
+
+def ejemplo6():
+    write(77)
+    read(77)
+    write(15)
+    read(15)
+    print("---Ejemplo write back---")
+    write(7)
+    write(0)
+
+    
+
+    print("--Cache despues de write back --")
+    printCache()    
+
+    write(12)
+    write(12)
+    write(12)
+    write(12)
+    read(12)
+    read(8)
+    read(22)
+    write(30)
+    write(2)
+    write(16)
+    write(9)
+    write(6)
+    write(23)
+    read(19)
+    read(5)
+    write(11)
+    write(31)
+    write(3)
+    write(20)
+    write(13)
+    resetCache()
+    write(77)
+    read(77)
+
 
 main()

@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Oct 31 19:28:52 2023
+# Process ID: 28144
+# Current directory: C:/micro-computer-mips/architecture
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25988 C:\micro-computer-mips\architecture\architecture.xpr
+# Log file: C:/micro-computer-mips/architecture/vivado.log
+# Journal file: C:/micro-computer-mips/architecture\vivado.jou
+#-----------------------------------------------------------
+start_guopopen_project C:/micro-computer-mips/architecture/architecture.xpr
+INFO: [Project 1-313] Project file moved from 'C:/quintus/micro-computer-mips/architecture' since last save.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/micro-computer-mips/architecture/architecture.gen/sources_1', nor could it be found using path 'C:/quintus/micro-computer-mips/architecture/architecture.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:22 ; elapsed = 00:00:09 . Memory (MB): peak = 1003.625 ; gain = 0.000
+update_compile_order -fileset sourcesexit
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 31 19:31:15 2023...
+..

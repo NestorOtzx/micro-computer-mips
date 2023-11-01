@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="C:/quintus/micro-computer-mips/architecture/architecture.xpr">
+<Project Version="7" Minor="54" Path="C:/micro-computer-mips/architecture/architecture.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="64f1c2654afb44309c2e99144b43878c"/>
@@ -165,6 +165,34 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/button_fix.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Users/laura/Downloads/testProject 2/testProject/testProject.srcs/sources_1/new/counterDisplay.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Users/laura/Downloads/testProject 2/testProject/testProject.srcs/sources_1/new/mux4to1_4.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Users/laura/Downloads/testProject 2/testProject/testProject.srcs/sources_1/new/controlDisplay.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Users/laura/Downloads/testProject 2/testProject/testProject.srcs/sources_1/new/bin2Hex.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>

@@ -91,11 +91,15 @@ OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd

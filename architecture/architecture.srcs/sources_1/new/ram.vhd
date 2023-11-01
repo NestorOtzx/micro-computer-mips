@@ -18,9 +18,8 @@ architecture Behavioral of ram is
 
 type tipo_ram is array (511 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
                                   --OPCOD| rs | rt | inmediato              --OPCOD| rs | rt | inmediato  
-signal memoria: tipo_ram := ( 0 => "00100000000100000000000000000011",  
-                              1 => "00100000000100010000000000000011",
-                              2 => "00000010000100011000000000010100",
+signal memoria: tipo_ram := ( 0 => "00100000000100000000000000001000",  
+                              1 => "10101100000100000000001000000000",
                               others => (others=>'0'));
                               
                               

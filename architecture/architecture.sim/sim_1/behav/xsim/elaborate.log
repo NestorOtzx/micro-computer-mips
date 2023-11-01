@@ -10,15 +10,19 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
-Compiling package ieee.numeric_std
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.mux4to1_4b [mux4to1_4b_default]
+Compiling architecture behavioral of entity xil_defaultlib.bin2Hex [bin2hex_default]
+Compiling architecture behavioral of entity xil_defaultlib.counterDisplay [counterdisplay_default]
+Compiling architecture behavioral of entity xil_defaultlib.controlDisplay [controldisplay_default]
+Compiling architecture behavioral of entity xil_defaultlib.register_32b [register_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.ram [ram_default]
 Compiling architecture behavioral of entity xil_defaultlib.count_32bit [count_32bit_default]
 Compiling architecture behavioral of entity xil_defaultlib.control [control_default]
 Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux2to1_32b [mux2to1_32b_default]
-Compiling architecture behavioral of entity xil_defaultlib.register_32b [register_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_5b [mux4to1_5b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_32b [mux4to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.registers [registers_default]

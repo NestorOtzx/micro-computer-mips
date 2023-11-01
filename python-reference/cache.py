@@ -100,34 +100,20 @@ def getWriteRoad(index, tag):
             escribirDisco(direction + i, arrVias[firstBlock].conjuntos[index].data[i])
         
         writeRoad = getWriteRoad(index, tag)
+        arrVias[firstBlock].setDirty(index, 1) #para evitar que cuente el miss de escritura
 
     return writeRoad
 
-"""
 def write(dir, dato):
     global arrColas
     queue()
     tag, index, offSet = decoDir(dir)
-    # print(index, tag, offSet)
     writeRoad = getWriteRoad(index, tag)
     if (arrVias[writeRoad].getDirty(index) == 0):
         missW()
-    dirIni = dir-offSet
-    for i in range(8):
-        arrVias[writeRoad].write(tag, index, i, leerDisco(dirIni+i))
+    arrVias[writeRoad].write(tag, index, offSet, dato)
     arrVias[writeRoad].setDirty(index, 1)
     arrColas[index].append(writeRoad)
-"""
-def write(dir, dato):
-    global arrColas
-    queue()
-    tag, index, offSet = decoDir(dir)
-    writeRoad = getWriteRoad(index, tag)
-    if (arrVias[writeRoad].getDirty(index) == 0):
-        missW()
-        arrVias[writeRoad].write(tag, index, offSet, dato)
-        arrVias[writeRoad].setDirty(index, 1)
-        arrColas[index].append(writeRoad)
 
 def read(dir):
     global arrColas
@@ -160,7 +146,7 @@ def read(dir):
             writeRoad = arrColas[index].popleft()
 
         dirIni = dir-offSet
-        for i in range(8):
+        for i in range(8): #Write back
             disc = leerDisco(dirIni+i)
             cache = arrVias[writeRoad].conjuntos[index].data[i]
             escribirDisco(dirIni + i, cache)
@@ -202,19 +188,14 @@ def main():
     resetCache()
     resetMemory()
     
-    read(20)
-    read(15)
-    read(45)
-    read(65)
-    printCache()
-    
-    read(22)
-    #write(23, 100)
-    printCache()    
     read(0)
+    write(0, 20)
+    read(65)
+    read(256)
+    write(0, 10)
+    
     printCache()
     
-    #ejemplo1()
     printEstadisticas()
 
 """

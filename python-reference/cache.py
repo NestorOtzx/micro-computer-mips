@@ -188,53 +188,20 @@ def main():
     resetCache()
     resetMemory()
     
-    read(0)
-    write(0, 20)
-    read(65)
-    read(256)
-    write(0, 10)
-    
-    printCache()
-    
+    ejemplo1()
+
     printEstadisticas()
 
 """
 Ejemplos para ver el comportamiento de la memoria
 """
 def ejemplo1():
-    write(0)
     read(0)
-    write(64)
-    read(64)
-
-    write(8)
-    read(8)
-    write(15)
-    read(15)
-
-    write(65)
-    write(256)
+    write(0, 20)
+    read(65)
     read(256)
-
-    printCache()
-
-    input("Presione enter para continuar")
-
-    write(128)
-    read(128)
-
-    printCache()
-
-    input("Presione enter para continuar")
-
-    write(72)
-    write(136)
-
-    printCache()
-    
-    input("Presione enter para continuar")
-
-    write(8)
+    write(0, 11)
+    write(0, 12)
     printCache()
 
 main()

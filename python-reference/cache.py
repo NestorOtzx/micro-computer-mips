@@ -16,7 +16,7 @@ class Conjunto:
         self.data = [0 for _ in range(8)]
 
     def __str__(self):
-        return f"|{self.validez}|{self.tag}|{self.data}|"
+        return f"|{self.validez}|{self.dirty}|{self.tag}|{self.data}|"
 
 class Via:
     def __init__(self, nVia = -1):
@@ -24,7 +24,7 @@ class Via:
         self.nVia = nVia
 
     def __str__(self):
-        ans = f"Via #{self.nVia+1}\n"
+        ans = f"Via #{self.nVia+1}\n|V|D|t|         datos          |\n"
         for v in self.conjuntos:
             ans += str(v) + "\n"
             # print(v)
@@ -124,12 +124,15 @@ def read(dir):
     tag, index, offSet = decoDir(dir)
 
     readRoad = 0
-    #si hay valores la cola para la politica LFU (??????)
-    if len(arrColas[index]) > 0 : 
-        # ayuda, esto para mi tiene sentido
-        readRoad = arrColas[index][-1]
+    flagTag = False
+    it = 0
+    while not flagTag and it < 4:
+        if arrVias[index].conjuntos[it].tag == tag:
+            readRoad = it
+            flagTag = True
+        it += 1
 
-    if arrVias[readRoad].conjuntos[index].tag == tag and arrVias[readRoad].conjuntos[index].validez == 1:
+    if flagTag == True and arrVias[readRoad].conjuntos[index].validez == 1:
         print(f"Cache | {arrVias[readRoad].conjuntos[index].data[offSet]}")
         hitR() 
     else: #SI NO ESTA EN CACHE, BUSCARLO EN LA MEMORIA
@@ -165,18 +168,22 @@ def main():
     global arrVias, arrColas
     resetCache()
     resetMemory()
-    ejemplo6()
+    ejemplo1()
     printEstadisticas()
 
 """
-Ejemplos para ver el comportamineto de la memoria
+Ejemplos para ver el comportamiento de la memoria
 """
 def ejemplo1():
-    print("Simple escritura de 4 datos en memoria cache")
     write(0)
     write(1)
     write(2)
     write(3)
+    read(0)
+    read(1)
+    read(2)
+    read(3)
+
     printCache()
 
 #Ejemplo de writeback
@@ -219,7 +226,7 @@ def ejemplo4():
     write(1)
     write(2)
     write(3)
-    read(3) #lee despues de que el dato haya sido enviado en cache
+    read(3) #lee después de que el dato haya sido enviado en cache
     printCache()
 
 def ejemplo5():

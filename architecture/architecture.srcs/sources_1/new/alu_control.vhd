@@ -20,6 +20,7 @@ begin
                     "0101" when "000010",
                     "0110" when "100010",
                     "0111" when "101010",
+                    "1000" when "010100",
                     "1111" when others;
     
     with alu_op select

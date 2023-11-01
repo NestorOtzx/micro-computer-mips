@@ -15,6 +15,7 @@ end alu;
 architecture Alu_behaviour of alu is
 
     signal temp, less_than: STD_LOGIC_VECTOR (31 downto 0);   
+    signal mult_signal: STD_LOGIC_VECTOR (63 downto 0);
 begin
 
     -- A < B --
@@ -27,6 +28,7 @@ begin
         end if;
     end process;
 
+    mult_signal <= (alu_in_a * alu_in_b);
     -- OPERACIONES INMEDIATAS --
     with operation select
         temp <= (alu_in_a and alu_in_b) when "0000",
@@ -37,6 +39,7 @@ begin
                 (std_logic_vector(shift_right(unsigned(alu_in_a), to_integer(unsigned(alu_in_b))))) when "0101",
                 (alu_in_a - alu_in_b) when "0110",
                 (less_than) when "0111",
+                 (mult_signal(31 downto 0)) when "1000",
                 "00000000000000000000000000000000" when others;
     
     zero <= '1' when temp = "00000000000000000000000000000000" else

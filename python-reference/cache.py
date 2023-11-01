@@ -2,7 +2,7 @@ import math, linecache
 import shutil #para reemplzar mem.txt por la copia
 from collections import deque
 
-MAXOFFSET, MAXINDEX, MAXTAG= 8, 8, 8
+MAXOFFSET, MAXINDEX, MAXTAG= 8, 8, 63
 
 arrVias, arrColas = None, None
 
@@ -80,7 +80,7 @@ def decoDir(dir):
     tag = calcularTag(dir)
     return tag, index, offSet
 
-def getWriteRoad(index):
+def getWriteRoad(index, tag):
     i, writeRoad, flag = 0, -1, False
 
     while((i < 4) and (not flag)):
@@ -93,14 +93,13 @@ def getWriteRoad(index):
         hitW()
         firstBlock = arrColas[index].popleft()
         arrVias[firstBlock].setDirty(index, 0)
-        #ESCRIBIR EN LA MEMORIA
-        tag = arrVias[firstBlock].conjuntos[index].tag
 
         direction = (index * 8) + (tag * 64) #reconstruye la direccion en memoria en base al index y tag
 
         for i in range(8):
+            print("writeback: ", direction+i)
             escribirDisco(direction + i, arrVias[firstBlock].conjuntos[index].data[i])
-        writeRoad = getWriteRoad(index)
+        writeRoad = getWriteRoad(index, tag)
         arrVias[writeRoad].setDirty(index, 1)
 
     return writeRoad
@@ -109,7 +108,8 @@ def write(dir):
     global arrColas
     queue()
     tag, index, offSet = decoDir(dir)
-    writeRoad = getWriteRoad(index)
+    # print(index, tag, offSet)
+    writeRoad = getWriteRoad(index, tag)
     if (arrVias[writeRoad].getDirty(index) == 0):
         missW()
     dirIni = dir-offSet
@@ -127,7 +127,7 @@ def read(dir):
     flagTag = False
     it = 0
     while not flagTag and it < 4:
-        if arrVias[index].conjuntos[it].tag == tag:
+        if arrVias[it].conjuntos[index].tag == tag:
             readRoad = it
             flagTag = True
         it += 1
@@ -176,100 +176,38 @@ Ejemplos para ver el comportamiento de la memoria
 """
 def ejemplo1():
     write(0)
-    write(1)
-    write(2)
-    write(3)
     read(0)
-    read(1)
-    read(2)
-    read(3)
+    write(64)
+    read(64)
 
-    printCache()
-
-#Ejemplo de writeback
-def ejemplo2():
-    print("---Ejemplo write back---")
-    write(0)
-    write(0)
-    write(0)
-    write(0)
-    
-    print("--Cache antes de write back --")
-    printCache()    
-    write(0)
-    write(0)
-    write(0)
-    write(0)
-
-    print("--Cache despues de write back --")
-    printCache()    
-
-#varias lecturas y escrituras
-def ejemplo3():
-    write(0)
-    write(1)
-    write(2)
-    write(3)
-    read(1)
-    read(2)
-    read(5)
-    write(1)
-    write(1)
-    write(1)
-    write(1)
-    read(0)
-    resetMemory()
-
-def ejemplo4():
-    read(3) #lee antes de que el dato haya sido enviado en cache 
-    write(0)
-    write(1)
-    write(2)
-    write(3)
-    read(3) #lee después de que el dato haya sido enviado en cache
-    printCache()
-
-def ejemplo5():
-    write(3048)
-    read(3048)
-
-def ejemplo6():
-    write(77)
-    read(77)
+    write(8)
+    read(8)
     write(15)
     read(15)
-    print("---Ejemplo write back---")
-    write(7)
-    write(0)
 
+    write(65)
+    write(256)
+    read(256)
+
+    printCache()
+
+    input("Presione enter para continuar")
+
+    write(128)
+    read(128)
+
+    printCache()
+
+    input("Presione enter para continuar")
+
+    write(72)
+    write(136)
+
+    printCache()
     
+    input("Presione enter para continuar")
 
-    print("--Cache despues de write back --")
-    printCache()    
-
-    write(12)
-    write(12)
-    write(12)
-    write(12)
-    read(12)
-    read(8)
-    read(22)
-    write(30)
-    write(2)
-    write(16)
-    write(9)
-    write(6)
-    write(23)
-    read(19)
-    read(5)
-    write(11)
-    write(31)
-    write(3)
-    write(20)
-    write(13)
-    resetCache()
-    write(77)
-    read(77)
-
+    write(8)
+    printCache()
 
 main()

@@ -80,7 +80,7 @@ def decoDir(dir):
     tag = calcularTag(dir)
     return tag, index, offSet
 
-def getWriteRoad(index, tag):
+def getWriteRoad(index):
     i, writeRoad, flag = 0, -1, False
 
     while((i < 4) and (not flag)):
@@ -94,12 +94,13 @@ def getWriteRoad(index, tag):
         firstBlock = arrColas[index].popleft()
         arrVias[firstBlock].setDirty(index, 0)
 
+        tag = arrVias[firstBlock].conjuntos[index].tag
         direction = (index * 8) + (tag * 64) #reconstruye la direccion en memoria en base al index y tag
         
         for i in range(8):
             escribirDisco(direction + i, arrVias[firstBlock].conjuntos[index].data[i])
         
-        writeRoad = getWriteRoad(index, tag)
+        writeRoad = getWriteRoad(index)
         arrVias[firstBlock].setDirty(index, 1) #para evitar que cuente el miss de escritura
 
     return writeRoad
@@ -108,7 +109,7 @@ def write(dir, dato):
     global arrColas
     queue()
     tag, index, offSet = decoDir(dir)
-    writeRoad = getWriteRoad(index, tag)
+    writeRoad = getWriteRoad(index)
     if (arrVias[writeRoad].getDirty(index) == 0):
         missW()
     arrVias[writeRoad].write(tag, index, offSet, dato)

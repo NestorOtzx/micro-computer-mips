@@ -1,6 +1,6 @@
 -- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
--- Generation date : 1.11.2023 01:19:50 UTC
+-- Generation date : 4.11.2023 19:28:32 UTC
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -13,6 +13,7 @@ architecture tb of tb_micro_computer is
     component micro_computer
         port (clk     : in std_logic;
               reset   : in std_logic;
+              input   : in std_logic_vector (19 downto 0);
               leds    : out std_logic_vector (15 downto 0);
               enDigit : out std_logic_vector (3 downto 0);
               display : out std_logic_vector (6 downto 0));
@@ -20,6 +21,7 @@ architecture tb of tb_micro_computer is
 
     signal clk     : std_logic;
     signal reset   : std_logic;
+    signal input   : std_logic_vector (19 downto 0);
     signal leds    : std_logic_vector (15 downto 0);
     signal enDigit : std_logic_vector (3 downto 0);
     signal display : std_logic_vector (6 downto 0);
@@ -33,6 +35,7 @@ begin
     dut : micro_computer
     port map (clk     => clk,
               reset   => reset,
+              input   => input,
               leds    => leds,
               enDigit => enDigit,
               display => display);
@@ -46,15 +49,30 @@ begin
     stimuli : process
     begin
         -- EDIT Adapt initialization as needed
+        input <= (others => '0');
 
         -- Reset generation
         -- EDIT: Check that reset is really your reset signal
         reset <= '1';
+        input <= "00000000000000000001";
         wait for 100 ns;
         reset <= '0';
-        -- EDIT Add stimuli here
-        wait for 10000 ns;
 
+        -- EDIT Add stimuli here
+        wait for 20 us;
+        
+        input <= "10000000000000000101";
+        
+        wait for 20 us;
+        
+        input <= "00000000000000000111";
+        
+        wait for 20 us;
+        
+        input <= "00000000000000000001";
+        
+        
+        wait for 100 us;
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
         wait;

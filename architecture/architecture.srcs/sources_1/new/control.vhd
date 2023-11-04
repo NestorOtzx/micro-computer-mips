@@ -5,6 +5,7 @@ entity control is
     Port ( reset : in STD_LOGIC;
            clock : in STD_LOGIC;
            opcode : in STD_LOGIC_VECTOR (5 downto 0);
+           func : in STD_LOGIC_VECTOR (5 downto 0);
            irWrite : out STD_LOGIC;
            memToReg : out std_logic_vector(1 downto 0);
            memWrite : out STD_LOGIC;
@@ -23,7 +24,7 @@ end control;
 
 architecture Behavioral of control is
     type stateType is (reset_st, fetch, decode, memAddr, memReadST, memWB,memWriteST,
-                        execute, aluWB, branchST, jumpST, addiST, writeRegistersST);
+                        execute, aluWB, branchST, jumpST, jalST, jrST, addiST, writeRegistersST);
 signal currentState, nextState : std_logic_vector (3 downto 0);
 signal estadoActual, estadoSiguiente : stateType;
 
@@ -40,7 +41,7 @@ begin
         end if;
     end process;
     
-    nextStateFunction: process(opcode, estadoActual)
+    nextStateFunction: process(opcode, func, estadoActual)
     begin
          case (estadoActual) is
               when reset_st => 
@@ -56,11 +57,17 @@ begin
                     when "101011" =>
                         estadoSiguiente <= memAddr;
                     when "000000" =>
-                        estadoSiguiente <= execute;
+                        if (func = "001000") then
+                            estadoSiguiente <= jrST;
+                        else
+                            estadoSiguiente <= execute;
+                        end if;
                     when "000100" =>
                         estadoSiguiente <= branchST;
                     when "000010" =>
                         estadoSiguiente <= jumpST;
+                    when "000011" =>
+                        estadoSiguiente <= jalST;
                     when "001000"=>
                         estadoSiguiente <= addiST;
                     when others =>
@@ -85,6 +92,8 @@ begin
               when branchST =>
                  estadoSiguiente <= fetch;
               when jumpST =>
+                 estadoSiguiente <= fetch;
+              when jalST =>
                  estadoSiguiente <= fetch;
               when writeRegistersST =>
                    estadoSiguiente <= fetch;
@@ -263,6 +272,34 @@ begin
                    aluOP <= "000";
                    aluSrcB <= "00";
                    aluSrcA <= '0';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when jalST =>
+                   irWrite <= '0';
+                   memToReg <= "10";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '1';
+                   branch <= '0';
+                   pcSrc <= "10";
+                   aluOP <= "000";
+                   aluSrcB <= "00";
+                   aluSrcA <= '0';
+                   regWrite <= '1';
+                   regDst  <= "10";
+              when jrST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '1';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "000";
+                   aluSrcB <= "00";
+                   aluSrcA <= '1';
                    regWrite <= '0';
                    regDst  <= "00";
               when others =>

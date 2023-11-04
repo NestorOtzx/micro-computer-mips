@@ -16,17 +16,21 @@ end ram;
 
 architecture Behavioral of ram is
 
-type tipo_ram is array (511 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
+type tipo_ram is array (1024 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
                                   --OPCOD| rs | rt | inmediato              --OPCOD| rs | rt | inmediato  
-signal memoria: tipo_ram := ( 0 => "00100000000100000111111111111111",  
-                              1 => "00100000000100010000000000000001",
-                              2 => "10001100000100100000001000000000",
-                              3 => "10101100000100100000001000000000",
-                              4 => "00000010000100101001100000101010",
-                              5 => "00010010011100010000000000000000",
-                              6 => "00001000000000000000000000000000",
-                              7 => "00100000000100010000000000000101",
-                              8 => "10101100000100010000000100000000",
+signal memoria: tipo_ram := ( 0 =>  "00100000000100000000000000000000",  
+                              1 =>  "00001100000000000000000000000101",
+                              2 =>  "00001100000000000000000000000101",
+                              3 =>  "00001100000000000000000000000101",
+                              4 =>  "00001000000000000000000000001000",
+                              5 =>  "00100010000100000000000000000001",
+                              6 =>  "10101100000100000000001000000000",
+                              7 =>  "00000011111000000000000000001000",
+                              8 =>  "00100000000010000000000000001111",
+                              9 =>  "10101100000010000000001000000000",
+--                              10 => "10101100000010000000001000000000",
+--                              11 => "10101100000010000000001000000000",
+
                               others => (others=>'0'));
     
     
@@ -58,10 +62,10 @@ begin
     process(clk, mem_write)
     begin
          if((clk'event and clk = '1') and mem_write = '1') then
-            memoria(to_integer(unsigned(dir))) <= data;    
+            memoria(to_integer(unsigned(dir(9 downto 0)))) <= data;    
          end if;
      end process;
      
-     mem_data <= memoria(to_integer(unsigned(dir)));
+     mem_data <= memoria(to_integer(unsigned(dir(9 downto 0))));
     
 end Behavioral;

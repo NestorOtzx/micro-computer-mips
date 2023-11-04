@@ -27,6 +27,7 @@ component control
         reset : in STD_LOGIC;
         clock : in STD_LOGIC;
         opcode : in STD_LOGIC_VECTOR (5 downto 0);
+        func : in STD_LOGIC_VECTOR (5 downto 0);
         irWrite : out STD_LOGIC;
         memToReg : out std_logic_vector(1 downto 0);
         memWrite : out STD_LOGIC;
@@ -179,7 +180,8 @@ control_unit: control
         pcSrc       =>  main_pcsrc,
         clock       => main_clk,
         reset       => main_reset,
-        opcode      => tmpInstruction (31 downto 26)
+        opcode      => tmpInstruction (31 downto 26),
+        func        => tmpInstruction (5 downto 0)
         
    );
 

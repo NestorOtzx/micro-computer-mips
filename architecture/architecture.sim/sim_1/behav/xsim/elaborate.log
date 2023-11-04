@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_micro_computer_behav xil_defaultlib.cfg_tb_micro_computer -log elaborate.log 
+Running: E:/Software/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot cfg_tb_micro_computer_behav xil_defaultlib.cfg_tb_micro_computer -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -13,6 +13,7 @@ Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
 Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.mux2to1_32b [mux2to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_4b [mux4to1_4b_default]
 Compiling architecture behavioral of entity xil_defaultlib.bin2Hex [bin2hex_default]
 Compiling architecture behavioral of entity xil_defaultlib.counterDisplay [counterdisplay_default]
@@ -22,7 +23,6 @@ Compiling architecture behavioral of entity xil_defaultlib.ram [ram_default]
 Compiling architecture behavioral of entity xil_defaultlib.count_32bit [count_32bit_default]
 Compiling architecture behavioral of entity xil_defaultlib.control [control_default]
 Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
-Compiling architecture behavioral of entity xil_defaultlib.mux2to1_32b [mux2to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_5b [mux4to1_5b_default]
 Compiling architecture behavioral of entity xil_defaultlib.mux4to1_32b [mux4to1_32b_default]
 Compiling architecture behavioral of entity xil_defaultlib.registers [registers_default]

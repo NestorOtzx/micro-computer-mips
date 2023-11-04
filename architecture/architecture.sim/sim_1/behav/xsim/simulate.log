@@ -1,7 +1,0 @@
-Vivado Simulator 2020.2
-Time resolution is 1 ps
-ERROR: Index 512 out of bound 511 downto 0
-Time: 850 ns  Iteration: 4  Process: /tb_micro_computer/dut/U_MEMORY/line__42
-  File: C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd
-
-HDL Line: C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd:42

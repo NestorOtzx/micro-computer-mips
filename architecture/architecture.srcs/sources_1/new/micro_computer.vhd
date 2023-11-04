@@ -18,7 +18,7 @@ architecture Behavioral of micro_computer is
 
 component controlDisplay
     Port ( dataIn : in STD_LOGIC_VECTOR (15 downto 0);
-            clock, reset : STD_LOGIC;
+           clock, reset : STD_LOGIC;
            --counter : in STD_LOGIC_VECTOR (1 downto 0);
            enDigit : out STD_LOGIC_VECTOR (3 downto 0);
            sevenSeg : out STD_LOGIC_VECTOR (6 downto 0));
@@ -90,7 +90,7 @@ signal signal_memwr, singal_memrd: STD_LOGIC;
 
 signal signal_outenable: STD_LOGIC;
 signal signal_outregister: STD_LOGIC_VECTOR (31 downto 0);
-signal signal_memwrite: STD_LOGIC;
+signal signal_memwrite, signal_memread: STD_LOGIC;
 signal input_signal: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
 
@@ -98,7 +98,8 @@ begin
 
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_memin(9));
-input_signal <= input & "0000000000000";
+signal_memread <= (singal_memrd and not signal_memin(9));
+input_signal <= "000000000000" & input;
 
 
 U_MUX: mux2to1_32b
@@ -124,7 +125,7 @@ U_OUTREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
-    clk =>  divisor_counter(25),
+    clk =>  divisor_counter(22),
     reset => reset,
     reg_output => signal_outregister
 );
@@ -135,7 +136,7 @@ port map (    dir => signal_iord, --direccion de la instruccion
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
               mem_data => signal_memout,
-              clk => divisor_counter(25),
+              clk => divisor_counter(22),
               reset => reset
          );
 
@@ -156,7 +157,7 @@ arquitecture: main_arquitecture
         registerBout => signal_memin,
         mem_rd => singal_memrd,
         mem_wr => signal_memwr,   
-        main_clk        => divisor_counter(25),
+        main_clk        => divisor_counter(22),
         main_reset      => reset
     );
 

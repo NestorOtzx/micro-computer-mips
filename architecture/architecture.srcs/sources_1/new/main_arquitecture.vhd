@@ -154,7 +154,7 @@ signal tmpInstruction, tmpMemoryDataReg: STD_LOGIC_VECTOR (31 downto 0);
 --Otros--
 signal tmpAluOperation: STD_LOGIC_VECTOR (3 downto 0);
 signal inmediate: STD_LOGIC_VECTOR (15 downto 0);
-signal signExtendInmediate, shiftLeft2Inmediate, jumpSignal: STD_LOGIC_VECTOR (31 downto 0);
+signal signExtendInmediate, shiftLeft2Inmediate, jumpSignal, luiSignal: STD_LOGIC_VECTOR (31 downto 0);
 signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
 
@@ -229,11 +229,12 @@ U_MUX_RGDST: mux4to1_5b
                mux_out => tmpWriteRegister
                );
 
+luiSignal <= (tmpInstruction(15 downto 0) & "0000000000000000");
 U_MUX_MEMTOREG: mux4to1_32b
     port map ( mux_in0 => tmpAluoutOut,
                mux_in1 => tmpMemoryDataReg,
                mux_in2 => tmpPCout, --PC
-               mux_in3 => "00000000000000000000000000000000", --NADA
+               mux_in3 => luiSignal,
                mux_sel => main_memtoreg,
                mux_out => tmpWriteData
                );

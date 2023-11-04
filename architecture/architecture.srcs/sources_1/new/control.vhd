@@ -24,7 +24,7 @@ end control;
 
 architecture Behavioral of control is
     type stateType is (reset_st, fetch, decode, memAddr, memReadST, memWB,memWriteST,
-                        execute, aluWB, branchST, jumpST, jalST, jrST, addiST, writeRegistersST);
+                        execute, aluWB, branchST, jumpST, jalST, jrST, addiST, luiST, oriST, writeRegistersST);
 signal currentState, nextState : std_logic_vector (3 downto 0);
 signal estadoActual, estadoSiguiente : stateType;
 
@@ -70,6 +70,10 @@ begin
                         estadoSiguiente <= jalST;
                     when "001000"=>
                         estadoSiguiente <= addiST;
+                    when "001111" => 
+                        estadoSiguiente <= luiST;
+                    when "001101" =>
+                        estadoSiguiente <= oriST;
                     when others =>
                         estadoSiguiente <= fetch;
                     end case;
@@ -97,6 +101,10 @@ begin
                  estadoSiguiente <= fetch;
               when writeRegistersST =>
                    estadoSiguiente <= fetch;
+              when luiST =>
+                   estadoSiguiente <= fetch;
+              when oriST =>
+                   estadoSiguiente <= writeRegistersST;
               when others =>
                  estadoSiguiente <= fetch;
            end case;    
@@ -299,6 +307,34 @@ begin
                    pcSrc <= "00";
                    aluOP <= "000";
                    aluSrcB <= "00";
+                   aluSrcA <= '1';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when luiST =>
+                   irWrite <= '0';
+                   memToReg <= "11";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "000";
+                   aluSrcB <= "00";
+                   aluSrcA <= '0';
+                   regWrite <= '1';
+                   regDst  <= "00";
+              when oriST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "011";
+                   aluSrcB <= "10";
                    aluSrcA <= '1';
                    regWrite <= '0';
                    regDst  <= "00";

@@ -15,6 +15,7 @@ architecture tb of tb_micro_computer is
               reset   : in std_logic;
               input   : in std_logic_vector (19 downto 0);
               leds    : out std_logic_vector (15 downto 0);
+              debug   : out std_logic_vector (31 downto 0);
               enDigit : out std_logic_vector (3 downto 0);
               display : out std_logic_vector (6 downto 0));
     end component;
@@ -23,6 +24,7 @@ architecture tb of tb_micro_computer is
     signal reset   : std_logic;
     signal input   : std_logic_vector (19 downto 0);
     signal leds    : std_logic_vector (15 downto 0);
+    signal debug   : std_logic_vector (31 downto 0);
     signal enDigit : std_logic_vector (3 downto 0);
     signal display : std_logic_vector (6 downto 0);
 
@@ -37,6 +39,7 @@ begin
               reset   => reset,
               input   => input,
               leds    => leds,
+              debug   => debug,
               enDigit => enDigit,
               display => display);
 

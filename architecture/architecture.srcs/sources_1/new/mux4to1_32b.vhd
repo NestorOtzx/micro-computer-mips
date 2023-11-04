@@ -19,4 +19,3 @@ begin
                    mux_in2 when "10",
                    mux_in3 when others;
 end Behavioral;
-

@@ -24,7 +24,8 @@ end control;
 
 architecture Behavioral of control is
     type stateType is (reset_st, fetch, decode, memAddr, memReadST, memWB,memWriteST,
-                        execute, aluWB, branchST, jumpST, jalST, jrST, addiST, luiST, oriST, writeRegistersST);
+                        execute, aluWB, branchST, jumpST, jalST, jrST, addiST, luiST, oriST, writeRegistersST,
+                        addiuST, andiST, sltiST, sltiuST);
 signal currentState, nextState : std_logic_vector (3 downto 0);
 signal estadoActual, estadoSiguiente : stateType;
 
@@ -70,6 +71,14 @@ begin
                         estadoSiguiente <= jalST;
                     when "001000"=>
                         estadoSiguiente <= addiST;
+                    when "001001"=>
+                        estadoSiguiente <= addiuST;
+                    when "001100"=>
+                        estadoSiguiente <= andiST;
+                    when "001010"=>
+                        estadoSiguiente <= sltiST;
+                    when "001011"=>
+                        estadoSiguiente <= sltiuST;
                     when "001111" => 
                         estadoSiguiente <= luiST;
                     when "001101" =>
@@ -104,6 +113,14 @@ begin
               when luiST =>
                    estadoSiguiente <= fetch;
               when oriST =>
+                   estadoSiguiente <= writeRegistersST;
+              when addiuST =>
+                   estadoSiguiente <= writeRegistersST;
+              when andiST =>
+                   estadoSiguiente <= writeRegistersST;
+              when sltiST =>
+                   estadoSiguiente <= writeRegistersST;
+              when sltiuST =>
                    estadoSiguiente <= writeRegistersST;
               when others =>
                  estadoSiguiente <= fetch;
@@ -166,7 +183,7 @@ begin
                    branch <= '0';
                    pcSrc <= "00";
                    aluOP <= "000";
-                   aluSrcB <= "11";
+                   aluSrcB <= "10";
                    aluSrcA <= '0';
                    regWrite <= '0';
                    regDst  <= "00";
@@ -334,7 +351,63 @@ begin
                    branch <= '0';
                    pcSrc <= "00";
                    aluOP <= "011";
+                   aluSrcB <= "11";
+                   aluSrcA <= '1';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when addiuST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "000";
+                   aluSrcB <= "11";
+                   aluSrcA <= '1';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when andiST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "100";
                    aluSrcB <= "10";
+                   aluSrcA <= '1';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when sltiST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "101";
+                   aluSrcB <= "10";
+                   aluSrcA <= '1';
+                   regWrite <= '0';
+                   regDst  <= "00";
+              when sltiuST =>
+                   irWrite <= '0';
+                   memToReg <= "00";
+                   memWrite <= '0';
+                   memRead <= '0';
+                   IorD <= '0';
+                   pcWrite <= '0';
+                   branch <= '0';
+                   pcSrc <= "00";
+                   aluOP <= "101";
+                   aluSrcB <= "11";
                    aluSrcA <= '1';
                    regWrite <= '0';
                    regDst  <= "00";

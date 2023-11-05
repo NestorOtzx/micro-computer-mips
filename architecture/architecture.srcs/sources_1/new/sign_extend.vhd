@@ -8,12 +8,15 @@ entity sign_extend is
 end sign_extend;
 architecture Behavioral of sign_extend is
 begin
+
 process(input)
 begin
+
 if (input(15)='1') then --si es negativo
     output<="1111111111111111"&input; --concatenar
 else
-    output<="0000000000000000"&Input;
+    output<="0000000000000000"&input;
 end if;
 end process;
+
 end Behavioral;

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Nov  7 18:57:47 2023
+# Process ID: 1796
+# Current directory: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_uart_rx_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/quintus/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_uart_rx_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Tue Nov  7 18:57:47 2023...

@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.std_logic_unsigned.ALL;
 
 entity c_uart_tx is
     port (
@@ -15,36 +14,17 @@ end c_uart_tx;
 
 architecture Behavioral of c_uart_tx is
 
-signal UART_CLK: STD_LOGIC := '0';
-signal ucounter : STD_LOGIC_VECTOR(31 downto 0);
-
 type stateType is (idleST, startST, dato0ST, dato1ST, dato2ST, dato3ST, dato4ST, dato5ST, dato6ST, dato7ST, stopST);
 signal estadoActual, estadoSiguiente : stateType;
 
 begin
-
-        
-    process (clock, reset)
-        begin
-            if (reset = '1') then
-                ucounter <= (others => '0');
-            else
-                if (clock'event and clock ='1') then
-                    ucounter <= (ucounter + '1');
-                    if (ucounter = "00000000000000000001010001010000") then
-                        UART_CLK <= not UART_CLK;
-                        ucounter <= (others => '0');        
-                    end if;
-                end if;
-            end if;    
-    end process;
-    
-    stateRegister: process (UART_CLK, reset)
+  
+    stateRegister: process (clock, reset)
     begin 
         if (reset = '1') then
             estadoActual <= idleST;
         else
-            if (UART_CLK'event and UART_CLK ='1') then
+            if (clock'event and clock ='1') then
                 estadoActual <= estadoSiguiente;
             end if;
         end if;

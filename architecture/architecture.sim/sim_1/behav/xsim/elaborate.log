@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot c_uart_tx_behav xil_defaultlib.c_uart_tx -log elaborate.log 
+Running: C:/Xilinx/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 64f1c2654afb44309c2e99144b43878c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot c_uart_top_behav xil_defaultlib.c_uart_top -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -12,5 +12,8 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
-Compiling architecture behavioral of entity xil_defaultlib.c_uart_tx
-Built simulation snapshot c_uart_tx_behav
+Compiling architecture behavioral of entity xil_defaultlib.uart_clockgen [uart_clockgen_default]
+Compiling architecture behavioral of entity xil_defaultlib.c_uart_tx [c_uart_tx_default]
+Compiling architecture behavioral of entity xil_defaultlib.c_uart_rx [c_uart_rx_default]
+Compiling architecture behavioral of entity xil_defaultlib.c_uart_top
+Built simulation snapshot c_uart_top_behav

@@ -64,18 +64,26 @@ begin
         -- EDIT Add stimuli here
         wait for 20 us;
         
-        input <= "10000000000000000101";
+        input <= "10000000000000000010";
         
-        wait for 20 us;
+        wait for 8 us;
         
-        input <= "00000000000000000111";
+        input <= "10000000000000000011";
         
-        wait for 20 us;
+        wait for 8 us;
         
-        input <= "00000000000000000001";
+        input <= "10000000000000000001";
+        
+        wait for 8 us;
+        
+        input <= "10000000000000000011";
+        
+        wait for 8 us;
+        
+        input <= "10000000000000000001";
         
         
-        wait for 100 us;
+        wait for 1000 us;
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
         wait;

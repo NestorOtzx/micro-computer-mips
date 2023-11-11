@@ -40,7 +40,10 @@ opcodes={"add": 0x0,
          "mult": 0x0,
          "multu": 0x0,
          "sra": 0x0,
-         }
+#Pseudo instrucciones
+         "mul": 0x0,
+}
+
 opcodeFuncs={"add": 0x20,
          "addu": 0x21,
          "and": 0x24,
@@ -61,8 +64,10 @@ opcodeFuncs={"add": 0x20,
          "mfc0": 0x0,
          "mult": 0x18,
          "multu": 0x19,
-         "sra": 0x3
-         }
+         "sra": 0x3,
+#Pseudo instrucciones
+         "mul": 0x14,
+}
 
 registros={
           "$zero": 0,
@@ -99,6 +104,7 @@ registros={
           "$fp": 30,
           "$ra": 31
 }
+
 tipos={  "add": "R",
          "addi": "I",
          "addiu": "I",
@@ -128,7 +134,7 @@ tipos={  "add": "R",
          "sc": "I",
          "sh": "I",
          "sw": "I",
-         "sub": "I",
+         "sub": "R",
          "subu": "R",
 #ARITHMETIC CORE INSTRUCTION SET
          "div": "R",
@@ -139,13 +145,16 @@ tipos={  "add": "R",
          "mult": "R",
          "multu": "R",
          "sra": "R",
-         }
+#Pseudo instrucciones
+         "mul": "R",
+}
+
 etiquetas = {}
 
 def main():
     print("Pulse CTRL+D para salir :D")
 
-    indexDeLineas = 0x00400000
+    indexDeLineas = 0x00000000
     comandos = []
     for linea in stdin:
         linea = linea.lower()
@@ -158,126 +167,138 @@ def main():
                 linea = division[0]
             else: #si estan en una linea vacia
                 continue
+
+######PELIGROOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!
         
         if ":" in linea: #si es una etiqueta
-            etiquetas[linea.replace(":", "")] = indexDeLineas+4
+            etiqueta = ""
+            for x  in range(len(linea)):
+                if linea[x] != " " and linea[x] != ':':
+                    etiqueta += linea[x]
+            etiquetas[etiqueta] = indexDeLineas
         elif len(linea)>0:
             comandos.append(linea.split())
-            indexDeLineas+=4
+            indexDeLineas+=1
             
     for i in range(0, len(comandos)):
-        convertir(comandos[i], i*4+0x00400000)
+        convertir(comandos[i], i)
+        #print("et", etiquetas)
     
 def convertir(linea, idLinea):
   comandos = linea
   
-  tipo = tipos[comandos[0]]
+  #print(linea)
+  
+  if len(comandos) != 0:
+      tipo = tipos[comandos[0]]
 
-  if (tipo == "I"): #TIPO I
-    opcode = getOpcode(comandos[0]) 
+      if (tipo == "I"): #TIPO I
+        opcode = getOpcode(comandos[0]) 
 
-    registroRS = 0 #rs
-    registroRT = getRegistro(comandos[1]) #rt
-    strInmediato = "" #inmediato pero en string
+        registroRS = 0 #rs
+        registroRT = getRegistro(comandos[1]) #rt
+        strInmediato = "" #inmediato pero en string
 
-    if (len(comandos) > 3): 
-        registroRS = getRegistro(comandos[2]) #obtiene el numero del registro en el segundo parametro
-        if (opcode == 4): #si es un beq el opcode es 4
-            pcsalto = etiquetas[comandos[3]]
-            pc = idLinea
-            y = (pcsalto-pc-4)/4
-            strInmediato = str(int(y))
-        else: #si no es un beq            
-            strInmediato = comandos[3]
-    else:
-        if "(" in comandos[2]: #tiene ofset
-            dirOfset = comandos[2].replace(")", "").split("(")
-            strInmediato = dirOfset[0]
-            registroRS=getRegistro(dirOfset[1])
-        elif "$" in comandos[2]:    #es un registro
+        if (len(comandos) > 3): 
+            registroRS = getRegistro(comandos[2]) #obtiene el numero del registro en el segundo parametro
+            if (opcode == 4): #si es un beq el opcode es 4
+                registroRS = getRegistro(comandos[1]) #obtiene el numero del registro en el segundo parametro
+                registroRT = getRegistro(comandos[2]) #obtiene el numero del registro en el segundo parametro
+
+                pcsalto = etiquetas[comandos[3]]
+                pc = idLinea
+                y = (pcsalto-pc-1)
+                strInmediato = str(int(y))
+            else: #si no es un beq            
+                strInmediato = comandos[3]
+        else:
+            if "(" in comandos[2]: #tiene ofset
+                dirOfset = comandos[2].replace(")", "").split("(")
+                strInmediato = dirOfset[0]
+                registroRS=getRegistro(dirOfset[1])
+            elif "$" in comandos[2]:    #es un registro
+                registroRS = 0
+                strInmediato = str(getRegistro(comandos[2]))
+            else:                       #es un numero
+                registroRS = 0
+                strInmediato = comandos[2]
+        
+        inmediate = 0
+        valsInm = strInmediato.split("0x")
+        if (len(valsInm) > 1): #si esta en hexadecimal, se convierte de string hexadecimal a decimal
+          inmediate = int(strInmediato, 16)
+        else:
+          inmediate = int(strInmediato) 
+
+        #imprime todo en binario
+        print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(registroRS, 5)}{decimalAbinario(registroRT, 5)}{decimalAbinario(inmediate, 16, True)}")
+
+        
+      elif (tipo == "R"):#TIPO R
+        opcode = getOpcode(comandos[0])
+        registroRS = getRegistro(comandos[1])
+        registroRT = 0
+        registroRD = 0
+        strShamt = "0"
+        funct = getOpcodeFuncs(comandos[0])
+
+        if (opcode == 0 and (funct == 2 or funct == 0)): #sll o srl
             registroRS = 0
-            strInmediato = str(getRegistro(comandos[2]))
-        else:                       #es un numero
-            registroRS = 0
-            strInmediato = comandos[2]
-    
-    inmediate = 0
-    valsInm = strInmediato.split("0x")
-    if (len(valsInm) > 1): #si esta en hexadecimal, se convierte de string hexadecimal a decimal
-      inmediate = int(strInmediato, 16)
-    else:
-      inmediate = int(strInmediato) 
-
-    #imprime todo en binario
-    print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(registroRS, 5)}{decimalAbinario(registroRT, 5)}{decimalAbinario(inmediate, 16, True)}")
-
-    
-  elif (tipo == "R"):#TIPO R
-    opcode = getOpcode(comandos[0])
-    registroRS = getRegistro(comandos[1])
-    registroRT = 0
-    registroRD = 0
-    strShamt = "0"
-    funct = getOpcodeFuncs(comandos[0])
-
-    if (opcode == 0 and (funct == 2 or funct == 0)): #sll o srl
-        registroRS = 0
-        registroRD = getRegistro(comandos[1])
-        registroRT = getRegistro(comandos[2])
-        strShamt = comandos[3]
-
-    else: #Los demás tipo R
-        n_comandos = len(comandos)
-
-        if (opcode == 0 and funct == 3): #sra
-            print("sra")
             registroRD = getRegistro(comandos[1])
             registroRT = getRegistro(comandos[2])
-            registroRS = 0
             strShamt = comandos[3]
-        if (opcode == 0 and funct == 8): #jr
-            registroRS = getRegistro(comandos[1])
-            registroRT = 0
-            registroRD = 0
-        elif (opcode == 0x10): #mfc0
-            registroRD = getRegistro(comandos[1])
-            registroRS = getRegistro(comandos[2])
-        elif (n_comandos > 3):
-            registroRD = getRegistro(comandos[1])
-            registroRS = getRegistro(comandos[2])
-            registroRT = getRegistro(comandos[3])
-            if (n_comandos > 4):
-                strShamt = comandos[4]
-        elif (n_comandos > 2):
-            registroRS = getRegistro(comandos[1])
-            registroRT = getRegistro(comandos[2])
-        elif (n_comandos > 1):
-            registroRD = getRegistro(comandos[1])
-            registroRS = 0
-            
-            
-    shamt=0
-    valsShamt = strShamt.split("0x")
-    if (len(valsShamt) > 1):
-        shamt = int(strShamt, 16)
-    else:
-        shamt = int(strShamt)
 
-    #imprime todo en binario
-    print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(registroRS, 5)}{decimalAbinario(registroRT, 5)}{decimalAbinario(registroRD, 5)}{decimalAbinario(shamt, 5)}{decimalAbinario(funct, 6)}")
+        else: #Los demás tipo R
+            n_comandos = len(comandos)
 
-  else: #TIPO J
-    opcode = getOpcode(comandos[0])
-    valsInm = comandos[1].split("0x")
-    
-    if (len(valsInm) > 1): #si esta en hexadecimal, se convierte de string hexadecimal a decimal
-      inmediate = int(comandos[1], 16)
-    else:
-      inmediate = etiquetas[comandos[1]]>>2 #traducir etiqueta 
-    
-    print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(inmediate, 26)}")
- 
+            if (opcode == 0 and funct == 3): #sra
+                print("sra")
+                registroRD = getRegistro(comandos[1])
+                registroRT = getRegistro(comandos[2])
+                registroRS = 0
+                strShamt = comandos[3]
+            if (opcode == 0 and funct == 8): #jr
+                registroRS = getRegistro(comandos[1])
+                registroRT = 0
+                registroRD = 0
+            elif (opcode == 0x10): #mfc0
+                registroRD = getRegistro(comandos[1])
+                registroRS = getRegistro(comandos[2])
+            elif (n_comandos > 3):
+                registroRD = getRegistro(comandos[1])
+                registroRS = getRegistro(comandos[2])
+                registroRT = getRegistro(comandos[3])
+                if (n_comandos > 4):
+                    strShamt = comandos[4]
+            elif (n_comandos > 2):
+                registroRS = getRegistro(comandos[1])
+                registroRT = getRegistro(comandos[2])
+            elif (n_comandos > 1):
+                registroRD = getRegistro(comandos[1])
+                registroRS = 0
+                
+        shamt=0
+        valsShamt = strShamt.split("0x")
+        if (len(valsShamt) > 1):
+            shamt = int(strShamt, 16)
+        else:
+            shamt = int(strShamt)
 
+        #imprime todo en binario
+        print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(registroRS, 5)}{decimalAbinario(registroRT, 5)}{decimalAbinario(registroRD, 5)}{decimalAbinario(shamt, 5)}{decimalAbinario(funct, 6)}")
+
+      else: #TIPO J
+        opcode = getOpcode(comandos[0])
+        valsInm = comandos[1].split("0x")
+        
+        if (len(valsInm) > 1): #si esta en hexadecimal, se convierte de string hexadecimal a decimal
+          inmediate = int(comandos[1], 16)
+        else:
+            #print("etiquetas[comandos[1]]", etiquetas[comandos[1]])
+
+            inmediate = etiquetas[comandos[1]] #traducir etiqueta(acá había un cáculo raro)
+        #print("inmediato", inmediate)
+        print(f"{decimalAbinario(opcode, 6)}{decimalAbinario(inmediate, 26)}")
 
 def getOpcode(opcode):
   return opcodes[opcode.lower()]
@@ -340,42 +361,4 @@ def complementoa2(b):
 def neg(c): #NOT
     return '1' if (c == '0') else '0'
 
-
 main()
-
-"""
-Codigo de prueba:
-
-lui $s0, 0x1000
-
-ori $s0, $s0, 0x8000
-
-
-addi $s1, $0, 3
-addi $s2, $0, 200 #comentario de prueba
-add $s1, $s1, $s2
-
-
-Bucle:
-    lw $t1, 0($s0)    
-    addi $t1, $t1, 1
-    sw $t1, 0($s0)
-    addi $s0, $s0, 4
-    addi $t0, $t0, 1
-    beq $t0, $s2, Repetir
-    j Bucle
-Repetir:
-    addi $s1, $s1, -1
-    beq $s1, $0, End
-    addi $t0, $0, 0
-    lui $s0, 0x1000
-    ori $s0, $s0, 0x8000
-    j Bucle
-End:
-    jr $ra
-
-----Otro codigo----
-add $s0, $s1, $t1
-
-"""
-

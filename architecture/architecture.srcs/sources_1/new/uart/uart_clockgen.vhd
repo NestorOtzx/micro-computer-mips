@@ -23,7 +23,8 @@ begin
             else
                 if (clock'event and clock ='1') then
                     ucounter <= (ucounter + '1');
-                    if (ucounter = "00000000000000000001010001010000") then
+                    --if (ucounter = "00000000000000000001010001010000") then
+                    if (ucounter = "00000100000000000000000000000000") then --para probar con la tarjeta
                         UART_CLK <= not UART_CLK;
                         ucounter <= (others => '0');        
                     end if;

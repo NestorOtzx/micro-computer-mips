@@ -28,7 +28,7 @@ architecture tb of tb_micro_computer is
     signal enDigit : std_logic_vector (3 downto 0);
     signal display : std_logic_vector (6 downto 0);
 
-    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 10 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -63,27 +63,65 @@ begin
 
         -- EDIT Add stimuli here
         wait for 20 us;
-        
+ --------------------------------------
+        -- INGRESAR EL N
+        input <= "00000000000000000010";
+        wait for 100 us;
         input <= "10000000000000000010";
+        wait for 500 ns;
         
-        wait for 8 us;
+        -- INGRESAR EL A[1]
+         input <= "00000000000000000111";
+        wait for 100 us;
+        input <= "10000000000000000111";
+        wait for 500 ns;
         
-        input <= "10000000000000000011";
+        -- INGRESAR EL A[2]
+        input <= "00000000000000001010";
+        wait for 100 us;
+        input <= "10000000000000001010";
+        wait for 500 ns;
+
+--------------------------------------
+        -- INGRESAR EL B[1]
+         input <= "00000000000000001000";
+        wait for 100 us;
+        input <= "10000000000000001000";
+        wait for 500 ns;
         
-        wait for 8 us;
+        -- INGRESAR EL B[2]
+        input <= "00000000000000001011";
+        wait for 100 us;
+        input <= "10000000000000001011";
+        wait for 500 ns;
         
+        -- INGRESAR EL B[3]
+        input <= "00000000000000000001";
+        wait for 100 us;
         input <= "10000000000000000001";
+        wait for 500 ns;
         
-        wait for 8 us;
+--------------------------------------
+        -- INGRESAR EL X[1]
+        input <= "00000000000000101111";
+        wait for 100 us;
+        input <= "10000000000000101111";
+        wait for 500 ns;
         
-        input <= "10000000000000000011";
+        -- INGRESAR EL X[2]
+        input <= "00000000000000011111";
+        wait for 100 us;
+        input <= "10000000000000011111";
+        wait for 500 ns;
         
-        wait for 8 us;
+        -- INGRESAR EL X[3]
+        input <= "00000000000001011111";
+        wait for 100 us;
+        input <= "10000000000001011111";
+        wait for 500 ns;
         
-        input <= "10000000000000000001";
-        
-        
-        wait for 1000 us;
+        input <= "00000000000000000000";
+        wait for 10000 us;
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
         wait;

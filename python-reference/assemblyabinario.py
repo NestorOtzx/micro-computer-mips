@@ -160,6 +160,7 @@ def main():
         linea = linea.lower()
         linea = linea.replace(",", "") #quitar comas
         linea = linea.replace("\n", "") #quitar \n
+        linea = linea.replace("\t", " ") #quitar \t
 
         if ("#" in linea): #manejar comentarios
             division = linea.split("#")
@@ -179,10 +180,11 @@ def main():
         elif len(linea)>0:
             comandos.append(linea.split())
             indexDeLineas+=1
-            
+
+    print("et", etiquetas)        
     for i in range(0, len(comandos)):
         convertir(comandos[i], i)
-        #print("et", etiquetas)
+    
     
 def convertir(linea, idLinea):
   comandos = linea

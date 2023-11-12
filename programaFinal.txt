@@ -1,0 +1,92 @@
+addi $sp, $0, 0x01ff   #definiciones basicas
+addi $gp, $0, 0x0100   #definiciones basicas
+main:
+    jal getinput
+    addi $t1, $0, 0x0ffe
+    sw $t1, 0x200($0)
+    addi $a0, $0, 0x0100
+    addi $a1, $0, 0x01af
+    jal printMemoria
+    j fin
+printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
+    addi $t0, $a0, 0
+    addi $t1, $a1, 0
+    for_pMemoria:
+        beq $t0, $t1, break_pMemoria
+        lw $t2, 0($t0)
+        sw $t2, 0x200($0)
+        addi $t0, $t0, 1
+        j for_pMemoria
+    break_pMemoria:
+        jr $ra
+input:
+	lui $t0, 0x0008
+	addi $t4, $zero, 0x1
+    while:
+        lw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_input
+        j while
+    salir_input:
+        sub $v0, $t1, $t0
+        jr $ra
+resetGP: 	
+    addi $gp, $0, 0x0100	
+    jr $ra
+getinput: 
+	addi	$sp, $sp, -1
+	sw 		$ra, 0($sp)
+	jal    	input 			#lee N
+	add    	$s0, $0, $v0
+	sw 		$s0, 0($gp)		#guarda N
+    sw      $s0, 0x200($0)
+	addi	$gp, $gp, 4 	#reserva espacio para las direcciones de los 4 arreglos
+	addi 	$gp, $gp, 1
+	addi 	$t0, $0, -1 	#A[0] = -1 ya que este valor no se usa en el algoritmo
+	sw 		$t0, 0($gp)
+	addi $s1, $0, 0 		#i = 0
+	addi $s7, $gp, 0 		#guardar la posicion inicial de A en s7
+	for_arrA:
+		beq 	$s0, $s1, end_for_arrA
+		jal    	input 			#lee A[i]
+        sw      $v0, 0x200($0)  #imprime A[i]
+		add    	$t0, $0, $v0
+		addi 	$gp, $gp, 1		#avanzar el global pointer
+		sw 		$t0, 0($gp)		#guarda A[i]
+		addi 	$s1, $s1, 1 	#i++
+		j for_arrA
+    end_for_arrA:
+    addi 	$s6, $gp, 1 #guardar la posicion inicial de B en s6
+	addi 	$s1, $0, -1 #i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
+	for_arrB:
+		beq 	$s0, $s1, end_for_arrB
+		jal    	input 			#lee B[i]
+        sw      $v0, 0x200($0)  #imprime B[i]
+		add    	$t0, $0, $v0
+		addi 	$gp, $gp, 1		#avanzar el global pointer
+		sw 		$t0, 0($gp)		#guarda B[i]
+		addi 	$s1, $s1, 1 	#i++
+		j for_arrB
+	end_for_arrB:
+    addi 	$s5, $gp, 1 		#guardar la posicion inicial de B en s6
+    addi 	$s1, $0, -1 		#i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
+    for_arrX:
+        beq 	$s0, $s1, end_for_arrX
+        jal    	input 			#lee B[i]
+        sw      $v0, 0x200($0)  #imprime X[i]
+        add    	$t0, $0, $v0
+        addi 	$gp, $gp, 1		#avanzar el global pointer
+        sw 		$t0, 0($gp)		#guarda B[i]
+        addi 	$s1, $s1, 1 	#i++
+        j for_arrX
+    end_for_arrX:
+    addi 	$s4, $gp, 1 		#guardar direccion del arreglo Y
+    jal 	resetGP 
+    sw 		$s7, 1($gp) 		#primer elemento de A
+    sw 		$s6, 2($gp) 		#primer elemento de B
+    sw 		$s5, 3($gp) 		#primer elemento de X
+    sw 		$s4, 4($gp)		    #primer elemento de Y
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+fin:

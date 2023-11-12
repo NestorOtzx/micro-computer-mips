@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699724994">
-  <File Type="ROUTE-PWR" Name="c_uart_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="c_uart_top.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="c_uart_top_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="c_uart_top_reports.tcl"/>
   <File Type="BITSTR-MSK" Name="c_uart_top.msk"/>
-  <File Type="ROUTE-CLK" Name="c_uart_top_clock_utilization_routed.rpt"/>
   <File Type="RDI-RDI" Name="c_uart_top.vdi"/>
   <File Type="BG-BIT" Name="c_uart_top.bit"/>
   <File Type="BG-DRC" Name="c_uart_top.drc"/>
@@ -14,33 +11,18 @@
   <File Type="BITSTR-RBT" Name="c_uart_top.rbt"/>
   <File Type="BITSTR-NKY" Name="c_uart_top.nky"/>
   <File Type="BITSTR-BMM" Name="c_uart_top_bd.bmm"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="c_uart_top_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MMI" Name="c_uart_top.mmi"/>
   <File Type="BITSTR-SYSDEF" Name="c_uart_top.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="c_uart_top.ltx"/>
+  <File Type="RCFI_FILE" Name="c_uart_top.rcfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="OPT-DRC" Name="c_uart_top_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="c_uart_top.hwdef"/>
-  <File Type="PLACE-IO" Name="c_uart_top_io_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="c_uart_top_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="c_uart_top_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="c_uart_top_control_sets_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="c_uart_top_incremental_reuse_pre_placed.rpt"/>
-  <File Type="ROUTE-DRC" Name="c_uart_top_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="c_uart_top_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="c_uart_top_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="c_uart_top_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="c_uart_top_route_status.pb"/>
   <File Type="ROUTE-DCP" Name="c_uart_top_routed.dcp"/>
   <File Type="ROUTE-ERROR-DCP" Name="c_uart_top_routed_error.dcp"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="c_uart_top_routed_bb.dcp"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="c_uart_top_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="c_uart_top_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="c_uart_top_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW" Name="c_uart_top_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="c_uart_top_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="c_uart_top_bus_skew_routed.rpx"/>
   <File Type="OPT-DCP" Name="c_uart_top_opt.dcp"/>
   <File Type="PLACE-DCP" Name="c_uart_top_placed.dcp"/>
   <File Type="PWROPT-DCP" Name="c_uart_top_pwropt.dcp"/>
@@ -48,11 +30,7 @@
   <File Type="PHYSOPT-DCP" Name="c_uart_top_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="c_uart_top_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="c_uart_top_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="c_uart_top_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="c_uart_top_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="c_uart_top_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="c_uart_top.pdi"/>
-  <File Type="RCFI_FILE" Name="c_uart_top.rcfi"/>
   <File Type="CFI_FILE" Name="c_uart_top.cfi"/>
   <File Type="RNPI_FILE" Name="c_uart_top.rnpi"/>
   <File Type="NPI_FILE" Name="c_uart_top.npi"/>

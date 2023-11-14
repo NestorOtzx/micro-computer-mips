@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/proyectos/vivado/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'ram'

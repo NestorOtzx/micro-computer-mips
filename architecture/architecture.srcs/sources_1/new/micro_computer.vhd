@@ -126,7 +126,7 @@ U_OUTREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
-    --clk =>  divisor_counter(22),
+    --clk =>  divisor_counter(20),
     clk => clk,
     reset => reset,
     reg_output => signal_outregister
@@ -138,7 +138,7 @@ port map (    dir => signal_iord, --direccion de la instruccion
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
               mem_data => signal_memout,
-              --clk => divisor_counter(22),
+              --clk => divisor_counter(20),
               clk => clk,
               reset => reset
          );
@@ -160,7 +160,7 @@ arquitecture: main_arquitecture
         registerBout => signal_memin,
         mem_rd => singal_memrd,
         mem_wr => signal_memwr,   
-        --main_clk        => divisor_counter(22),
+        --main_clk        => divisor_counter(20),
         main_clk        => clk,
         main_reset      => reset
     );

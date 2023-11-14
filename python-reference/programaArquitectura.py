@@ -23,50 +23,41 @@ def y(n):
   global a, Y
   ans = 0
   for i in range(1, n+1):
-    
     val = Y[n-i] #leer Y de la memoria *
     ans += -a[i]*val + calcSumX(i) #calcular la sumatoria
-    print(f"val: {-a[i]*val}")
-    print(f"calcX: {calcSumX(i)}")
+    # print(f"calcX: {calcSumX(i)}")
   return ans
 
 def calc():
-  global N, Y
-
-  Y.append(1)
-  
-  for i in range (1,3):
-    Y.append(y(i)) #guardar en memoria el valor de Y(i)
-
-  return Y[len(Y)-1]
+  global N, Y, b, Xarr
+  Y.append(b[0]*Xarr[0])
+  for i in range (1,N+1):
+    Y.append(y(i)) # guardar en memoria el valor de Y(i)
+  return Y[-1]
 
 def getinput():
     global a, b, Xarr, N
-    N = int(input("Ingrese un N: "))
+    # N = int(input("Ingrese un N: "))
 
-    print("Ingresando A:")
-    a.append(-1)
-    for v in range(N):
-      val = int(input())
-      a.append(val)
+    # print("Ingresando A:")
+    # a.append(-1)
+    # for v in range(N):
+    #   val = int(input())
+    #   a.append(val)
 
-    print("Ingresando B:")
-    for v in range(N+1):
-      val = int(input())
-      b.append(val)
-      
-    Xarr =  [1, 1, 1, 1, 1]
+    # print("Ingresando B:")
+    # for v in range(N+1):
+    #   val = int(input())
+    #   b.append(val)
+    a = [0, 7, 10]
+    b = [8, 11, 1]
+    Xarr =  [47, 31, 95]
+    N = 2
     
 def main():
   global N, Y
   getinput()
-  Y.append(1)
-  Y.append(1)
-  
-  print(f"v: {y(2)}")
-  #print(calc())
-  print(Y)
-
+  print(calc())
   
 main()
 

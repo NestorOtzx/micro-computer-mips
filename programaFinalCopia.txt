@@ -1,0 +1,175 @@
+addi $sp, $0, 0x01ff   #definiciones basicas
+addi $gp, $0, 0x0100   #definiciones basicas
+main:
+    jal     getinput
+    addi $s1, $0, 1
+    lw $t0, 4($gp)
+    sw $s1, 0($t0)
+    sw $s1, 1($t0)
+    sw $s1, 2($t0)
+    sw $s1, 3($t0)
+    addi $a0, $0, 0x100
+    addi $a1, $0, 0x15f
+    jal     printMemoria
+    j       fin 
+printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
+    addi $t0, $a0, 0
+    addi $t1, $a1, 0
+    for_pMemoria:
+        beq $t0, $t1, break_pMemoria
+        lw $t2, 0($t0)
+        sw $t2, 0x200($0)
+        addi $t0, $t0, 1
+        j for_pMemoria
+    break_pMemoria:
+        jr $ra
+input:
+	lui $t0, 0x0008
+	addi $t4, $zero, 0x1
+    while:
+        lw $t1, 0x200($0)
+	    sw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_input
+        j while
+    salir_input:
+        sub $v0, $t1, $t0
+        addi $t0, $0, 0
+        sw $t0, 0x200($0) 
+        jr $ra
+resetGP: 	
+    addi $gp, $0, 0x0100	
+    jr $ra
+getinput: 
+	addi	$sp, $sp, -1
+	sw 		$ra, 0($sp)
+	jal    	input 			#lee N
+	add    	$s0, $0, $v0
+	sw 		$s0, 0($gp)		#guarda N
+    sw      $s0, 0x200($0)
+	addi	$gp, $gp, 4 	#reserva espacio para las direcciones de los 4 arreglos
+	addi 	$gp, $gp, 1
+	addi 	$t0, $0, -1 	#A[0] = -1 ya que este valor no se usa en el algoritmo
+	sw 		$t0, 0($gp)
+	addi $s1, $0, 0 		#i = 0
+	addi $s7, $gp, 0 		#guardar la posicion inicial de A en s7
+	for_arrA:
+		beq 	$s0, $s1, end_for_arrA
+		jal    	input 			#lee A[i]
+        sw      $v0, 0x200($0)  #imprime A[i]
+		add    	$t0, $0, $v0
+		addi 	$gp, $gp, 1		#avanzar el global pointer
+		sw 		$t0, 0($gp)		#guarda A[i]
+		addi 	$s1, $s1, 1 	#i++
+		j for_arrA
+    end_for_arrA:
+    addi 	$s6, $gp, 1 #guardar la posicion inicial de B en s6
+	addi 	$s1, $0, -1 #i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
+	for_arrB:
+		beq 	$s0, $s1, end_for_arrB
+		jal    	input 			#lee B[i]
+        sw      $v0, 0x200($0)  #imprime B[i]
+		add    	$t0, $0, $v0
+		addi 	$gp, $gp, 1		#avanzar el global pointer
+		sw 		$t0, 0($gp)		#guarda B[i]
+		addi 	$s1, $s1, 1 	#i++
+		j for_arrB
+	end_for_arrB:
+    addi 	$s5, $gp, 1 		#guardar la posicion inicial de B en s6
+    addi 	$s1, $0, -1 		#i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
+    for_arrX:
+        beq 	$s0, $s1, end_for_arrX
+        jal    	input 			#lee B[i]
+        sw      $v0, 0x200($0)  #imprime X[i]
+        add    	$t0, $0, $v0
+        addi 	$gp, $gp, 1		#avanzar el global pointer
+        sw 		$t0, 0($gp)		#guarda B[i]
+        addi 	$s1, $s1, 1 	#i++
+        j for_arrX
+    end_for_arrX:
+    addi 	$s4, $gp, 1 		#guardar direccion del arreglo Y
+    jal 	resetGP 
+    sw 		$s7, 1($gp) 		#primer elemento de A
+    sw 		$s6, 2($gp) 		#primer elemento de B
+    sw 		$s5, 3($gp) 		#primer elemento de X
+    sw 		$s4, 4($gp)		    #primer elemento de Y
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+calc:
+    addi 	$sp, $sp, -1    # Calcula el caso base Y(0) = B0*X(0)
+    sw 		$ra, 0($sp)
+    lw 		$t0, 2($gp)	    # Posicion inicial de B		
+    lw 		$t1, 0($t0)     # Carga el B0
+    lw 		$t2, 3($gp)     # Posicion inicial de X
+    lw 		$t3, 0($t2)     # Carga el valor inicial de X
+    mul     $s0, $t3, $t1   # X[0]*B[0]
+    lw 		$s1, 4($gp) 	# Cargar primera posicion de Y
+    sw 		$s0, 0($s1)		# Y(0) = B0*X(0) 
+    lw 		$s7, 0($gp) 	# cargar N
+    addi 	$s7, $s7, 1		# N+1
+    addi 	$s6, $0, 1 		# i = 1
+    for_calc: 
+        beq 	$s7, $s6, end_for_calc
+        add 	$a0, $0, $s6        # 
+        jal 	Y					# calcular Y(i)
+        lw 		$t1, 4($gp) 		# cargar primera posicion de Y
+        add 	$s6, $t1, $s6		# i+dir(y)
+        sw 		$v0, 0($s6) 		# escribir y(i) en memoria
+        sw      $v0, 0x200($0)
+        addi 	$s6, $s6, 1			# i++
+        j 		for_calc
+    end_for_calc:
+        lw 		$ra, 0($sp)
+        addi 	$sp, $sp, 1
+        jr 		$ra
+calcSumX:
+    addi 	$v0, $0, 0 	#ans =  0
+    addi 	$s0, $0, 0 	# k  =  0
+    addi 	$a2, $a0, 0 	# m
+    addi 	$a0, $a0, 1 	# m  +  1
+    for_k_in_B:
+        beq 	$a0, $s0, end_for_k_in_B
+        sub 	$t5, $a2, $s0	#m-i
+        lw 	$t1, 2($gp) 	#cargar pos B[0]
+        lw 	$t2, 3($gp)	#cargar pos X[0]
+        add 	$t1, $s0, $t1 	#cargar dir B[i]
+        add 	$t2, $t5, $t2 	#cargar dir X[n-i]
+        lw 	$t3, 0($t1) 	#t3 = B[i]
+        lw 	$t4, 0($t2) 	#t4 = X[n-i]
+        mul 	$t3, $t4, $t3	#B[i]*X[n-i]
+        add 	$v0, $v0, $t3 	#ans += b[k]*x
+        addi 	$s0, $s0, 1	#i++
+        j 	for_k_in_B
+    end_for_k_in_B:
+	    jr $ra
+Y:
+    addi 	$sp, $sp, -1
+    sw 		$ra, 0($sp)
+    addi 	$s2, $0, 1 		# i  =  1
+    addi 	$s3, $a0, 1 	# n  +  1
+    addi 	$s1, $0, 0 		# ans =  0
+    addi 	$a1, $a0, 0		# n
+    for_i_in_A:
+        beq 	$s3, $s2, end_for_i_in_A
+        sub 	$t0, $a1, $s2 		#calcular n-i
+        lw 		$s0, 4($gp) 		#cargar la primera posicion de Y
+        add 	$s0, $t0, $s0       #calcular la posicion Y[n-i]
+        lw 		$s4, 0($s0) 		#obtener Y[n-i] y dejarlo en s4 
+        lw 		$s0, 1($gp) 		#cargar primera posicion de A
+        add 	$s0, $s2, $s0       #calcular posicion A[i]
+        lw 		$s5, 0($s0)         #obtener A[i]
+        mul     $s4, $s4, $s5       #calcular A[i]*Y[n-1]
+        sub 	$s4, $0, $s4		#calcular -A[i]*Y[n-i]
+        addi 	$a0, $s2, 0	 		#calcuar calcSumX(i)
+        jal 	calcSumX
+        add 	$s1, $s1, $v0		#calcular calcSumX(i) - a[i]*Y[n-i]
+        add 	$s1, $s1, $s4	
+        addi 	$s2, $s2, 1			#i++
+        j 		for_i_in_A
+    end_for_i_in_A:
+        addi 	$v0, $s1, 0				#return ans
+		lw 		$ra, 0($sp)
+		addi 	$sp, $sp, 1
+		jr 		$ra
+fin:

@@ -1,11 +1,16 @@
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
+
+
     jal     getinput
     addi    $t1, $0, 0x0ffe
     sw      $t1, 0x200($0)
-    addi $a0, $0, 1
-    jal Y
+    addi $v0, $0, 0x01fe
+    addi $t4, $0, 0xffff
+    sw $t4, 0x200($0)
+    lw $t3, 4($gp)
+    sw $v0, 0($t3)
     sw $v0, 0x200($0)
     addi    $a0, $0, 0x0100
     addi    $a1, $0, 0x012f

@@ -15,7 +15,11 @@ entity micro_computer is
   );
 end micro_computer;
 
+
+
 architecture Behavioral of micro_computer is
+
+signal nClock: STD_LOGIC;
 
 component controlDisplay
     Port ( dataIn : in STD_LOGIC_VECTOR (15 downto 0);
@@ -97,6 +101,8 @@ signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 
+nClock <= not clk;
+
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_memin(9));
 signal_memread <= (singal_memrd and not signal_memin(9));
@@ -127,7 +133,7 @@ port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
     --clk =>  divisor_counter(20),
-    clk => clk,
+    clk => nClock,
     reset => reset,
     reg_output => signal_outregister
 );
@@ -139,7 +145,7 @@ port map (    dir => signal_iord, --direccion de la instruccion
               mem_write => signal_memwrite,
               mem_data => signal_memout,
               --clk => divisor_counter(20),
-              clk => clk,
+              clk => nClock,
               reset => reset
          );
 

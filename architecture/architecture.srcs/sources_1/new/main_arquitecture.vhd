@@ -189,7 +189,7 @@ U_PC: program_counter
     port map(
         pc_in  => tmpPcSrc,
         pc_write => pcEnable,
-        clk => main_clk,
+        clk => nclock,
         reset => main_reset,
         pc_out => tmpPCout
     );
@@ -215,7 +215,7 @@ U_MEMORY_DATA_REGISTER: register_32b
 port map(
     reg_input => mem_data,
     write_enable => '1',
-    clk => main_clk,
+    clk => nclock,
     reset => main_reset,
     reg_output => tmpMemoryDataReg
 );
@@ -246,7 +246,7 @@ U_REGISTERS: registers
            write_register => tmpWriteRegister,
            write_data => tmpWriteData,
            reg_write => main_reg_write,
-           clk => main_clk,
+           clk => nclock,
            reset => main_reset,
            read_data1 => tmpRegAin,
            read_data2 => tmpRegBin
@@ -256,7 +256,7 @@ U_REGISTER_A: register_32b
 port map(
     reg_input => tmpRegAin,
     write_enable => '1',
-    clk => main_clk,
+    clk => nclock,
     reset => main_reset,
     reg_output => tmpRegAout
 );
@@ -265,7 +265,7 @@ U_REGISTER_B: register_32b
 port map(
     reg_input => tmpRegBin,
     write_enable => '1',
-    clk => main_clk,
+    clk => nclock,
     reset => main_reset,
     reg_output => tmpRegBout
 );
@@ -316,7 +316,7 @@ U_ALUOUT: register_32b
 port map(
     reg_input => tmpAluoutIn,
     write_enable => '1',
-    clk => main_clk,
+    clk => nclock,
     reset => main_reset,
     reg_output => tmpAluoutOut
 );

@@ -57,7 +57,9 @@ def getinput():
 def main():
   global N, Y
   getinput()
-  print(calc())
+  calc()
+  for x in Y:
+    print(x, end = ", ")
   
 main()
 

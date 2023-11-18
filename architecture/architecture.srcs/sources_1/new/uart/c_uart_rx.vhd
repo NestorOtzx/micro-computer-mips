@@ -75,37 +75,38 @@ begin
     end process;
 
     
-    outputsFunction: process(estadoActual)
+    outputsFunction: process(estadoActual, rx, word_signal_tmp)
     begin
          case (estadoActual) is
               when idleST =>
-                 word_signal_tmp <= "00000000";
+                 word_signal_tmp <= word_signal;
                  busy_rx <= '0';
               when dato0ST => 
                  word_signal_tmp <= "0000000"&rx;
                  busy_rx <= '1';
               when dato1ST => 
-                 word_signal_tmp <= "000000"&rx&word_signal_tmp(0);
+                 word_signal_tmp <= "000000"&rx&word_signal(0);
                  busy_rx <= '1';
               when dato2ST => 
-                 word_signal_tmp <= "00000"&rx&word_signal_tmp(1 downto 0);
+                 word_signal_tmp <= "00000"&rx&word_signal(1 downto 0);
                  busy_rx <= '1';
               when dato3ST => 
-                 word_signal_tmp <= "0000"&rx&word_signal_tmp(2 downto 0);
+                 word_signal_tmp <= "0000"&rx&word_signal(2 downto 0);
                  busy_rx <= '1';
               when dato4ST => 
-                 word_signal_tmp <= "000"&rx&word_signal_tmp(3 downto 0);
+                 word_signal_tmp <= "000"&rx&word_signal(3 downto 0);
                  busy_rx <= '1';
               when dato5ST => 
-                 word_signal_tmp <= "00"&rx&word_signal_tmp(4 downto 0);
+                 word_signal_tmp <= "00"&rx&word_signal(4 downto 0);
                  busy_rx <= '1';
               when dato6ST => 
-                 word_signal_tmp <= "0"&rx&word_signal_tmp(5 downto 0);
+                 word_signal_tmp <= "0"&rx&word_signal(5 downto 0);
                  busy_rx <= '1';
               when dato7ST => 
-                 word_signal_tmp <= rx&word_signal_tmp(6 downto 0);
+                 word_signal_tmp <= rx&word_signal(6 downto 0);
                  busy_rx <= '1';
               when stopST =>
+                 word_signal_tmp <= word_signal;
                  busy_rx <= '0';
               when others =>
                  word_signal_tmp <= "00000000";

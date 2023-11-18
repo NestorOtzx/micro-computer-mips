@@ -1,22 +1,16 @@
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
-
-
     jal     getinput
-    addi    $t1, $0, 0x0ffe
-    sw      $t1, 0x200($0)
-    addi $v0, $0, 0x01fe
-    addi $t4, $0, 0xffff
-    sw $t4, 0x200($0)
-    lw $t3, 4($gp)
-    sw $v0, 0($t3)
-    sw $v0, 0x200($0)
-    addi    $a0, $0, 0x0100
-    addi    $a1, $0, 0x012f
+    jal     calc
+    addi $a0, $0, 0x0100
+    addi $a1, $0, 0x0120
     jal     printMemoria
-    addi    $t1, $0, 0x0f0f #print de prueba
-    sw      $t1, 0x200($0)
+    lw 		$s0, 4($gp) # dir Y[0] --IMPRIMIR RESULTADO--
+    lw 		$s1, 0($gp)	# N
+    add     $s1, $s1, $s0
+    lw      $a0, 0($s1)
+    jal     output
     j       fin
 printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     addi $t0, $a0, 0
@@ -32,13 +26,27 @@ printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
 input:
 	lui $t0, 0x0008
 	addi $t4, $zero, 0x1
-    while:
+    while_input:
         lw $t1, 0x200($0)
 	    sw $t1, 0x200($0)
         slt $t3, $t0, $t1
         beq $t3, $t4, salir_input
-        j while
+        j while_input
     salir_input:
+        sub $v0, $t1, $t0
+        addi $t0, $0, 0
+        sw $t0, 0x200($0) 
+        jr $ra
+output:
+    lui $t0, 0x0008 # Imprime y espera por enter para continuar
+	addi $t4, $zero, 0x1
+    sw $a0, 0x200($0)
+    while_output:
+        lw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_output
+        j while_output
+    salir_output:
         sub $v0, $t1, $t0
         addi $t0, $0, 0
         sw $t0, 0x200($0) 
@@ -118,10 +126,12 @@ calc:
     for_calc: 
         beq 	$s7, $s6, end_for_calc
         add 	$a0, $0, $s6        # 
+        sw      $s6, 0x200($0)
+        sw      $s7, 0x200($0)
         jal 	Y					# calcular Y(i)
         lw 		$t1, 4($gp) 		# cargar primera posicion de Y
-        add 	$s6, $t1, $s6		# i+dir(y)
-        sw 		$v0, 0($s6) 		# escribir y(i) en memoria
+        add 	$t0, $t1, $s6		# i+dir(y)
+        sw 		$v0, 0($t0) 		# escribir y(i) en memoria
         sw      $v0, 0x200($0)
         addi 	$s6, $s6, 1			# i++
         j 		for_calc

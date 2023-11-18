@@ -104,7 +104,7 @@ begin
 nClock <= not clk;
 
 signal_outenable <= (signal_memwr and  signal_iord(9));
-signal_memwrite <= (signal_memwr and not signal_memin(9));
+signal_memwrite <= (signal_memwr and not signal_iord(9));
 signal_memread <= (singal_memrd and not signal_memin(9));
 input_signal <= "000000000000" & input;
 

@@ -8,14 +8,12 @@ entity micro_computer is
         input: in STD_LOGIC_VECTOR (19 downto 0);
         
         leds: out std_logic_vector(15 downto 0);
-        debug: out std_logic_vector(31 downto 0);
+        --debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
         display: out std_logic_vector(6 downto 0)
   );
 end micro_computer;
-
-
 
 architecture Behavioral of micro_computer is
 
@@ -72,6 +70,20 @@ component main_arquitecture
            );
 end component;
 
+component c_uart_top
+    Port (
+        clock: in STD_LOGIC;
+        reset: in STD_LOGIC;
+        send_word : in std_logic;
+        word      : in std_logic_vector(7 downto 0);
+        rx        : in std_logic;
+        busy_tx   : out std_logic;
+        tx        : out std_logic;
+        word_out  : out std_logic_vector(7 downto 0);
+        busy_rx   : out std_logic
+    );
+end component;
+
 component ram
     port (    dir       : in std_logic_vector (31 downto 0);
               data      : in std_logic_vector (31 downto 0);
@@ -101,7 +113,8 @@ signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 
-nClock <= not clk;
+--nClock <= not clk;
+nClock <= not divisor_counter(20);
 
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_iord(9));
@@ -132,8 +145,8 @@ U_OUTREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
-    --clk =>  divisor_counter(20),
-    clk => nClock,
+    clk =>  divisor_counter(20),
+    --clk => nClock,
     reset => reset,
     reg_output => signal_outregister
 );
@@ -144,8 +157,8 @@ port map (    dir => signal_iord, --direccion de la instruccion
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
               mem_data => signal_memout,
-              --clk => divisor_counter(20),
-              clk => nClock,
+              clk => divisor_counter(20),
+              --clk => nClock,
               reset => reset
          );
 
@@ -166,8 +179,8 @@ arquitecture: main_arquitecture
         registerBout => signal_memin,
         mem_rd => singal_memrd,
         mem_wr => signal_memwr,   
-        --main_clk        => divisor_counter(20),
-        main_clk        => clk,
+        main_clk        => divisor_counter(20),
+        --main_clk        => clk,
         main_reset      => reset
     );
 
@@ -176,7 +189,7 @@ arquitecture: main_arquitecture
 leds (15 downto 11) <= signal_iord(4 downto 0);
 leds (10 downto 0) <= signal_aluout(10 downto 0);
 
-debug <= signal_outregister;
+--debug <= signal_outregister;
 --pcOut <= signal_pcTest;
 
 

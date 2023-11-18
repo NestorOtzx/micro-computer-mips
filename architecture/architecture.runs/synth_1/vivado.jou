@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Nov 14 12:21:52 2023
-# Process ID: 25172
-# Current directory: C:/micro-computer-mips/architecture/architecture.runs/synth_1
-# Command line: vivado.exe -log micro_computer.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source micro_computer.tcl
-# Log file: C:/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.vds
-# Journal file: C:/micro-computer-mips/architecture/architecture.runs/synth_1\vivado.jou
+# Start of session at: Sat Nov 18 09:38:04 2023
+# Process ID: 10368
+# Current directory: C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1
+# Command line: vivado.exe -log c_uart_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source c_uart_top.tcl
+# Log file: C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1/c_uart_top.vds
+# Journal file: C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source micro_computer.tcl -notrace
+source c_uart_top.tcl -notrace

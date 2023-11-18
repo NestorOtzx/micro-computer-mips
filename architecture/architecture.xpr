@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="C:/micro-computer-mips/architecture/architecture.xpr">
+<Project Version="7" Minor="54" Path="C:/quintus/micro-computer-mips/architecture/architecture.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="64f1c2654afb44309c2e99144b43878c"/>
@@ -246,13 +246,13 @@
       </File>
       <File Path="$PSRCDIR/constrs_1/imports/Downloads/controlDisplay.xdc">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/constrs_1/imports/Downloads/uartConst.xdc">
         <FileInfo>
-          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>

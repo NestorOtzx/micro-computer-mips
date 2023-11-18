@@ -1,0 +1,14 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[31]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[19]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[28]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[22]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[23]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[9]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[10]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[12]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[4]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[15]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

@@ -19,6 +19,13 @@ architecture Behavioral of micro_computer is
 
 signal nClock: STD_LOGIC;
 
+component quitaRebote
+    Port ( boton : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           clock : in STD_LOGIC;
+           pulso : out STD_LOGIC);
+end component;
+
 component controlDisplay
     Port ( dataIn : in STD_LOGIC_VECTOR (15 downto 0);
            clock, reset : STD_LOGIC;
@@ -110,16 +117,24 @@ signal signal_outregister: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_memwrite, signal_memread: STD_LOGIC;
 signal input_signal: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
+signal enter_signal: STD_LOGIC;
 
 begin
 
---nClock <= not clk;
-nClock <= not divisor_counter(20);
+nClock <= not clk;
 
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_iord(9));
 signal_memread <= (singal_memrd and not signal_memin(9));
-input_signal <= "000000000000" & input;
+input_signal <= "000000000000" & enter_signal & input(18 downto 0);
+
+
+U_QUITA_R: quitaRebote
+    Port map ( boton => input(19),
+           reset => reset,
+           clock => clk,
+           pulso => enter_signal
+           ); 
 
 
 U_MUX: mux2to1_32b
@@ -145,8 +160,8 @@ U_OUTREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
-    clk =>  divisor_counter(20),
-    --clk => nClock,
+    --clk =>  divisor_counter(20),
+    clk => nClock,
     reset => reset,
     reg_output => signal_outregister
 );
@@ -157,8 +172,8 @@ port map (    dir => signal_iord, --direccion de la instruccion
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
               mem_data => signal_memout,
-              clk => divisor_counter(20),
-              --clk => nClock,
+              clk => nClock,
+              --clk => divisor_counter(20),
               reset => reset
          );
 
@@ -179,8 +194,8 @@ arquitecture: main_arquitecture
         registerBout => signal_memin,
         mem_rd => singal_memrd,
         mem_wr => signal_memwr,   
-        main_clk        => divisor_counter(20),
-        --main_clk        => clk,
+        --main_clk        => divisor_counter(20),
+        main_clk        => clk,
         main_reset      => reset
     );
 

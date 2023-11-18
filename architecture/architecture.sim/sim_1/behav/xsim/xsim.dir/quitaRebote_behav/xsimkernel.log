@@ -1,0 +1,7 @@
+Running: xsim.dir/quitaRebote_behav/xsimk.exe -simmode gui -wdb quitaRebote_behav.wdb -simrunnum 0 -socket 52532
+Design successfully loaded
+Design Loading Memory Usage: 7800 KB (Peak: 7800 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 16416 KB (Peak: 16416 KB)
+Simulation CPU Usage: 1625 ms

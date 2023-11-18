@@ -66,59 +66,85 @@ begin
  --------------------------------------
         -- INGRESAR EL N
         input <= "00000000000000000010";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000000010";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000000010";
+        wait for 20 us;
         
         -- INGRESAR EL A[1]
          input <= "00000000000000000111";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000000111";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000000111";
+        wait for 20 us;
         
         -- INGRESAR EL A[2]
         input <= "00000000000000001010";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000001010";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000001010";
+        wait for 20 us;
 
 --------------------------------------
         -- INGRESAR EL B[1]
          input <= "00000000000000001000";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000001000";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000001000";
+        wait for 20 us;
         
         -- INGRESAR EL B[2]
         input <= "00000000000000001011";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000001011";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000001011";
+        wait for 20 us;
         
         -- INGRESAR EL B[3]
         input <= "00000000000000000001";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000000001";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000000001";
+        wait for 20 us;
         
 --------------------------------------
         -- INGRESAR EL X[1]
         input <= "00000000000000101111";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000101111";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000101111";
+        wait for 20 us;
         
         -- INGRESAR EL X[2]
         input <= "00000000000000011111";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000000011111";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000000011111";
+        wait for 20 us;
         
         -- INGRESAR EL X[3]
         input <= "00000000000001011111";
-        wait for 100 us;
+        wait for 20 us;
         input <= "10000000000001011111";
-        wait for 500 ns;
+        wait for 10 us;
+        input <= "00000000000001011111";
+        wait for 20 us;
+        
+        -- Salir
+        input <= "00000000000000000000";
+        wait for 20 us;
+        input <= "10000000000000000000";
+        wait for 10 us;
+        input <= "00000000000000000000";
+        wait for 20 us;
         
         input <= "00000000000000000000";
         wait for 10000 us;

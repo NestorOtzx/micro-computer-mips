@@ -24,7 +24,7 @@ printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     break_pMemoria:
         jr $ra
 input:
-	lui $t0, 0x0008
+	addiu $t0, 0x7fff
 	addi $t4, $zero, 0x1
     while_input:
         lw $t1, 0x200($0)
@@ -33,12 +33,15 @@ input:
         beq $t3, $t4, salir_input
         j while_input
     salir_input:
-        sub $v0, $t1, $t0
-        addi $t0, $0, 0
-        sw $t0, 0x200($0) 
+        lw $t1, 0x200($0)
+	    sw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_input  #repetir mientras el enter este presionado
+        addi $v0, $t1, 0
+        sw $0, 0x200($0) 
         jr $ra
 output:
-    lui $t0, 0x0008 # Imprime y espera por enter para continuar
+    addiu $t0, 0x7fff # Imprime y espera por enter para continuar
 	addi $t4, $zero, 0x1
     sw $a0, 0x200($0)
     while_output:
@@ -47,9 +50,10 @@ output:
         beq $t3, $t4, salir_output
         j while_output
     salir_output:
-        sub $v0, $t1, $t0
-        addi $t0, $0, 0
-        sw $t0, 0x200($0) 
+        lw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_output  #repetir mientras el enter este presionado
+        sw $0, 0x200($0) 
         jr $ra
 resetGP: 	
     addi $gp, $0, 0x0100	

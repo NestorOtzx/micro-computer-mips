@@ -8,7 +8,7 @@ entity micro_computer is
         input: in STD_LOGIC_VECTOR (19 downto 0);
         
         leds: out std_logic_vector(15 downto 0);
-        --debug: out std_logic_vector(31 downto 0);
+        debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
         display: out std_logic_vector(6 downto 0)
@@ -126,7 +126,8 @@ nClock <= not clk;
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_iord(9));
 signal_memread <= (singal_memrd and not signal_memin(9));
-input_signal <= "000000000000" & enter_signal & input(18 downto 0);
+--input_signal <= "000000000000" & enter_signal & input(18 downto 0); -- real
+input_signal <= "000000000000" & input; --simulacion
 
 
 U_QUITA_R: quitaRebote
@@ -204,7 +205,7 @@ arquitecture: main_arquitecture
 leds (15 downto 11) <= signal_iord(4 downto 0);
 leds (10 downto 0) <= signal_aluout(10 downto 0);
 
---debug <= signal_outregister;
+debug <= signal_outregister;
 --pcOut <= signal_pcTest;
 
 

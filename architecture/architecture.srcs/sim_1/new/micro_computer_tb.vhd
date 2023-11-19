@@ -17,7 +17,11 @@ architecture tb of tb_micro_computer is
               leds    : out std_logic_vector (15 downto 0);
               debug   : out std_logic_vector (31 downto 0);
               enDigit : out std_logic_vector (3 downto 0);
-              display : out std_logic_vector (6 downto 0));
+              display : out std_logic_vector (6 downto 0);
+              rx: in std_logic;
+              tx: out std_logic
+              );
+              
     end component;
 
     signal clk     : std_logic;
@@ -27,6 +31,8 @@ architecture tb of tb_micro_computer is
     signal debug   : std_logic_vector (31 downto 0);
     signal enDigit : std_logic_vector (3 downto 0);
     signal display : std_logic_vector (6 downto 0);
+    signal rx: std_logic;
+    signal tx: std_logic;
 
     constant TbPeriod : time := 10 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
@@ -41,7 +47,10 @@ begin
               leds    => leds,
               debug   => debug,
               enDigit => enDigit,
-              display => display);
+              display => display,
+              rx => rx,
+              tx => tx
+              );
 
     -- Clock generation
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
@@ -53,16 +62,21 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         input <= (others => '0');
-
+        rx <= '1';
         -- Reset generation
         -- EDIT: Check that reset is really your reset signal
         reset <= '1';
         input <= "00000000000000000001";
         wait for 100 ns;
         reset <= '0';
-
+        rx <= '0';
         -- EDIT Add stimuli here
+        wait for 300 ns;
+        
+        rx <= '1';
+        
         wait for 20 us;
+        
  --------------------------------------
         -- INGRESAR EL N
         input <= "00000000000000000010";
@@ -71,6 +85,7 @@ begin
         wait for 10 us;
         input <= "00000000000000000010";
         wait for 20 us;
+       
         
         -- INGRESAR EL A[1]
          input <= "00000000000000000111";

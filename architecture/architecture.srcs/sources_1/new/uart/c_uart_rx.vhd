@@ -6,7 +6,7 @@ entity c_uart_rx is
     clock     : in std_logic;
     reset     : in std_logic;
     rx        : in std_logic;
-    word      : out std_logic_vector(7 downto 0);
+    word      : out std_logic_vector(8 downto 0);
     busy_rx   : out std_logic
   );
 end c_uart_rx;
@@ -16,14 +16,14 @@ architecture Behavioral of c_uart_rx is
  
 type stateType is (idleST, dato0ST, dato1ST, dato2ST, dato3ST, dato4ST, dato5ST, dato6ST, dato7ST, stopST);
 signal estadoActual, estadoSiguiente : stateType;
-signal word_signal, word_signal_tmp: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+signal word_signal, word_signal_tmp: STD_LOGIC_VECTOR(8 downto 0) := "000000000";
 
 
 begin
     process (clock, reset)
     begin
        if (reset = '1') then
-            word_signal <= "00000000";
+            word_signal <= "000000000";
         else
             if (clock'event and clock ='1') then
                 word_signal <= word_signal_tmp;
@@ -82,34 +82,34 @@ begin
                  word_signal_tmp <= word_signal;
                  busy_rx <= '0';
               when dato0ST => 
-                 word_signal_tmp <= "0000000"&rx;
+                 word_signal_tmp <= "00000000"&rx;
                  busy_rx <= '1';
               when dato1ST => 
-                 word_signal_tmp <= "000000"&rx&word_signal(0);
+                 word_signal_tmp <= "0000000"&rx&word_signal(0);
                  busy_rx <= '1';
               when dato2ST => 
-                 word_signal_tmp <= "00000"&rx&word_signal(1 downto 0);
+                 word_signal_tmp <= "000000"&rx&word_signal(1 downto 0);
                  busy_rx <= '1';
               when dato3ST => 
-                 word_signal_tmp <= "0000"&rx&word_signal(2 downto 0);
+                 word_signal_tmp <= "00000"&rx&word_signal(2 downto 0);
                  busy_rx <= '1';
               when dato4ST => 
-                 word_signal_tmp <= "000"&rx&word_signal(3 downto 0);
+                 word_signal_tmp <= "0000"&rx&word_signal(3 downto 0);
                  busy_rx <= '1';
               when dato5ST => 
-                 word_signal_tmp <= "00"&rx&word_signal(4 downto 0);
+                 word_signal_tmp <= "000"&rx&word_signal(4 downto 0);
                  busy_rx <= '1';
               when dato6ST => 
-                 word_signal_tmp <= "0"&rx&word_signal(5 downto 0);
+                 word_signal_tmp <= "00"&rx&word_signal(5 downto 0);
                  busy_rx <= '1';
               when dato7ST => 
-                 word_signal_tmp <= rx&word_signal(6 downto 0);
+                 word_signal_tmp <= "0"&rx&word_signal(6 downto 0);
                  busy_rx <= '1';
               when stopST =>
-                 word_signal_tmp <= word_signal;
+                 word_signal_tmp <= "1"&word_signal(7 downto 0);
                  busy_rx <= '0';
               when others =>
-                 word_signal_tmp <= "00000000";
+                 word_signal_tmp <= (others => '0');
                  busy_rx <= '0';                            
            end case;    
     end process;

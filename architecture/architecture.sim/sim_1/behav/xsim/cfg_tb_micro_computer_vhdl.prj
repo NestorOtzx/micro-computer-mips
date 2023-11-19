@@ -1,0 +1,29 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../architecture.srcs/sources_1/new/alu.vhd" \
+"../../../../architecture.srcs/sources_1/new/alu_control.vhd" \
+"../../../../architecture.srcs/sources_1/new/bin2Hex.vhd" \
+"../../../../architecture.srcs/sources_1/new/uart/c_uart_rx.vhd" \
+"../../../../architecture.srcs/sources_1/new/uart/c_uart_top.vhd" \
+"../../../../architecture.srcs/sources_1/new/uart/c_uart_tx.vhd" \
+"../../../../architecture.srcs/sources_1/new/control.vhd" \
+"../../../../architecture.srcs/sources_1/new/controlDisplay.vhd" \
+"../../../../architecture.srcs/sources_1/new/count_32bit.vhd" \
+"../../../../architecture.srcs/sources_1/new/counterDisplay.vhd" \
+"../../../../architecture.srcs/sources_1/new/main_arquitecture.vhd" \
+"../../../../architecture.srcs/sources_1/new/micro_computer.vhd" \
+"../../../../architecture.srcs/sources_1/new/mux2to1-32b.vhd" \
+"../../../../architecture.srcs/sources_1/new/mux4to1_32b.vhd" \
+"../../../../architecture.srcs/sources_1/new/mux4to1_4.vhd" \
+"../../../../architecture.srcs/sources_1/new/mux4to1_5b.vhd" \
+"../../../../architecture.srcs/sources_1/new/program_counter.vhd" \
+"../../../../architecture.srcs/sources_1/new/quitaRebote.vhd" \
+"../../../../architecture.srcs/sources_1/new/ram.vhd" \
+"../../../../architecture.srcs/sources_1/new/register_32b.vhd" \
+"../../../../architecture.srcs/sources_1/new/registers.vhd" \
+"../../../../architecture.srcs/sources_1/new/sign_extend.vhd" \
+"../../../../architecture.srcs/sources_1/new/uart/uart_clockgen.vhd" \
+"../../../../architecture.srcs/sim_1/new/micro_computer_tb.vhd" \
+
+# Do not sort compile order
+nosort

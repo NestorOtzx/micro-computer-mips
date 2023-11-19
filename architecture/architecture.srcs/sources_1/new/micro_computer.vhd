@@ -11,7 +11,11 @@ entity micro_computer is
         debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
-        display: out std_logic_vector(6 downto 0)
+        display: out std_logic_vector(6 downto 0);
+        
+        --UART--
+        rx: in std_logic;
+        tx: out std_logic
   );
 end micro_computer;
 
@@ -35,10 +39,12 @@ component controlDisplay
 end component;
 
 
-component mux2to1_32b
+component mux4to1_32b
     Port ( mux_in0 : in STD_LOGIC_VECTOR (31 downto 0);
            mux_in1 : in STD_LOGIC_VECTOR (31 downto 0);
-           mux_sel : in STD_LOGIC;
+           mux_in2 : in STD_LOGIC_VECTOR (31 downto 0);
+           mux_in3 : in STD_LOGIC_VECTOR (31 downto 0);
+           mux_sel : in STD_LOGIC_VECTOR (1 downto 0);
            mux_out : out STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
@@ -86,7 +92,7 @@ component c_uart_top
         rx        : in std_logic;
         busy_tx   : out std_logic;
         tx        : out std_logic;
-        word_out  : out std_logic_vector(7 downto 0);
+        word_out  : out std_logic_vector(8 downto 0);
         busy_rx   : out std_logic
     );
 end component;
@@ -119,6 +125,11 @@ signal input_signal: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
 signal enter_signal: STD_LOGIC;
 
+signal signal_send_word: STD_LOGIC;
+signal signal_uart_out: STD_LOGIC_VECTOR(8 downto 0);
+signal signal_uart_info: STD_LOGIC_VECTOR(1 downto 0);
+signal uart_out_extnd: STD_LOGIC_VECTOR(31 downto 0);
+
 begin
 
 nClock <= not clk;
@@ -129,6 +140,27 @@ signal_memread <= (singal_memrd and not signal_memin(9));
 --input_signal <= "000000000000" & enter_signal & input(18 downto 0); -- real
 input_signal <= "000000000000" & input; --simulacion
 
+--UART--
+signal_send_word <= (signal_iord(10) and  signal_memwr);
+uart_out_extnd <= "00000000000000000000000"&signal_uart_out;
+
+U_UART: c_uart_top
+    port map(
+    clock => clk,
+    reset => reset, 
+    send_word => signal_send_word,
+    word => signal_memin(7 downto 0),
+    rx => rx,
+    busy_tx => signal_uart_info(1),
+    tx => tx,
+    word_out => signal_uart_out, 
+    busy_rx => signal_uart_info(0)
+    );
+
+
+
+
+
 
 U_QUITA_R: quitaRebote
     Port map ( boton => input(19),
@@ -138,11 +170,13 @@ U_QUITA_R: quitaRebote
            ); 
 
 
-U_MUX: mux2to1_32b
+U_MUX: mux4to1_32b
 port map(
     mux_in0 => signal_memout,
     mux_in1 => input_signal,
-    mux_sel => signal_iord(9),
+    mux_in2 => uart_out_extnd,
+    mux_in3 => "00000000000000000000000000000000",
+    mux_sel => signal_iord(10 downto 9),
     mux_out => signal_procc_in
 );
 
@@ -202,8 +236,7 @@ arquitecture: main_arquitecture
 
 --testIRWRITE <= signal_ir_write;
 
-leds (15 downto 11) <= signal_iord(4 downto 0);
-leds (10 downto 0) <= signal_aluout(10 downto 0);
+leds <= "00000000000000"&signal_uart_info;
 
 debug <= signal_outregister;
 --pcOut <= signal_pcTest;

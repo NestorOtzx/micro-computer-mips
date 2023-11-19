@@ -11,7 +11,7 @@ entity c_uart_top is
         rx        : in std_logic;
         busy_tx   : out std_logic;
         tx        : out std_logic;
-        word_out  : out std_logic_vector(7 downto 0);
+        word_out  : out std_logic_vector(8 downto 0);
         busy_rx   : out std_logic
   );
 end c_uart_top;
@@ -36,7 +36,7 @@ component c_uart_rx
         clock     : in std_logic;
         reset     : in std_logic;
         rx        : in std_logic;
-        word      : out std_logic_vector(7 downto 0);
+        word      : out std_logic_vector(8 downto 0);
         busy_rx   : out std_logic
     );
 end component;

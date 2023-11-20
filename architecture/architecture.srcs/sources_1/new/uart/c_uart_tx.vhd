@@ -21,10 +21,10 @@ begin
   
     stateRegister: process (clock, reset)
     begin 
-        if (clock'event and clock ='1') then
-            if (reset = '1') then
-                estadoActual <= idleST;
-            else
+        if (reset = '1') then
+            estadoActual <= idleST;
+        else
+            if (clock'event and clock ='1') then
                 estadoActual <= estadoSiguiente;
             end if;
         end if;
@@ -69,10 +69,10 @@ begin
     begin
          case (estadoActual) is
               when idleST => 
-                 tx <= '1';
+                 tx <= '0';
                  busy_tx <= '0';
               when startST => 
-                 tx <= '0';
+                 tx <= '1';
                  busy_tx <= '1';
               when dato0ST => 
                  tx <= word(0);
@@ -102,7 +102,7 @@ begin
                  tx <= '1';
                  busy_tx <= '0';
               when others =>
-                 tx <= '1';
+                 tx <= '0';
                  busy_tx <= '0';
                             
            end case;    

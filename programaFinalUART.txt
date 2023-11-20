@@ -1,7 +1,7 @@
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
-    jal     leer_uart
+    jal     enviar_uart
     addi $a0, $v0, 0
     jal output
     j       fin
@@ -17,20 +17,22 @@ printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     break_pMemoria:
         jr $ra
 leer_uart:
-    addiu $t0, $0, 0x00ff #stop bit en 1
-    addi $t4, $zero, 0x1
-    while_luart:
-        lw $t1, 0x400($0)
-	    sw $t1, 0x200($0)
-        slt $t3, $t0, $t1
-        beq $t3, $t4, salir_luart
-        j while_luart
-    salir_luart:
-        addi $t0, $t0, 1
-        sub $v0, $t1, $t0
-        sw $v0, 0x200($0)
-        sw $0, 0x200($0) 
-        jr $ra
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input           #recibe un enter
+    lw $v0, 0x400($0)  #lee lo que hay en la uart despues del enter
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+enviar_uart:
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input            # recibe un enter
+    addi $v0, $v0, 0x100 # para activar el send word con el bit 9
+    sw $v0, 0x400($gp)   # envia a la uart la informacion de los switches
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
 input:
 	addiu $t0, $0, 0x7fff
 	addi $t4, $zero, 0x1

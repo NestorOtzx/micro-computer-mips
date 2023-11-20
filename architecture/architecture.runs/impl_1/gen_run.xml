@@ -16,9 +16,12 @@
   <File Type="BITSTR-BMM" Name="micro_computer_bd.bmm"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="micro_computer_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MMI" Name="micro_computer.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="micro_computer_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="micro_computer.sysdef"/>
+  <File Type="ROUTE-DRC-RPX" Name="micro_computer_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="micro_computer.ltx"/>
+  <File Type="RCFI_FILE" Name="micro_computer.rcfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="micro_computer_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="micro_computer.hwdef"/>
@@ -48,11 +51,8 @@
   <File Type="PHYSOPT-DCP" Name="micro_computer_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="micro_computer_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="micro_computer_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="micro_computer_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="micro_computer_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="micro_computer_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="micro_computer.pdi"/>
-  <File Type="RCFI_FILE" Name="micro_computer.rcfi"/>
   <File Type="CFI_FILE" Name="micro_computer.cfi"/>
   <File Type="RNPI_FILE" Name="micro_computer.rnpi"/>
   <File Type="NPI_FILE" Name="micro_computer.npi"/>

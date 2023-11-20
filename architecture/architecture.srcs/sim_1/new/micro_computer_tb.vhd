@@ -69,6 +69,8 @@ begin
         input <= "00000000000000000001";
         wait for 100 ns;
         reset <= '0';
+        
+        wait for 100 us;
         rx <= '0';
         -- EDIT Add stimuli here
         wait for 300 ns;

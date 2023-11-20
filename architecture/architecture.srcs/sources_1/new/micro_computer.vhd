@@ -92,7 +92,7 @@ component c_uart_top
         rx        : in std_logic;
         busy_tx   : out std_logic;
         tx        : out std_logic;
-        word_out  : out std_logic_vector(8 downto 0);
+        word_out  : out std_logic_vector(7 downto 0);
         busy_rx   : out std_logic
     );
 end component;
@@ -126,8 +126,8 @@ signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
 signal enter_signal: STD_LOGIC;
 
 signal signal_send_word: STD_LOGIC;
-signal signal_uart_out: STD_LOGIC_VECTOR(8 downto 0);
-signal signal_uart_info: STD_LOGIC_VECTOR(1 downto 0);
+signal signal_uart_out: STD_LOGIC_VECTOR(7 downto 0);
+signal signal_uart_info: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 signal uart_out_extnd: STD_LOGIC_VECTOR(31 downto 0);
 
 begin
@@ -141,8 +141,8 @@ signal_memread <= (singal_memrd and not signal_memin(9));
 input_signal <= "000000000000" & input; --simulacion
 
 --UART--
-signal_send_word <= (signal_iord(10) and  signal_memwr);
-uart_out_extnd <= "00000000000000000000000"&signal_uart_out;
+signal_send_word <= (signal_iord(10) and  signal_memin(8));
+uart_out_extnd <= "000000000000000000000000"&signal_uart_out;
 
 U_UART: c_uart_top
     port map(
@@ -153,14 +153,9 @@ U_UART: c_uart_top
     rx => rx,
     busy_tx => signal_uart_info(1),
     tx => tx,
-    word_out => signal_uart_out, 
+    word_out => signal_uart_out,
     busy_rx => signal_uart_info(0)
     );
-
-
-
-
-
 
 U_QUITA_R: quitaRebote
     Port map ( boton => input(19),
@@ -175,7 +170,7 @@ port map(
     mux_in0 => signal_memout,
     mux_in1 => input_signal,
     mux_in2 => uart_out_extnd,
-    mux_in3 => "00000000000000000000000000000000",
+    mux_in3 => signal_uart_info,
     mux_sel => signal_iord(10 downto 9),
     mux_out => signal_procc_in
 );
@@ -236,7 +231,7 @@ arquitecture: main_arquitecture
 
 --testIRWRITE <= signal_ir_write;
 
-leds <= "00000000000000"&signal_uart_info;
+leds <= "00000000000000"&signal_uart_info(1 downto 0);
 
 debug <= signal_outregister;
 --pcOut <= signal_pcTest;

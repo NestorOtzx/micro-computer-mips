@@ -21,10 +21,10 @@ begin
   
     stateRegister: process (clock, reset)
     begin 
-        if (reset = '1') then
-            estadoActual <= idleST;
-        else
-            if (clock'event and clock ='1') then
+        if (clock'event and clock ='1') then
+            if (reset = '1') then
+                estadoActual <= idleST;
+            else
                 estadoActual <= estadoSiguiente;
             end if;
         end if;

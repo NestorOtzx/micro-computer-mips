@@ -70,10 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -92,20 +88,26 @@ read_vhdl -library xil_defaultlib {
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_rx.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_tx.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd
-  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/quitaRebote.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ramUART.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd
+  C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/uart_clockgen.vhd
   C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd
 }
 OPTRACE "Adding files" END { }

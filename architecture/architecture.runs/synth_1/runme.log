@@ -17,86 +17,107 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 20536
+INFO: [Synth 8-7075] Helper process launched with PID 16280
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1172.309 ; gain = 10.742
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1172.590 ; gain = 24.129
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'micro_computer' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:18]
-INFO: [Synth 8-3491] module 'mux2to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:4' bound to instance 'U_MUX' of component 'mux2to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:124]
-INFO: [Synth 8-638] synthesizing module 'mux2to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:11]
-INFO: [Synth 8-256] done synthesizing module 'mux2to1_32b' (1#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:11]
-INFO: [Synth 8-3491] module 'controlDisplay' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:5' bound to instance 'U_SEVSEG' of component 'controlDisplay' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:132]
+INFO: [Synth 8-638] synthesizing module 'micro_computer' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:22]
+INFO: [Synth 8-3491] module 'c_uart_top' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:5' bound to instance 'U_UART' of component 'c_uart_top' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:147]
+INFO: [Synth 8-638] synthesizing module 'c_uart_top' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:19]
+INFO: [Synth 8-3491] module 'extensor_uart' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:5' bound to instance 'U_EXT' of component 'extensor_uart' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'extensor_uart' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:16]
+WARNING: [Synth 8-614] signal 'divide' is read in the process but is not in the sensitivity list [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:23]
+INFO: [Synth 8-256] done synthesizing module 'extensor_uart' (1#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:16]
+INFO: [Synth 8-3491] module 'uart_clockgen' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/uart_clockgen.vhd:5' bound to instance 'U_CLOCK' of component 'uart_clockgen' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:78]
+INFO: [Synth 8-638] synthesizing module 'uart_clockgen' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/uart_clockgen.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'uart_clockgen' (2#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/uart_clockgen.vhd:12]
+INFO: [Synth 8-3491] module 'c_uart_tx' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_tx.vhd:4' bound to instance 'U_TX' of component 'c_uart_tx' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:85]
+INFO: [Synth 8-638] synthesizing module 'c_uart_tx' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_tx.vhd:15]
+WARNING: [Synth 8-614] signal 'word' is read in the process but is not in the sensitivity list [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_tx.vhd:68]
+INFO: [Synth 8-256] done synthesizing module 'c_uart_tx' (3#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_tx.vhd:15]
+INFO: [Synth 8-3491] module 'c_uart_rx' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_rx.vhd:4' bound to instance 'U_RX' of component 'c_uart_rx' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:95]
+INFO: [Synth 8-638] synthesizing module 'c_uart_rx' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_rx.vhd:14]
+WARNING: [Synth 8-614] signal 'word_signal' is read in the process but is not in the sensitivity list [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_rx.vhd:78]
+INFO: [Synth 8-256] done synthesizing module 'c_uart_rx' (4#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_rx.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'c_uart_top' (5#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/uart/c_uart_top.vhd:19]
+INFO: [Synth 8-3491] module 'quitaRebote' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/quitaRebote.vhd:51' bound to instance 'U_QUITA_R' of component 'quitaRebote' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'quitaRebote' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/quitaRebote.vhd:65]
+INFO: [Synth 8-256] done synthesizing module 'quitaRebote' (6#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/quitaRebote.vhd:65]
+INFO: [Synth 8-3491] module 'mux4to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:4' bound to instance 'U_MUX' of component 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:169]
+INFO: [Synth 8-638] synthesizing module 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'mux4to1_32b' (7#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:13]
+INFO: [Synth 8-3491] module 'controlDisplay' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:5' bound to instance 'U_SEVSEG' of component 'controlDisplay' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:179]
 INFO: [Synth 8-638] synthesizing module 'controlDisplay' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:13]
 INFO: [Synth 8-3491] module 'mux4to1_4b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd:6' bound to instance 'U0' of component 'mux4to1_4b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:36]
 INFO: [Synth 8-638] synthesizing module 'mux4to1_4b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'mux4to1_4b' (2#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'mux4to1_4b' (8#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_4.vhd:14]
 INFO: [Synth 8-3491] module 'bin2Hex' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd:6' bound to instance 'U1' of component 'bin2Hex' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:46]
 INFO: [Synth 8-638] synthesizing module 'bin2Hex' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd:11]
-INFO: [Synth 8-256] done synthesizing module 'bin2Hex' (3#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'bin2Hex' (9#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/bin2Hex.vhd:11]
 INFO: [Synth 8-3491] module 'counterDisplay' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd:7' bound to instance 'U2' of component 'counterDisplay' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:52]
 INFO: [Synth 8-638] synthesizing module 'counterDisplay' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'counterDisplay' (4#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'controlDisplay' (5#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:13]
-INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_OUTREGISTER' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'counterDisplay' (10#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/counterDisplay.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'controlDisplay' (11#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/controlDisplay.vhd:13]
+INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_OUTREGISTER' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:190]
 INFO: [Synth 8-638] synthesizing module 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'register_32b' (6#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:12]
-INFO: [Synth 8-3491] module 'ram' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd:6' bound to instance 'U_MEMORY' of component 'ram' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:153]
-INFO: [Synth 8-638] synthesizing module 'ram' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd:17]
-INFO: [Synth 8-256] done synthesizing module 'ram' (7#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ram.vhd:17]
-INFO: [Synth 8-3491] module 'count_32bit' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd:5' bound to instance 'divisor' of component 'count_32bit' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:165]
+INFO: [Synth 8-256] done synthesizing module 'register_32b' (12#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:12]
+INFO: [Synth 8-3491] module 'ram' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ramUART.vhd:6' bound to instance 'U_MEMORY' of component 'ram' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'ram' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ramUART.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'ram' (13#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/ramUART.vhd:17]
+INFO: [Synth 8-3491] module 'count_32bit' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd:5' bound to instance 'divisor' of component 'count_32bit' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:212]
 INFO: [Synth 8-638] synthesizing module 'count_32bit' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'count_32bit' (8#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd:13]
-INFO: [Synth 8-3491] module 'main_arquitecture' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:5' bound to instance 'arquitecture' of component 'main_arquitecture' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:172]
+INFO: [Synth 8-256] done synthesizing module 'count_32bit' (14#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/count_32bit.vhd:13]
+INFO: [Synth 8-3491] module 'main_arquitecture' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:5' bound to instance 'arquitecture' of component 'main_arquitecture' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:219]
 INFO: [Synth 8-638] synthesizing module 'main_arquitecture' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:23]
 INFO: [Synth 8-3491] module 'control' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd:4' bound to instance 'control_unit' of component 'control' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:166]
 INFO: [Synth 8-638] synthesizing module 'control' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd:25]
-INFO: [Synth 8-256] done synthesizing module 'control' (9#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'control' (15#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/control.vhd:25]
 INFO: [Synth 8-3491] module 'program_counter' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd:4' bound to instance 'U_PC' of component 'program_counter' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:188]
 INFO: [Synth 8-638] synthesizing module 'program_counter' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'program_counter' (10#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'program_counter' (16#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/program_counter.vhd:12]
 INFO: [Synth 8-3491] module 'mux2to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:4' bound to instance 'U_MUX_IORD' of component 'mux2to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:198]
+INFO: [Synth 8-638] synthesizing module 'mux2to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'mux2to1_32b' (17#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:11]
 INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_INSTRUCTION_REGISTER' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:205]
 INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_MEMORY_DATA_REGISTER' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:214]
 INFO: [Synth 8-3491] module 'mux4to1_5b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd:7' bound to instance 'U_MUX_RGDST' of component 'mux4to1_5b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:223]
 INFO: [Synth 8-638] synthesizing module 'mux4to1_5b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'mux4to1_5b' (11#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'mux4to1_5b' (18#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_5b.vhd:16]
 INFO: [Synth 8-3491] module 'mux4to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:4' bound to instance 'U_MUX_MEMTOREG' of component 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:233]
-INFO: [Synth 8-638] synthesizing module 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'mux4to1_32b' (12#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:13]
 INFO: [Synth 8-3491] module 'registers' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd:6' bound to instance 'U_REGISTERS' of component 'registers' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:242]
 INFO: [Synth 8-638] synthesizing module 'registers' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd:20]
 WARNING: [Synth 8-614] signal 'reg_write' is read in the process but is not in the sensitivity list [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd:27]
-INFO: [Synth 8-256] done synthesizing module 'registers' (13#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'registers' (19#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/registers.vhd:20]
 INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_REGISTER_A' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:255]
 INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_REGISTER_B' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:264]
 INFO: [Synth 8-3491] module 'sign_extend' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd:3' bound to instance 'U_SIGN_EXTEND' of component 'sign_extend' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:275]
 INFO: [Synth 8-638] synthesizing module 'sign_extend' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd:9]
-INFO: [Synth 8-256] done synthesizing module 'sign_extend' (14#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd:9]
+INFO: [Synth 8-256] done synthesizing module 'sign_extend' (20#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/sign_extend.vhd:9]
 INFO: [Synth 8-3491] module 'mux2to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux2to1-32b.vhd:4' bound to instance 'U_MUX_ALUSRCA' of component 'mux2to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:283]
 INFO: [Synth 8-3491] module 'mux4to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:4' bound to instance 'U_MUX_ALUSRCB' of component 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:291]
 INFO: [Synth 8-3491] module 'alu_control' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd:4' bound to instance 'U_ALUCONTROL' of component 'alu_control' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:300]
 INFO: [Synth 8-638] synthesizing module 'alu_control' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd:10]
-INFO: [Synth 8-256] done synthesizing module 'alu_control' (15#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'alu_control' (21#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu_control.vhd:10]
 INFO: [Synth 8-3491] module 'alu' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd:6' bound to instance 'U_ALU' of component 'alu' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:306]
 INFO: [Synth 8-638] synthesizing module 'alu' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'alu' (16#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd:15]
+INFO: [Synth 8-256] done synthesizing module 'alu' (22#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/alu.vhd:15]
 INFO: [Synth 8-3491] module 'register_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/register_32b.vhd:4' bound to instance 'U_ALUOUT' of component 'register_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:315]
 INFO: [Synth 8-3491] module 'mux4to1_32b' declared at 'C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/mux4to1_32b.vhd:4' bound to instance 'U_MUX_PC_SRC' of component 'mux4to1_32b' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:326]
-INFO: [Synth 8-256] done synthesizing module 'main_arquitecture' (17#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:23]
-INFO: [Synth 8-256] done synthesizing module 'micro_computer' (18#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'main_arquitecture' (23#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/main_arquitecture.vhd:23]
+INFO: [Synth 8-256] done synthesizing module 'micro_computer' (24#1) [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/micro_computer.vhd:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1227.340 ; gain = 65.773
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1227.801 ; gain = 79.340
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1227.340 ; gain = 65.773
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1227.801 ; gain = 79.340
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1227.340 ; gain = 65.773
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1227.801 ; gain = 79.340
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1227.340 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1227.801 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -107,28 +128,61 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/micro_computer_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1345.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1345.977 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1345.043 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1345.977 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.043 ; gain = 183.477
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.977 ; gain = 197.516
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.043 ; gain = 183.477
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.977 ; gain = 197.516
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.043 ; gain = 183.477
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.977 ; gain = 197.516
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'estadoActual_reg' in module 'c_uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'estadoActual_reg' in module 'c_uart_rx'
 INFO: [Synth 8-802] inferred FSM for state register 'estadoActual_reg' in module 'control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  idlest |                      00000000001 |                             0000
+                 startst |                      00000000010 |                             0001
+                 dato0st |                      00000000100 |                             0010
+                 dato1st |                      00000001000 |                             0011
+                 dato2st |                      00000010000 |                             0100
+                 dato3st |                      00000100000 |                             0101
+                 dato4st |                      00001000000 |                             0110
+                 dato5st |                      00010000000 |                             0111
+                 dato6st |                      00100000000 |                             1000
+                 dato7st |                      01000000000 |                             1001
+                  stopst |                      10000000000 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'estadoActual_reg' using encoding 'one-hot' in module 'c_uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  idlest |                       0000000001 |                             0000
+                 dato0st |                       0000000010 |                             0001
+                 dato1st |                       0000000100 |                             0010
+                 dato2st |                       0000001000 |                             0011
+                 dato3st |                       0000010000 |                             0100
+                 dato4st |                       0000100000 |                             0101
+                 dato5st |                       0001000000 |                             0110
+                 dato6st |                       0010000000 |                             0111
+                 dato7st |                       0100000000 |                             1000
+                  stopst |                       1000000000 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'estadoActual_reg' using encoding 'one-hot' in module 'c_uart_rx'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -157,7 +211,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'estadoActual_reg' in module
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'estadoActual_reg' using encoding 'sequential' in module 'control'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.043 ; gain = 183.477
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1345.977 ; gain = 197.516
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -167,12 +221,19 @@ Detailed RTL Component Info :
 	   3 Input   32 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 7     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Multipliers : 
 	              32x32  Multipliers := 1     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 4     
-	   4 Input   32 Bit        Muxes := 3     
+	   4 Input   32 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 3     
 	  10 Input   32 Bit        Muxes := 1     
+	  11 Input   11 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 1     
+	  10 Input   10 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 1     
+	  10 Input    8 Bit        Muxes := 2     
 	  21 Input    5 Bit        Muxes := 1     
 	  14 Input    5 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 2     
@@ -181,6 +242,8 @@ Detailed RTL Component Info :
 	  16 Input    4 Bit        Muxes := 1     
 	  21 Input    3 Bit        Muxes := 1     
 	  21 Input    2 Bit        Muxes := 4     
+	  11 Input    1 Bit        Muxes := 2     
+	  10 Input    1 Bit        Muxes := 1     
 	  21 Input    1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -209,8 +272,38 @@ DSP Report: operator multOp is absorbed into DSP multOp.
 DSP Report: Generating DSP multOp, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator multOp is absorbed into DSP multOp.
 DSP Report: operator multOp is absorbed into DSP multOp.
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_send_word_reg/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[7]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[6]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[5]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[4]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[3]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[2]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[1]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/out_word_reg[0]/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'U_UART/U_EXT/divide_reg/Q' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:29]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:29]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/quintus/micro-computer-mips/architecture/architecture.srcs/sources_1/new/extensor_uart.vhd:29]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 1345.043 ; gain = 183.477
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1345.977 ; gain = 197.516
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -244,13 +337,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:35 . Memory (MB): peak = 1369.430 ; gain = 207.863
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1371.109 ; gain = 222.648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:42 . Memory (MB): peak = 1514.766 ; gain = 353.199
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1520.555 ; gain = 372.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -271,7 +364,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -289,37 +382,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -336,42 +429,45 @@ Report Cell Usage:
 |      |Cell      |Count |
 +------+----------+------+
 |1     |BUFG      |     1|
-|2     |CARRY4    |    22|
+|2     |CARRY4    |    30|
 |3     |DSP48E1   |     3|
 |4     |LUT1      |     3|
-|5     |LUT2      |    31|
-|6     |LUT3      |    98|
-|7     |LUT4      |    88|
-|8     |LUT5      |   111|
-|9     |LUT6      |   356|
-|10    |RAM256X1S |   104|
+|5     |LUT2      |    45|
+|6     |LUT3      |    80|
+|7     |LUT4      |    95|
+|8     |LUT5      |   156|
+|9     |LUT6      |   392|
+|10    |RAM256X1S |   128|
 |11    |RAM32M    |    12|
-|12    |FDCE      |   234|
-|13    |IBUF      |    22|
-|14    |OBUF      |    27|
+|12    |FDCE      |   299|
+|13    |FDPE      |     1|
+|14    |FDRE      |     1|
+|15    |IBUF      |    23|
+|16    |OBUF      |    60|
 +------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 1515.828 ; gain = 236.559
-Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 1515.828 ; gain = 354.262
+Synthesis finished with 0 errors, 30 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:44 . Memory (MB): peak = 1521.605 ; gain = 254.969
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1521.605 ; gain = 373.145
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1527.684 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 141 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1530.777 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 173 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 1 inverter(s) to 116 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1527.684 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 140 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1530.777 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 116 instances were transformed.
-  RAM256X1S => RAM256X1S (inverted pins: WCLK) (MUXF7(x2), MUXF8, RAMS64E(x4)): 104 instances
+  A total of 140 instances were transformed.
+  RAM256X1S => RAM256X1S (inverted pins: WCLK) (MUXF7(x2), MUXF8, RAMS64E(x4)): 128 instances
   RAM32M => RAM32M (inverted pins: WCLK) (RAMD32(x6), RAMS32(x2)): 12 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-79 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+101 Infos, 4 Warnings, 30 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:53 . Memory (MB): peak = 1527.684 ; gain = 366.117
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:55 . Memory (MB): peak = 1530.777 ; gain = 382.316
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint 'C:/quintus/micro-computer-mips/architecture/architecture.runs/synth_1/micro_computer.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file micro_computer_utilization_synth.rpt -pb micro_computer_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Nov 18 12:10:05 2023...
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 21 10:22:52 2023...

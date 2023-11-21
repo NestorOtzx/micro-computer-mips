@@ -22,6 +22,7 @@ leer_uart:  # Hecho
     sw $ra, 0($sp)
     jal input           #recibe un enter
     lw $v0, 0x400($0)  #lee lo que hay en la uart despues del enter
+    sw $v0, 0x200($0)
     lw $ra, 0($sp)
     addi $sp, $sp, 1
     jr $ra

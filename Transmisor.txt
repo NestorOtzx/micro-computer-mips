@@ -1,9 +1,8 @@
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
-    jal     enviar_uart
-rpt:
-    addi    $a0, $0, 0xffff    
+    addi    $a0, $0, 0xffff
+    sw 	    $a0, 0x400($0)
     jal output
     j rpt
 printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
@@ -30,7 +29,7 @@ enviar_uart:
     sw $ra, 0($sp)
     jal input            # recibe un enter
     addi $v0, $v0, 0x100 # para activar el send word con el bit 9
-    sw $v0, 0x400($gp)   # envia a la uart la informacion de los switches
+    sw $v0, 0x400($0)   # envia a la uart la informacion de los switches
     addi $t2, $0, 2
     addi $t3, $0, 3
     addi $t4, $0, 0xffff

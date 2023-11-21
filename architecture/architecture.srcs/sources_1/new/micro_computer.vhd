@@ -148,8 +148,8 @@ U_UART: c_uart_top
     port map(
     clock => clk,
     reset => reset, 
-    --send_word => signal_send_word,
-    send_word => '1',
+    send_word => signal_send_word,
+    --send_word => '1',
     word => signal_memin(7 downto 0),
     rx => rx,
     busy_tx => signal_uart_info(1),

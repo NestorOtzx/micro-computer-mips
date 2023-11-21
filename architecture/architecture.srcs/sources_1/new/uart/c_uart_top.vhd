@@ -50,8 +50,30 @@ component uart_clockgen
     );
 end component;    
 
+component extensor_uart
+    port( clk: in STD_LOGIC;
+    reset: in STD_LOGIC;
+    send_word: in STD_LOGIC;
+    word: in STD_LOGIC_VECTOR(7 downto 0);
+    out_send_word: out STD_LOGIC;
+    out_word: out STD_LOGIC_VECTOR(7 downto 0)
+    );
+end component;
+
+signal signal_send_word: STD_LOGIC;
+signal signal_word: STD_LOGIC_VECTOR(7 downto 0);
 
 begin
+
+U_EXT: extensor_uart
+    port map(
+        clk => clock,
+        reset => reset,
+        send_word => send_word,
+        word => word,
+        out_send_word =>signal_send_word, 
+        out_word => signal_word
+    );
 
 U_CLOCK: uart_clockgen
     port map(
@@ -64,8 +86,8 @@ U_TX: c_uart_tx
 port map(
     clock    => UART_CLK,
     reset    => reset,
-    send_word=> send_word,
-    word     => word,
+    send_word=> signal_send_word,
+    word     => signal_word,
     busy_tx  => busy_tx,
     tx       => tx
 );

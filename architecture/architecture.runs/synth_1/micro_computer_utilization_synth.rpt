@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Nov 21 10:57:54 2023
-| Host         : Seven running 64-bit major release  (build 9200)
+| Date         : Tue Nov 21 11:05:20 2023
+| Host         : Simulacion10 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file micro_computer_utilization_synth.rpt -pb micro_computer_utilization_synth.pb
 | Design       : micro_computer
 | Device       : 7a35tcpg236-1
@@ -35,8 +35,8 @@ Table of Contents
 |   LUT as Memory            |  560 |     0 |      9600 |  5.83 |
 |     LUT as Distributed RAM |  560 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            |  301 |     0 |     41600 |  0.72 |
-|   Register as Flip Flop    |  301 |     0 |     41600 |  0.72 |
+| Slice Registers            |  285 |     0 |     41600 |  0.69 |
+|   Register as Flip Flop    |  285 |     0 |     41600 |  0.69 |
 |   Register as Latch        |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                   |  256 |     0 |     16300 |  1.57 |
 | F8 Muxes                   |  128 |     0 |      8150 |  1.57 |
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 1     |          Yes |           - |          Set |
-| 299   |          Yes |           - |        Reset |
+| 283   |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 1     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -93,7 +93,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |   83 |     0 |       106 | 78.30 |
+| Bonded IOB                  |   51 |     0 |       106 | 48.11 |
 | Bonded IPADs                |    0 |     0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         5 |  0.00 |
@@ -154,16 +154,16 @@ Table of Contents
 +----------+------+---------------------+
 | RAMS64E  |  512 |  Distributed Memory |
 | LUT6     |  392 |                 LUT |
-| FDCE     |  299 |        Flop & Latch |
+| FDCE     |  283 |        Flop & Latch |
 | MUXF7    |  256 |               MuxFx |
 | LUT5     |  156 |                 LUT |
 | MUXF8    |  128 |               MuxFx |
 | LUT4     |   95 |                 LUT |
 | LUT3     |   80 |                 LUT |
 | RAMD32   |   72 |  Distributed Memory |
-| OBUF     |   60 |                  IO |
 | LUT2     |   45 |                 LUT |
 | CARRY4   |   30 |          CarryLogic |
+| OBUF     |   28 |                  IO |
 | RAMS32   |   24 |  Distributed Memory |
 | IBUF     |   23 |                  IO |
 | LUT1     |    3 |                 LUT |

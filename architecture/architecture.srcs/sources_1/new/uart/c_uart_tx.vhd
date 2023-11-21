@@ -30,7 +30,7 @@ begin
         end if;
     end process;
     
-    process(estadoActual)
+    process(estadoActual, send_word)
     begin
          case (estadoActual) is
               when idleST => 
@@ -69,10 +69,10 @@ begin
     begin
          case (estadoActual) is
               when idleST => 
-                 tx <= '0';
+                 tx <= '1';
                  busy_tx <= '0';
               when startST => 
-                 tx <= '1';
+                 tx <= '0';
                  busy_tx <= '1';
               when dato0ST => 
                  tx <= word(0);
@@ -102,7 +102,7 @@ begin
                  tx <= '1';
                  busy_tx <= '0';
               when others =>
-                 tx <= '0';
+                 tx <= '1';
                  busy_tx <= '0';
                             
            end case;    

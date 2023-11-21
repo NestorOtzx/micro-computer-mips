@@ -8,7 +8,7 @@ entity micro_computer is
         input: in STD_LOGIC_VECTOR (19 downto 0);
         
         leds: out std_logic_vector(15 downto 0);
-        debug: out std_logic_vector(31 downto 0);
+        --debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
         display: out std_logic_vector(6 downto 0);
@@ -148,9 +148,10 @@ U_UART: c_uart_top
     port map(
     clock => clk,
     reset => reset, 
-    send_word => signal_send_word,
-    --send_word => '1',
-    word => signal_memin(7 downto 0),
+    --send_word => signal_send_word,
+    send_word => '1',
+    --word => signal_memin(7 downto 0),
+    word => "11111111",
     rx => rx,
     busy_tx => signal_uart_info(1),
     tx => tx,
@@ -234,7 +235,7 @@ arquitecture: main_arquitecture
 
 leds <= signal_uart_info(1 downto 0)&uart_out_extnd(13 downto 0);
 
-debug <= signal_outregister;
+--debug <= signal_outregister;
 --pcOut <= signal_pcTest;
 
 

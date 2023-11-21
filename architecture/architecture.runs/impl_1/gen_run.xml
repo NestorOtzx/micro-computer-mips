@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1700327342">
+  <File Type="ROUTE-PWR" Name="micro_computer_power_routed.rpt"/>
   <File Type="PA-TCL" Name="micro_computer.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="micro_computer_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="micro_computer_reports.tcl"/>
   <File Type="BITSTR-MSK" Name="micro_computer.msk"/>
+  <File Type="ROUTE-CLK" Name="micro_computer_clock_utilization_routed.rpt"/>
   <File Type="RDI-RDI" Name="micro_computer.vdi"/>
   <File Type="BG-BIT" Name="micro_computer.bit"/>
   <File Type="BG-DRC" Name="micro_computer.drc"/>
@@ -11,8 +14,11 @@
   <File Type="BITSTR-RBT" Name="micro_computer.rbt"/>
   <File Type="BITSTR-NKY" Name="micro_computer.nky"/>
   <File Type="BITSTR-BMM" Name="micro_computer_bd.bmm"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="micro_computer_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MMI" Name="micro_computer.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="micro_computer_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="micro_computer.sysdef"/>
+  <File Type="ROUTE-DRC-RPX" Name="micro_computer_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="micro_computer.ltx"/>
   <File Type="RCFI_FILE" Name="micro_computer.rcfi"/>
@@ -35,6 +41,22 @@
   <File Type="RNPI_FILE" Name="micro_computer.rnpi"/>
   <File Type="NPI_FILE" Name="micro_computer.npi"/>
   <File Type="RBD_FILE" Name="micro_computer.rbd"/>
+  <File Type="OPT-DRC" Name="micro_computer_drc_opted.rpt"/>
+  <File Type="PLACE-UTIL" Name="micro_computer_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="micro_computer_utilization_placed.pb"/>
+  <File Type="PLACE-IO" Name="micro_computer_io_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="micro_computer_control_sets_placed.rpt"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="micro_computer_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="micro_computer_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="micro_computer_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="micro_computer_route_status.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="micro_computer_power_routed.rpx"/>
+  <File Type="ROUTE-DRC" Name="micro_computer_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="micro_computer_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="micro_computer_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW" Name="micro_computer_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="micro_computer_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="micro_computer_bus_skew_routed.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/alu.vhd">

@@ -36,7 +36,7 @@ begin
             end if;
             if (clk'event and clk ='1' and divide = '1') then
                 ucounter <= (ucounter + '1');
-                if (ucounter = "00000000000000000000001000000000") then -- mas rapido
+                if (ucounter = "00000000000000011000000000000000") then -- mas rapido, clock de la uart << 4 + modificaciones varias
                     ucounter <= (others => '0');
                     if (send_word = '0') then
                         out_send_word <= '0';

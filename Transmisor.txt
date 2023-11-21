@@ -2,6 +2,7 @@ addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
     jal     enviar_uart
+    jal     leer_uart
     addi    $a0, $v0, 0
     jal output
     j       fin

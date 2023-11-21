@@ -141,7 +141,7 @@ signal_memread <= (singal_memrd and not signal_memin(9));
 input_signal <= "000000000000" & input; --simulacion
 
 --UART--
-signal_send_word <= (signal_iord(10) and  signal_memin(8));
+signal_send_word <= (signal_iord(10) and  signal_memin(8) and signal_memwr);
 uart_out_extnd <= "000000000000000000000000"&signal_uart_out;
 
 U_UART: c_uart_top

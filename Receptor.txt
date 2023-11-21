@@ -1,0 +1,77 @@
+addi $sp, $0, 0x01ff   #definiciones basicas
+addi $gp, $0, 0x0100   #definiciones basicas
+main:
+    jal     leer_uart
+rpt:
+    addi    $a0, $v0, 0   
+    jal output
+    j rpt
+printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
+    addi $t0, $a0, 0
+    addi $t1, $a1, 0
+    for_pMemoria:
+        beq $t0, $t1, break_pMemoria
+        lw $t2, 0($t0)
+        sw $t2, 0x200($0)
+        addi $t0, $t0, 1
+        j for_pMemoria
+    break_pMemoria:
+        jr $ra
+leer_uart:  # Hecho
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input           #recibe un enter
+    lw $v0, 0x400($0)  #lee lo que hay en la uart despues del enter
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+enviar_uart:
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input            # recibe un enter
+    addi $v0, $v0, 0x100 # para activar el send word con el bit 9
+    sw $v0, 0x400($gp)   # envia a la uart la informacion de los switches
+    addi $t2, $0, 2
+    addi $t3, $0, 3
+    addi $t4, $0, 0xffff
+    while_wait_txbusy:   # espera a que el busy tx este en 0 para continuar
+        lw $t1, 0x600($0)   #lee el estado de la uart
+        sw $t4, 0x200($0)   # escribe ffff
+        beq $t1, $t2, while_wait_txbusy # comprueba si tx esta busy
+        beq $t1, $t3, while_wait_txbusy # comprueba is rx y tx esta busy
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+input:
+	addiu $t0, $0, 0x7fff
+	addi $t4, $zero, 0x1
+    while_input:
+        lw $t1, 0x200($0)
+	    sw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_input
+        j while_input
+    salir_input:
+        lw $t1, 0x200($0)
+	    sw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_input  #repetir mientras el enter este presionado
+        addi $v0, $t1, 0
+        sw $0, 0x200($0) 
+        jr $ra
+output:
+    addiu $t0, $0, 0x7fff # Imprime y espera por enter para continuar
+	addi $t4, $zero, 0x1
+    sw $a0, 0x200($0)
+    while_output:
+        lw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_output
+        j while_output
+    salir_output:
+        lw $t1, 0x200($0)
+        slt $t3, $t0, $t1
+        beq $t3, $t4, salir_output  #repetir mientras el enter este presionado
+        sw $0, 0x200($0) 
+        jr $ra
+fin:

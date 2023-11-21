@@ -2,10 +2,10 @@ addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
     jal     enviar_uart
-    jal     leer_uart
-    addi    $a0, $v0, 0
+rpt:
+    addi    $a0, $0, 0xffff    
     jal output
-    j       fin
+    j rpt
 printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     addi $t0, $a0, 0
     addi $t1, $a1, 0

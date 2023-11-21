@@ -1,0 +1,11 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[28]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[6]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[8]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[9]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[13]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[10]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[1]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

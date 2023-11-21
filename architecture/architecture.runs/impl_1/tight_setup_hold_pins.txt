@@ -1,11 +1,11 @@
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
 |       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[27]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[26]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[29]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[31]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[22]/D|
 |              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[28]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[6]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[8]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[9]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[13]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                      arquitecture/U_PC/pcSignal_reg[10]/D|
-|              sys_clk_pin |              sys_clk_pin |                                                                       arquitecture/U_PC/pcSignal_reg[1]/D|
+|              sys_clk_pin |              sys_clk_pin |                                            arquitecture/control_unit/FSM_sequential_estadoActual_reg[0]/D|
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

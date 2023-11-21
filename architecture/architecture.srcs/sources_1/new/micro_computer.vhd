@@ -8,7 +8,7 @@ entity micro_computer is
         input: in STD_LOGIC_VECTOR (19 downto 0);
         
         leds: out std_logic_vector(15 downto 0);
-        --debug: out std_logic_vector(31 downto 0);
+        debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
         display: out std_logic_vector(6 downto 0);
@@ -232,9 +232,9 @@ arquitecture: main_arquitecture
 
 --testIRWRITE <= signal_ir_write;
 
-leds <= "00000000000000"&signal_uart_info(1 downto 0);
+leds <= signal_uart_info(1 downto 0)&uart_out_extnd(13 downto 0);
 
---debug <= signal_outregister;
+debug <= signal_outregister;
 --pcOut <= signal_pcTest;
 
 

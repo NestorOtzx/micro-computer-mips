@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Nov 21 11:06:25 2023
+| Date         : Tue Nov 21 11:54:19 2023
 | Host         : Simulacion10 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file micro_computer_control_sets_placed.rpt
 | Design       : micro_computer
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    11 |
-|    Minimum number of control sets                        |    11 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    19 |
+| Unused register locations in slices containing registers |    24 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,8 +39,8 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    11 |
-| >= 0 to < 4        |     1 |
+| Total control sets |    12 |
+| >= 0 to < 4        |     2 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     0 |
@@ -59,8 +59,8 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               1 |            1 |
-| No           | No                    | Yes                    |             204 |           83 |
-| No           | Yes                   | No                     |               0 |            0 |
+| No           | No                    | Yes                    |             205 |           88 |
+| No           | Yes                   | No                     |              18 |            5 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |              80 |           32 |
 | Yes          | Yes                   | No                     |               0 |            0 |
@@ -74,13 +74,14 @@ Table of Contents
 |      Clock Signal      |                           Enable Signal                           | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------+-------------------------------------------------------------------+------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG         |                                                                   |                  |                1 |              1 |         1.00 |
-| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_1[0] | reset_IBUF       |                3 |             16 |         5.33 |
+|  U_QUITA_R/iclock      |                                                                   | reset_IBUF       |                1 |              1 |         1.00 |
+| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_1[0] | reset_IBUF       |                5 |             16 |         3.20 |
 |  U_UART/U_CLOCK/output |                                                                   | reset_IBUF       |                7 |             18 |         2.57 |
 | ~clk_IBUF_BUFG         | arquitecture/control_unit/E[0]                                    | reset_IBUF       |                9 |             32 |         3.56 |
-| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[0]_1[0] | reset_IBUF       |               20 |             32 |         1.60 |
-|  clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               17 |             58 |         3.41 |
+| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[0]_1[0] | reset_IBUF       |               18 |             32 |         1.78 |
+|  clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               22 |             76 |         3.45 |
 | ~clk_IBUF_BUFG         | arquitecture/control_unit/main_reg_write                          |                  |               12 |             96 |         8.00 |
-| ~clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               59 |            128 |         2.17 |
+| ~clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               63 |            128 |         2.03 |
 | ~clk_IBUF_BUFG         | arquitecture/U_ALUOUT/reg_output_reg[8]_0                         |                  |               32 |            128 |         4.00 |
 | ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_0    |                  |               32 |            128 |         4.00 |
 | ~clk_IBUF_BUFG         |                                                                   |                  |               64 |            256 |         4.00 |

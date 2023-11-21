@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date                      : Tue Nov 21 11:06:25 2023
+| Date                      : Tue Nov 21 11:54:19 2023
 | Host                      : Simulacion10 running 64-bit major release  (build 9200)
 | Command                   : report_io -file micro_computer_io_placed.rpt
 | Design                    : micro_computer

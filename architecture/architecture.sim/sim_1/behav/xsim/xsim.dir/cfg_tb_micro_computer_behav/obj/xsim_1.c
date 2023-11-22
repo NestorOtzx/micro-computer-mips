@@ -121,18 +121,18 @@ IKI_DLLESPEC extern void execute_152(char*, char *);
 IKI_DLLESPEC extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
 IKI_DLLESPEC extern void transaction_11(char*, char*, unsigned, unsigned, unsigned);
-IKI_DLLESPEC extern void transaction_27(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void transaction_31(char*, char*, unsigned, unsigned, unsigned);
-IKI_DLLESPEC extern void transaction_47(char*, char*, unsigned, unsigned, unsigned);
-IKI_DLLESPEC extern void transaction_65(char*, char*, unsigned, unsigned, unsigned);
-funcp funcTab[71] = {(funcp)execute_161, (funcp)execute_162, (funcp)execute_163, (funcp)execute_18, (funcp)execute_19, (funcp)execute_20, (funcp)execute_21, (funcp)execute_22, (funcp)execute_23, (funcp)execute_24, (funcp)execute_159, (funcp)execute_160, (funcp)execute_61, (funcp)execute_63, (funcp)execute_64, (funcp)execute_66, (funcp)execute_67, (funcp)execute_68, (funcp)execute_70, (funcp)execute_71, (funcp)execute_72, (funcp)execute_73, (funcp)execute_74, (funcp)execute_76, (funcp)execute_77, (funcp)execute_78, (funcp)execute_79, (funcp)execute_81, (funcp)execute_91, (funcp)execute_84, (funcp)execute_86, (funcp)execute_88, (funcp)execute_89, (funcp)execute_90, (funcp)execute_93, (funcp)execute_102, (funcp)execute_103, (funcp)execute_105, (funcp)execute_106, (funcp)execute_108, (funcp)execute_109, (funcp)execute_125, (funcp)execute_136, (funcp)execute_141, (funcp)execute_155, (funcp)execute_158, (funcp)execute_111, (funcp)execute_112, (funcp)execute_113, (funcp)execute_115, (funcp)execute_116, (funcp)execute_118, (funcp)execute_124, (funcp)execute_129, (funcp)execute_130, (funcp)execute_131, (funcp)execute_138, (funcp)execute_145, (funcp)execute_146, (funcp)execute_148, (funcp)execute_149, (funcp)execute_150, (funcp)execute_151, (funcp)execute_152, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_11, (funcp)transaction_27, (funcp)transaction_31, (funcp)transaction_47, (funcp)transaction_65};
+IKI_DLLESPEC extern void transaction_33(char*, char*, unsigned, unsigned, unsigned);
+IKI_DLLESPEC extern void transaction_49(char*, char*, unsigned, unsigned, unsigned);
+IKI_DLLESPEC extern void transaction_67(char*, char*, unsigned, unsigned, unsigned);
+funcp funcTab[71] = {(funcp)execute_161, (funcp)execute_162, (funcp)execute_163, (funcp)execute_18, (funcp)execute_19, (funcp)execute_20, (funcp)execute_21, (funcp)execute_22, (funcp)execute_23, (funcp)execute_24, (funcp)execute_159, (funcp)execute_160, (funcp)execute_61, (funcp)execute_63, (funcp)execute_64, (funcp)execute_66, (funcp)execute_67, (funcp)execute_68, (funcp)execute_70, (funcp)execute_71, (funcp)execute_72, (funcp)execute_73, (funcp)execute_74, (funcp)execute_76, (funcp)execute_77, (funcp)execute_78, (funcp)execute_79, (funcp)execute_81, (funcp)execute_91, (funcp)execute_84, (funcp)execute_86, (funcp)execute_88, (funcp)execute_89, (funcp)execute_90, (funcp)execute_93, (funcp)execute_102, (funcp)execute_103, (funcp)execute_105, (funcp)execute_106, (funcp)execute_108, (funcp)execute_109, (funcp)execute_125, (funcp)execute_136, (funcp)execute_141, (funcp)execute_155, (funcp)execute_158, (funcp)execute_111, (funcp)execute_112, (funcp)execute_113, (funcp)execute_115, (funcp)execute_116, (funcp)execute_118, (funcp)execute_124, (funcp)execute_129, (funcp)execute_130, (funcp)execute_131, (funcp)execute_138, (funcp)execute_145, (funcp)execute_146, (funcp)execute_148, (funcp)execute_149, (funcp)execute_150, (funcp)execute_151, (funcp)execute_152, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_11, (funcp)transaction_31, (funcp)transaction_33, (funcp)transaction_49, (funcp)transaction_67};
 const int NumRelocateId= 71;
 
 void relocate(char *dp)
 {
 	iki_relocate(dp, "xsim.dir/cfg_tb_micro_computer_behav/xsim.reloc",  (void **)funcTab, 71);
-	iki_vhdl_file_variable_register(dp + 94752);
-	iki_vhdl_file_variable_register(dp + 94808);
+	iki_vhdl_file_variable_register(dp + 95120);
+	iki_vhdl_file_variable_register(dp + 95176);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */

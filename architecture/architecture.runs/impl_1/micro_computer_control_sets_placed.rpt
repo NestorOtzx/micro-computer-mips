@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue Nov 21 11:54:19 2023
-| Host         : Simulacion10 running 64-bit major release  (build 9200)
+| Date         : Thu Nov 23 16:50:53 2023
+| Host         : Seven running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file micro_computer_control_sets_placed.rpt
 | Design       : micro_computer
 | Device       : xc7a35t
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    24 |
+| Unused register locations in slices containing registers |    25 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -46,8 +46,8 @@ Table of Contents
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     0 |
-| >= 16              |    10 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     9 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               1 |            1 |
-| No           | No                    | Yes                    |             205 |           88 |
-| No           | Yes                   | No                     |              18 |            5 |
+| No           | No                    | Yes                    |             205 |           83 |
+| No           | Yes                   | No                     |              11 |            3 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              80 |           32 |
+| Yes          | No                    | Yes                    |              94 |           41 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -75,16 +75,16 @@ Table of Contents
 +------------------------+-------------------------------------------------------------------+------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG         |                                                                   |                  |                1 |              1 |         1.00 |
 |  U_QUITA_R/iclock      |                                                                   | reset_IBUF       |                1 |              1 |         1.00 |
-| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_1[0] | reset_IBUF       |                5 |             16 |         3.20 |
-|  U_UART/U_CLOCK/output |                                                                   | reset_IBUF       |                7 |             18 |         2.57 |
-| ~clk_IBUF_BUFG         | arquitecture/control_unit/E[0]                                    | reset_IBUF       |                9 |             32 |         3.56 |
-| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[0]_1[0] | reset_IBUF       |               18 |             32 |         1.78 |
-|  clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               22 |             76 |         3.45 |
+| ~clk_IBUF_BUFG         | arquitecture/U_ALUOUT/reg_output_reg[9]_0[0]                      | reset_IBUF       |                7 |             14 |         2.00 |
+| ~clk_IBUF_BUFG         | arquitecture/U_ALUOUT/E[0]                                        | reset_IBUF       |                5 |             16 |         3.20 |
+|  U_UART/U_CLOCK/output |                                                                   | reset_IBUF       |                6 |             18 |         3.00 |
+| ~clk_IBUF_BUFG         | arquitecture/control_unit/E[0]                                    | reset_IBUF       |               10 |             32 |         3.20 |
+| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[0]_1[0] | reset_IBUF       |               19 |             32 |         1.68 |
+| ~clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               35 |             64 |         1.83 |
 | ~clk_IBUF_BUFG         | arquitecture/control_unit/main_reg_write                          |                  |               12 |             96 |         8.00 |
-| ~clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               63 |            128 |         2.03 |
-| ~clk_IBUF_BUFG         | arquitecture/U_ALUOUT/reg_output_reg[8]_0                         |                  |               32 |            128 |         4.00 |
 | ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_0    |                  |               32 |            128 |         4.00 |
-| ~clk_IBUF_BUFG         |                                                                   |                  |               64 |            256 |         4.00 |
+| ~clk_IBUF_BUFG         | arquitecture/control_unit/FSM_sequential_estadoActual_reg[1]_1    |                  |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG         |                                                                   | reset_IBUF       |               44 |            133 |         3.02 |
 +------------------------+-------------------------------------------------------------------+------------------+------------------+----------------+--------------+
 
 

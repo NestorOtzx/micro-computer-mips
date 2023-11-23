@@ -106,15 +106,15 @@ begin
         wait for 200 us;
 
 --------------------------------------
-        -- INGRESAR EL B[1]
-         input <= "00000000000000001000";
+        -- INGRESAR EL B[0]
+        input <= "00000000000000001000";
         wait for 200 us;
         input <= "10000000000000001000";
         wait for 100 us;
         input <= "00000000000000001000";
         wait for 200 us;
         
-        -- INGRESAR EL B[2]
+        -- INGRESAR EL B[1]
         input <= "00000000000000001011";
         wait for 200 us;
         input <= "10000000000000001011";
@@ -122,7 +122,7 @@ begin
         input <= "00000000000000001011";
         wait for 200 us;
         
-        -- INGRESAR EL B[3]
+        -- INGRESAR EL B[2]
         input <= "00000000000000000001";
         wait for 200 us;
         input <= "10000000000000000001";
@@ -131,7 +131,7 @@ begin
         wait for 200 us;
         
 --------------------------------------
-        -- INGRESAR EL X[1]
+        -- INGRESAR EL X[0]
         input <= "00000000000000101111";
         wait for 200 us;
         input <= "10000000000000101111";
@@ -139,7 +139,7 @@ begin
         input <= "00000000000000101111";
         wait for 200 us;
         
-        -- INGRESAR EL X[2]
+        -- INGRESAR EL X[1]
         input <= "00000000000000011111";
         wait for 200 us;
         input <= "10000000000000011111";
@@ -147,7 +147,7 @@ begin
         input <= "00000000000000011111";
         wait for 200 us;
         
-        -- INGRESAR EL X[3]
+        -- INGRESAR EL X[2]
         input <= "00000000000001011111";
         wait for 200 us;
         input <= "10000000000001011111";

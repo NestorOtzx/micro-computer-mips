@@ -9,7 +9,7 @@ entity alu_control is
 end alu_control;
 architecture alu_ctrl of alu_control is
 
-    signal r_signal: STD_LOGIC_VECTOR (3 downto 0);   
+signal r_signal: STD_LOGIC_VECTOR (3 downto 0);   
 begin
     with func select
         r_signal <= "0000" when "100100",
@@ -31,6 +31,5 @@ begin
                        "0000" when "100",
                        "0111" when "101",
                        "1111" when others; 
-
 
 end alu_ctrl;

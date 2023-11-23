@@ -37,30 +37,20 @@ def calc():
 
 def getinput():
     global a, b, Xarr, N
-    # N = int(input("Ingrese un N: "))
-
-    # print("Ingresando A:")
-    # a.append(-1)
-    # for v in range(N):
-    #   val = int(input())
-    #   a.append(val)
-
-    # print("Ingresando B:")
-    # for v in range(N+1):
-    #   val = int(input())
-    #   b.append(val)
-    a = [0, 7, 10]
+    N = 2
+    a = [-1, 7, 10]
     b = [8, 11, 1]
     Xarr =  [47, 31, 95]
-    N = 2
     
 def main():
-  global N, Y
+  global N, Y,a,b,Xarr
   getinput()
   calc()
-  for x in Y:
-    print(x, end = ", ")
-  
+  print("N:", N)
+  print("A:", a)
+  print("B:", b)
+  print("X:", Xarr)
+  print("Resultado: ", hex(Y[-1]))  
 main()
 
 

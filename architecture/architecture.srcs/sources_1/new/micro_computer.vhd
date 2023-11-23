@@ -6,7 +6,6 @@ entity micro_computer is
         clk: in STD_LOGIC;
         reset: in STD_LOGIC;
         input: in STD_LOGIC_VECTOR (19 downto 0);
-        
         leds: out std_logic_vector(15 downto 0);
         debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
@@ -122,7 +121,7 @@ signal signal_outenable, signal_ledsenable: STD_LOGIC;
 signal signal_outregister, signal_outleds: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_memwrite, signal_memread: STD_LOGIC;
 signal input_signal: STD_LOGIC_VECTOR (31 downto 0);
-signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
+signal signal_procc_in, enter_extend: STD_LOGIC_VECTOR (31 downto 0);
 signal enter_signal: STD_LOGIC;
 
 signal signal_send_word: STD_LOGIC;
@@ -132,13 +131,14 @@ signal uart_out_extnd: STD_LOGIC_VECTOR(31 downto 0);
 
 begin
 
+enter_extend <= ("0000000000000000000000000000000"&enter_signal);
 nClock <= not clk;
 
 signal_ledsenable <= (signal_memwr and  signal_iord(9) and signal_iord(10));
-signal_outenable <= (signal_memwr and  signal_iord(9));
-signal_memwrite <= (signal_memwr and not signal_iord(9));
+signal_outenable <= (signal_memwr and  signal_iord(9) and not signal_iord(10));
+signal_memwrite <= (signal_memwr and not signal_iord(9) and not signal_iord(10));
 signal_memread <= (singal_memrd and not signal_memin(9));
-input_signal <= "000000000000" & enter_signal & input(18 downto 0); -- real
+input_signal <= "0000000000000" & input(18 downto 0); -- real
 --input_signal <= "000000000000" & input; --simulacion
 
 --UART--
@@ -173,7 +173,7 @@ port map(
     mux_in0 => signal_memout,
     mux_in1 => input_signal,
     mux_in2 => uart_out_extnd,
-    mux_in3 => (others => '0'),
+    mux_in3 => enter_extend,
     mux_sel => signal_iord(10 downto 9),
     mux_out => signal_procc_in
 );
@@ -244,7 +244,7 @@ arquitecture: main_arquitecture
 
 --testIRWRITE <= signal_ir_write;
 -- ENTER NORMAL / ENTER QUITA REBOTE
-leds <= input(19)&enter_signal&"000000"&signal_outleds(7 downto 0);
+leds <= input(19)&enter_signal&signal_outleds(13 downto 0);
 
 debug <= signal_outregister;
 --pcOut <= signal_pcTest;

@@ -256,7 +256,7 @@ U_REGISTER_A: register_32b
 port map(
     reg_input => tmpRegAin,
     write_enable => '1',
-    clk => nclock,
+    clk => main_clk,
     reset => main_reset,
     reg_output => tmpRegAout
 );
@@ -265,7 +265,7 @@ U_REGISTER_B: register_32b
 port map(
     reg_input => tmpRegBin,
     write_enable => '1',
-    clk => nclock,
+    clk => main_clk,
     reset => main_reset,
     reg_output => tmpRegBout
 );

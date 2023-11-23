@@ -34,18 +34,23 @@ printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
         jr $ra
 input:
 	addiu $t0, 0x7fff
-	addi $t4, $zero, 0x1
+	addi $t4, $zero, 1
     while_input:
-        lw $t1, 0x200($0)
-	sw $t1, 0x200($0)
-        slt $t3, $t0, $t1
-        beq $t3, $t4, salir_input
+        addi $t3, $0, 10         # guardar 10 en una variable
+        lw $t2, 0x600($0)        # Leer enter
+        add $t3, $t3, $t2        # calcular 10+enter, para depurar
+        sw $t3, 0x600($0)        # IMPRIMIR 10+enter EN LEDS   
+        lw $t1, 0x200($0)        # Leer switches
+        sw $t1, 0x200($0)        # MOSTRAR EL DATO EN 7 segmentos
+        beq $t2, $t4, salir_input
         j while_input
     salir_input:
-        lw $t1, 0x200($0)
-	sw $t1, 0x200($0)
-        slt $t3, $t0, $t1
-        beq $t3, $t4, salir_input  #repetir mientras el enter este presionado
+        addi $t6, $0, 15        # IMPRIMIR 15 EN LEDS
+        sw $t6, 0x600($0)       # IMPRIMIR 15 EN LEDS   
+        lw $t1, 0x200($0)       # Leer switches
+	    sw $t1, 0x200($0)       # MOSTRAR DATOS DE SWITCHES
+        lw $t2, 0x600($0)       # Leer el enter
+        beq $t2, $t4, salir_input  #repetir mientras el enter este presionado
         addi $v0, $t1, 0
         sw $0, 0x200($0) 
         jr $ra
@@ -54,11 +59,15 @@ output:
 	addi $t4, $zero, 0x1
     sw $a0, 0x200($0)
     while_output:
+        addi $t6, $0, 10         # IMPRIMIR EN LEDS
+        sw $t6, 0x600($0)       # IMPRIMIR EN LEDS    
         lw $t1, 0x200($0)
         slt $t3, $t0, $t1
         beq $t3, $t4, salir_output
         j while_output
     salir_output:
+        addi $t6, $0, 15         # IMPRIMIR EN LEDS
+        sw $t6, 0x600($0)        # IMPRIMIR EN LEDS
         lw $t1, 0x200($0)
         slt $t3, $t0, $t1
         beq $t3, $t4, salir_output  #repetir mientras el enter este presionado

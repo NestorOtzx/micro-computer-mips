@@ -98,7 +98,7 @@ component c_uart_top
 end component;
 
 component ram
-    port (    dir       : in std_logic_vector (31 downto 0);
+    port (    dir       : in std_logic_vector (8 downto 0);
               data      : in std_logic_vector (31 downto 0);
               mem_read  : in std_logic;
               mem_write : in std_logic;
@@ -118,8 +118,8 @@ signal signal_memwr, singal_memrd: STD_LOGIC;
 
 -- OUT CONTROL --
 
-signal signal_outenable: STD_LOGIC;
-signal signal_outregister: STD_LOGIC_VECTOR (31 downto 0);
+signal signal_outenable, signal_ledsenable: STD_LOGIC;
+signal signal_outregister, signal_outleds: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_memwrite, signal_memread: STD_LOGIC;
 signal input_signal: STD_LOGIC_VECTOR (31 downto 0);
 signal signal_procc_in: STD_LOGIC_VECTOR (31 downto 0);
@@ -134,11 +134,12 @@ begin
 
 nClock <= not clk;
 
+signal_ledsenable <= (signal_memwr and  signal_iord(9) and signal_iord(10));
 signal_outenable <= (signal_memwr and  signal_iord(9));
 signal_memwrite <= (signal_memwr and not signal_iord(9));
 signal_memread <= (singal_memrd and not signal_memin(9));
---input_signal <= "000000000000" & enter_signal & input(18 downto 0); -- real
-input_signal <= "000000000000" & input; --simulacion
+input_signal <= "000000000000" & enter_signal & input(18 downto 0); -- real
+--input_signal <= "000000000000" & input; --simulacion
 
 --UART--
 signal_send_word <= (signal_iord(10) and  signal_memin(8) and signal_memwr);
@@ -172,7 +173,7 @@ port map(
     mux_in0 => signal_memout,
     mux_in1 => input_signal,
     mux_in2 => uart_out_extnd,
-    mux_in3 => signal_uart_info,
+    mux_in3 => (others => '0'),
     mux_sel => signal_iord(10 downto 9),
     mux_out => signal_procc_in
 );
@@ -198,8 +199,18 @@ port map(
     reg_output => signal_outregister
 );
 
+U_LEDSREGISTER: register_32b
+port map(
+    reg_input => signal_memin,
+    write_enable => signal_ledsenable,
+    --clk =>  divisor_counter(20),
+    clk => nClock,
+    reset => reset,
+    reg_output => signal_outleds 
+);
+
 U_MEMORY: ram
-port map (    dir => signal_iord, --direccion de la instruccion
+port map (    dir => signal_iord(8 downto 0), --direccion de la instruccion
               data => signal_memin,
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
@@ -232,8 +243,8 @@ arquitecture: main_arquitecture
     );
 
 --testIRWRITE <= signal_ir_write;
-
-leds <= signal_uart_info(1 downto 0)&uart_out_extnd(13 downto 0);
+-- ENTER NORMAL / ENTER QUITA REBOTE
+leds <= input(19)&enter_signal&"000000"&signal_outleds(7 downto 0);
 
 debug <= signal_outregister;
 --pcOut <= signal_pcTest;

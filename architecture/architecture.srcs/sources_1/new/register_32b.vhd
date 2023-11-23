@@ -24,4 +24,3 @@ begin
     end process;
 
 end Behavioral;
---00100010001100000000000000010000

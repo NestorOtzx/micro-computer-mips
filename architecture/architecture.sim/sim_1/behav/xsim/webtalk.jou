@@ -2,8 +2,8 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Nov 21 23:12:30 2023
-# Process ID: 2756
+# Start of session at: Wed Nov 22 18:22:57 2023
+# Process ID: 15084
 # Current directory: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: E:/proyectos/vivado/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log

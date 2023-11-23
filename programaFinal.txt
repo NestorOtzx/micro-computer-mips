@@ -2,16 +2,25 @@ addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
     jal     getinput
+    addi $t0, $0, 6         # IMPRIMIR EN LEDS
+    sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
     jal     calc
+    addi $t0, $0, 7         # IMPRIMIR EN LEDS
+    sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
     addi $a0, $0, 0x0100
     addi $a1, $0, 0x0120
     jal     printMemoria
+    addi $t0, $0, 8         # IMPRIMIR EN LEDS
+    sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
     lw 		$s0, 4($gp) # dir Y[0] --IMPRIMIR RESULTADO--
     lw 		$s1, 0($gp)	# N
     add     $s1, $s1, $s0
     lw      $a0, 0($s1)
+bucle:
+    addi $t0, $0, 10         # IMPRIMIR EN LEDS
+    sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
     jal     output
-    j       fin
+    j       bucle
 printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     addi $t0, $a0, 0
     addi $t1, $a1, 0
@@ -28,13 +37,13 @@ input:
 	addi $t4, $zero, 0x1
     while_input:
         lw $t1, 0x200($0)
-	    sw $t1, 0x200($0)
+	sw $t1, 0x200($0)
         slt $t3, $t0, $t1
         beq $t3, $t4, salir_input
         j while_input
     salir_input:
         lw $t1, 0x200($0)
-	    sw $t1, 0x200($0)
+	sw $t1, 0x200($0)
         slt $t3, $t0, $t1
         beq $t3, $t4, salir_input  #repetir mientras el enter este presionado
         addi $v0, $t1, 0
@@ -59,9 +68,13 @@ resetGP:
     addi $gp, $0, 0x0100	
     jr $ra
 getinput: 
+    addi $t6, $0, 1         # IMPRIMIR EN LEDS
+    sw $t6, 0x600($0)       # IMPRIMIR EN LEDS
 	addi	$sp, $sp, -1
 	sw 		$ra, 0($sp)
 	jal    	input 			#lee N
+    addi $t6, $0, 2         # IMPRIMIR EN LEDS
+    sw $t6, 0x600($0)       # IMPRIMIR EN LEDS
 	add    	$s0, $0, $v0
 	sw 		$s0, 0($gp)		#guarda N
     sw      $s0, 0x200($0)
@@ -81,6 +94,8 @@ getinput:
 		addi 	$s1, $s1, 1 	#i++
 		j for_arrA
     end_for_arrA:
+    addi $t6, $0, 3         # IMPRIMIR EN LEDS
+    sw $t6, 0x600($0)       # IMPRIMIR EN LEDS
     addi 	$s6, $gp, 1 #guardar la posicion inicial de B en s6
 	addi 	$s1, $0, -1 #i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
 	for_arrB:
@@ -93,6 +108,8 @@ getinput:
 		addi 	$s1, $s1, 1 	#i++
 		j for_arrB
 	end_for_arrB:
+    addi $t6, $0, 4         # IMPRIMIR EN LEDS
+    sw $t6, 0x600($0)       # IMPRIMIR EN LEDS
     addi 	$s5, $gp, 1 		#guardar la posicion inicial de B en s6
     addi 	$s1, $0, -1 		#i = -1 ESTO ES PARA INGRESAR UN VALOR MAS EN EL B, YA QUE M = N+1 Y NO QUEREMOS MODIFICAR $S0
     for_arrX:
@@ -105,6 +122,8 @@ getinput:
         addi 	$s1, $s1, 1 	#i++
         j for_arrX
     end_for_arrX:
+    addi $t6, $0, 5         # IMPRIMIR EN LEDS
+    sw $t6, 0x600($0)       # IMPRIMIR EN LEDS
     addi 	$s4, $gp, 1 		#guardar direccion del arreglo Y
     jal 	resetGP 
     sw 		$s7, 1($gp) 		#primer elemento de A

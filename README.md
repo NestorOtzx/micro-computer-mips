@@ -2,9 +2,9 @@
 ### **Integrantes**
 |             Integrantes             |        Rol en el proyecto       |
 |-------------------------------------|---------------------------------|
-| Nestor Mauricio Ortiz Montenegro  | Investigación y diseño |
+| Nestor Mauricio Ortiz Montenegro  | Investigación y desarrollo |
 | Phanor Castillo | Pruebas e integración |
-| Jhon David Ríos Aguirre | Diseño |
+| Jhon David Ríos Aguirre | Diseño e investigación |
 | Laura Camila Franco Valencia | Desarrollo y documentación|
 
 ___

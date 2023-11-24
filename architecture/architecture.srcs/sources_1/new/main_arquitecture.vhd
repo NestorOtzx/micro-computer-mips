@@ -158,7 +158,7 @@ signal signExtendInmediate, shiftLeft2Inmediate, jumpSignal, luiSignal, inmUnsig
 signal pcEnable, tmpAluZero: STD_LOGIC;
 begin
 
-nclock <= not main_clk;
+nclock <= main_clk;
 
 pcEnable <= main_pc_write or (main_branch and tmpAluZero);
 

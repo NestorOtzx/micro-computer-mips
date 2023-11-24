@@ -37,10 +37,10 @@ def calc():
 
 def getinput():
     global a, b, Xarr, N
-    N = 4
-    a = [-1, 3, 2, 1, 1]
-    b = [1, 2, 3, 4, 5]
-    Xarr =  [2, 2, 2, 2, 2]
+    N = 3
+    a = [-1, 3, 3, 3]
+    b = [3, 3, 3, 3]
+    Xarr =  [3, 3, 3, 3]
     
 def main():
   global N, Y,a,b,Xarr

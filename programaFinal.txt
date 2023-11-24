@@ -1,6 +1,10 @@
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
 main:
+    jal     leer_uart
+    addi    $a0, $v0, 0
+    jal     output
+    jal     enviar_uart
     jal     getinput
     addi $t0, $0, 6         # IMPRIMIR EN LEDS
     sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
@@ -21,6 +25,23 @@ bucle:
     sw $t0, 0x600($0)       # IMPRIMIR EN LEDS
     jal     output
     j       bucle
+leer_uart:
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input           #recibe un enter
+    lw $v0, 0x400($0)  #lee lo que hay en la uart despues del enter
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
+enviar_uart:
+    addi $sp, $sp, -1
+    sw $ra, 0($sp)
+    jal input            # recibe un enter
+    addi $v0, $v0, 0x100 # para activar el send word con el bit 9
+    sw $v0, 0x400($gp)   # envia a la uart la informacion de los switches
+    lw $ra, 0($sp)
+    addi $sp, $sp, 1
+    jr $ra
 printMemoria: #imprime la memoria desde una posicion a0 hasta una posicion a1
     addi $t0, $a0, 0
     addi $t1, $a1, 0

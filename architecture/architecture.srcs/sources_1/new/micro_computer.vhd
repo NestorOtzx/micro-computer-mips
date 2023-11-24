@@ -7,7 +7,7 @@ entity micro_computer is
         reset: in STD_LOGIC;
         input: in STD_LOGIC_VECTOR (19 downto 0);
         leds: out std_logic_vector(15 downto 0);
-        debug: out std_logic_vector(31 downto 0);
+        -- debug: out std_logic_vector(31 downto 0);
         -- memout: out std_logic_vector(31 downto 0)
         enDigit: out std_logic_vector(3 downto 0);
         display: out std_logic_vector(6 downto 0);
@@ -132,7 +132,7 @@ signal uart_out_extnd: STD_LOGIC_VECTOR(31 downto 0);
 begin
 
 enter_extend <= ("0000000000000000000000000000000"&enter_signal);
-nClock <= not clk;
+nClock <= not divisor_counter(10);
 
 signal_ledsenable <= (signal_memwr and  signal_iord(9) and signal_iord(10));
 signal_outenable <= (signal_memwr and  signal_iord(9) and not signal_iord(10));
@@ -193,8 +193,8 @@ U_OUTREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_outenable,
-    --clk =>  divisor_counter(20),
-    clk => nClock,
+    clk =>  divisor_counter(10),
+    --clk => nClock,
     reset => reset,
     reg_output => signal_outregister
 );
@@ -203,8 +203,8 @@ U_LEDSREGISTER: register_32b
 port map(
     reg_input => signal_memin,
     write_enable => signal_ledsenable,
-    --clk =>  divisor_counter(20),
-    clk => nClock,
+    clk =>  divisor_counter(10),
+    --clk => nClock,
     reset => reset,
     reg_output => signal_outleds 
 );
@@ -215,8 +215,8 @@ port map (    dir => signal_iord(8 downto 0), --direccion de la instruccion
               mem_read => singal_memrd,
               mem_write => signal_memwrite,
               mem_data => signal_memout,
-              clk => nClock,
-              --clk => divisor_counter(20),
+              --clk => nClock,
+              clk => divisor_counter(10),
               reset => reset
          );
 
@@ -230,23 +230,22 @@ divisor: count_32bit
 
 arquitecture: main_arquitecture
     port map(
-    
         mem_data => signal_procc_in,
         iord_out => signal_iord,
         main_out => signal_aluout,
         registerBout => signal_memin,
         mem_rd => singal_memrd,
         mem_wr => signal_memwr,   
-        --main_clk        => divisor_counter(20),
-        main_clk        => clk,
+        main_clk        => divisor_counter(10),
+        --main_clk        => clk,
         main_reset      => reset
     );
 
 --testIRWRITE <= signal_ir_write;
 -- ENTER NORMAL / ENTER QUITA REBOTE
-leds <= input(19)&enter_signal&signal_outleds(13 downto 0);
+leds <= input(19)&enter_signal&divisor_counter(10)&signal_outleds(12 downto 0);
 
-debug <= signal_outregister;
+--debug <= signal_outregister;
 --pcOut <= signal_pcTest;
 
 

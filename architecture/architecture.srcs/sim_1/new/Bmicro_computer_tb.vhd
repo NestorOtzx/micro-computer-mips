@@ -67,67 +67,34 @@ begin
         -- EDIT: Check that reset is really your reset signal
         reset <= '1';
         input <= "00000000000000000001";
-        
-        
         wait for 100 ns;
         reset <= '0';
         
         wait for 100 us;
-        rx <= '0';      -- START BIT
-        wait for 100 us;
-        rx <= '0';      -- BIT 0
-        wait for 100 us;
-        rx <= '1';      -- BIT 1
-        wait for 100 us;
-        rx <= '0';      -- BIT 2
-        wait for 100 us;
-        rx <= '1';      -- BIT 3
-        wait for 100 us;
-        rx <= '0';      -- BIT 4
-        wait for 100 us;
-        rx <= '0';      -- BIT 5
-        wait for 100 us;
-        rx <= '0';      -- BIT 6
-        wait for 100 us;
-        rx <= '0';      -- BIT 7
-        wait for 100 us;
-        rx <= '1';      -- STOP BIT
-        
+        rx <= '0';
         -- EDIT Add stimuli here
         wait for 100 us;
-        -- LEER UART
-        input <= "10000000000000000000";
-        wait for 100 us;
-        input <= "00000000000000000000";
-        wait for 200 us;
-        input <= "10000000000000000000";
-        wait for 200 us;
-        input <= "00000000000000000000";
-        wait for 200 us;
         
-        -- ENVIAR UART
-        input <= "00000000000000001010";
-        wait for 100 us;
-        input <= "10000000000000001010";
-        wait for 100 us;
-        input <= "00000000000000001010";
-        wait for 200 us;
+        rx <= '1';
+        
+        wait for 20 us;
+        
  --------------------------------------
         -- INGRESAR EL N
-        input <= "00000000000000000100";
+        input <= "00000000000000000010";
         wait for 200 us;
-        input <= "10000000000000000100";
+        input <= "10000000000000000010";
         wait for 100 us;
-        input <= "00000000000000000100";
+        input <= "00000000000000000010";
         wait for 200 us;
        
         
         -- INGRESAR EL A[1]
-        input <= "00000000000000000011";
+        input <= "00000000000000000010";
         wait for 200 us;
-        input <= "10000000000000000011";
+        input <= "10000000000000000010";
         wait for 100 us;
-        input <= "00000000000000000011";
+        input <= "00000000000000000010";
         wait for 200 us;
         
         -- INGRESAR EL A[2]
@@ -137,30 +104,14 @@ begin
         wait for 100 us;
         input <= "00000000000000000010";
         wait for 200 us;
-        
-        -- INGRESAR EL A[3]
-        input <= "00000000000000000001";
-        wait for 200 us;
-        input <= "10000000000000000001";
-        wait for 100 us;
-        input <= "00000000000000000001";
-        wait for 200 us;
-
-        -- INGRESAR EL A[4]
-        input <= "00000000000000000001";
-        wait for 200 us;
-        input <= "10000000000000000001";
-        wait for 100 us;
-        input <= "00000000000000000001";
-        wait for 200 us;
 
 --------------------------------------
         -- INGRESAR EL B[0]
-        input <= "00000000000000000001";
+        input <= "00000000000000000010";
         wait for 200 us;
-        input <= "10000000000000000001";
+        input <= "10000000000000000010";
         wait for 100 us;
-        input <= "00000000000000000001";
+        input <= "00000000000000000010";
         wait for 200 us;
         
         -- INGRESAR EL B[1]
@@ -172,27 +123,11 @@ begin
         wait for 200 us;
         
         -- INGRESAR EL B[2]
-        input <= "00000000000000000011";
+        input <= "00000000000000000010";
         wait for 200 us;
-        input <= "10000000000000000011";
+        input <= "10000000000000000010";
         wait for 100 us;
-        input <= "00000000000000000011";
-        wait for 200 us;
-        
-        -- INGRESAR EL B[3]
-        input <= "00000000000000000100";
-        wait for 200 us;
-        input <= "10000000000000000100";
-        wait for 100 us;
-        input <= "00000000000000000100";
-        wait for 200 us;
-        
-        -- INGRESAR EL B[4]
-        input <= "00000000000000000101";
-        wait for 200 us;
-        input <= "10000000000000000101";
-        wait for 100 us;
-        input <= "00000000000000000101";
+        input <= "00000000000000000010";
         wait for 200 us;
         
 --------------------------------------
@@ -213,22 +148,6 @@ begin
         wait for 200 us;
         
         -- INGRESAR EL X[2]
-        input <= "00000000000000000010";
-        wait for 200 us;
-        input <= "10000000000000000010";
-        wait for 100 us;
-        input <= "00000000000000000010";
-        wait for 200 us;
-        
-        -- INGRESAR EL X[3]
-        input <= "00000000000000000010";
-        wait for 200 us;
-        input <= "10000000000000000010";
-        wait for 100 us;
-        input <= "00000000000000000010";
-        wait for 200 us;
-        
-        -- INGRESAR EL X[4]
         input <= "00000000000000000010";
         wait for 200 us;
         input <= "10000000000000000010";

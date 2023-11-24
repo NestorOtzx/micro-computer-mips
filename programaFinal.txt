@@ -49,7 +49,7 @@ input:
         sw $t6, 0x600($0)       # IMPRIMIR 15 EN LEDS   
         lw $t1, 0x200($0)       # Leer switches
 	    sw $t1, 0x200($0)       # MOSTRAR DATOS DE SWITCHES
-        lw $t2, 0x600($0)       # Leer el enter
+        lw $t2, 0x600($0)       
         beq $t2, $t4, salir_input  #repetir mientras el enter este presionado
         addi $v0, $t1, 0
         sw $0, 0x200($0) 

@@ -2,11 +2,13 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Nov 23 18:39:12 2023
-# Process ID: 5884
+# Start of session at: Thu Nov 23 15:07:28 2023
+# Process ID: 26400
 # Current directory: C:/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: C:/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source C:/micro-computer-mips/architecture/architecture.sim/sim_1/behav/xsim/xsim.dir/cfg_tb_micro_computer_behav/webtalk/xsim_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 99.109 ; gain = 0.227
+INFO: [Common 17-206] Exiting Webtalk at Thu Nov 23 15:07:35 2023...

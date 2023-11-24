@@ -53,11 +53,11 @@ Localizar la información del proyecto en un repositorio creado en gitHub.
  >_Durante la última reunión, además de cerrar la documentación con las conclusiones e información; se discutirán los temas que se enseñarán en la demostración del proyecto al realizar la sustentación. Y como se dividirá entre los mismos la información correspondiente._
 ___
 
-### Algunas consideraciones 
+## Algunas consideraciones 
 Este apartado lo mantendremos en el repositorio con el fin de aclarar ciertas cosas de la
 sustentación.
 
-**Código en assembly**
+### **Código en assembly**
 ``` 
 addi $sp, $0, 0x01ff   #definiciones basicas
 addi $gp, $0, 0x0100   #definiciones basicas
@@ -304,8 +304,8 @@ Y:
 		jr 		$ra
 fin:
 ```
-
-**Código del proyecto en lenguaje de alto nivel**
+___
+### **Código del proyecto en lenguaje de alto nivel**
 
 ```python
 N = 0
